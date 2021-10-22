@@ -17,10 +17,10 @@ public struct ActionButton: HTMLComponent {
     
     private let variation: ButtonVariation
     private let size: ButtonSize
-    private let link: HTML
-    private let content: HTML
+    private let link: HTMLContent
+    private let content: HTMLContent
     
-    public init(variation: ButtonVariation, size: ButtonSize = .regular, uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @HTMLBuilder builder: () -> HTML) {
+    public init(variation: ButtonVariation, size: ButtonSize = .regular, uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @HTMLBuilder builder: () -> HTMLContent) {
 
         self.variation = variation
         self.size = size
@@ -34,11 +34,11 @@ public struct ActionButton: HTMLComponent {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Anchor {
             content
         }
-        .href(link)
+        .reference(link)
         .class("button variation:\(variation) size:\(size)")
         .role("button")
     }
@@ -46,14 +46,14 @@ public struct ActionButton: HTMLComponent {
 
 public struct DropdownButton: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -63,14 +63,14 @@ public struct DropdownButton: HTMLComponent {
 
 public struct ButtonGroup: HTMLComponent {
         
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }

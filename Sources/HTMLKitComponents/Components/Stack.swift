@@ -25,14 +25,14 @@ public enum ColumnSize: String {
 public struct Stack: HTMLComponent {
     
     private let direction: StackDirection
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(direction: StackDirection, @HTMLBuilder builder: () -> HTML) {
+    public init(direction: StackDirection, @HTMLBuilder builder: () -> HTMLContent) {
         self.direction = direction
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -43,14 +43,14 @@ public struct Stack: HTMLComponent {
 public struct StackColumn: HTMLComponent {
     
     private let size: ColumnSize
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(size: ColumnSize, @HTMLBuilder builder: () -> HTML) {
+    public init(size: ColumnSize, @HTMLBuilder builder: () -> HTMLContent) {
         self.size = size
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }

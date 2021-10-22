@@ -16,7 +16,7 @@ public enum AvatarStatus: String {
 
 public struct Avatar: HTMLComponent {
     
-    private let link: HTML
+    private let link: HTMLContent
     private let size: AvatarSize
     private let status: AvatarStatus
     
@@ -26,7 +26,7 @@ public struct Avatar: HTMLComponent {
         self.status = status
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             Div {
                 Img()
@@ -41,13 +41,13 @@ public struct Avatar: HTMLComponent {
 
 public struct AvatarGroup: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }

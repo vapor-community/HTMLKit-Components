@@ -2,13 +2,13 @@ import HTMLKit
 
 public struct FormContainer: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    init(@HTMLBuilder builder: () -> HTML) {
+    init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Form {
             content
         }
@@ -19,13 +19,13 @@ public struct FormContainer: HTMLComponent {
 
 public struct FormHeader: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -35,13 +35,13 @@ public struct FormHeader: HTMLComponent {
 
 public struct FormBody: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -51,13 +51,13 @@ public struct FormBody: HTMLComponent {
 
 public struct FormFooter: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -67,13 +67,13 @@ public struct FormFooter: HTMLComponent {
 
 public struct FormRow: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -84,14 +84,14 @@ public struct FormRow: HTMLComponent {
 public struct FormColumn: HTMLComponent {
     
     private let size: ColumnSize
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(size: ColumnSize, @HTMLBuilder builder: () -> HTML) {
+    public init(size: ColumnSize, @HTMLBuilder builder: () -> HTMLContent) {
         self.size = size
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -101,13 +101,13 @@ public struct FormColumn: HTMLComponent {
 
 public struct TextareaInput: HTMLComponent {
     
-    private let title: String
-    private let name: String
+    private let title: TemplateValue<String>
+    private let name: TemplateValue<String>
     private var placeholder: TemplateValue<String>?
     private let isRequired: Conditionable
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(title: String, name: String, placeholder: TemplateValue<String>? = nil, isRequired: Conditionable = false, @HTMLBuilder builder: () -> HTML) {
+    public init(title: TemplateValue<String>, name: TemplateValue<String>, placeholder: TemplateValue<String>? = nil, isRequired: Conditionable = false, @HTMLBuilder builder: () -> HTMLContent) {
         self.title = title
         self.name = name
         self.placeholder = placeholder
@@ -115,7 +115,7 @@ public struct TextareaInput: HTMLComponent {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             Label { title }
                 .class("label")
@@ -134,13 +134,13 @@ public struct TextareaInput: HTMLComponent {
 
 public struct TextInput: HTMLComponent {
     
-    private let title: String
-    private let name: String
+    private let title: TemplateValue<String>
+    private let name: TemplateValue<String>
     private var placeholder: TemplateValue<String>?
     private var value: TemplateValue<String>?
     private let isRequired: Conditionable
     
-    public init(title: String, name: String, value: TemplateValue<String>? = nil, placeholder: TemplateValue<String>? = nil, isRequired: Conditionable = false) {
+    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String>? = nil, placeholder: TemplateValue<String>? = nil, isRequired: Conditionable = false) {
         self.title = title
         self.name = name
         self.value = value
@@ -148,7 +148,7 @@ public struct TextInput: HTMLComponent {
         self.isRequired = isRequired
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             Label { title }
                 .class("label")
@@ -182,7 +182,7 @@ public struct PasswordInput: HTMLComponent {
         self.isRequired = isRequired
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             Label { title }
                 .class("label")
@@ -208,7 +208,7 @@ public struct SubmitButton: HTMLComponent {
         self.title = title
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Button { title }
             .type(.submit)
             .class("button variation:primary")
@@ -224,7 +224,7 @@ public struct ResetButton: HTMLComponent {
         self.title = title
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Button { title }
             .type(.reset)
             .class("button variation:secondary")

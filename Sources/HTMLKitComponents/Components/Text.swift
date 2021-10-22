@@ -27,16 +27,16 @@ public struct Text: HTMLComponent {
     private let size: FontSize
     private let weight: FontWeight
     private let transformation: TextTransformation
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(size: FontSize = .regular, weight: FontWeight = .regular, transformation: TextTransformation = .normal, @HTMLBuilder builder: () -> HTML) {
+    public init(size: FontSize = .regular, weight: FontWeight = .regular, transformation: TextTransformation = .normal, @HTMLBuilder builder: () -> HTMLContent) {
         self.size = size
         self.weight = weight
         self.transformation = transformation
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         P { content }
             .class("text size:\(size) weight:\(weight) transformation:\(transformation)")
     }

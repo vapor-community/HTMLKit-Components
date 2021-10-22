@@ -11,14 +11,14 @@ public struct Navigation: HTMLComponent {
     
     private let direction: NavigationDirection
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(direction: NavigationDirection, @HTMLBuilder builder: () -> HTML) {
+    public init(direction: NavigationDirection, @HTMLBuilder builder: () -> HTMLContent) {
         self.direction = direction
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         UnorderedList {
             content
         }
@@ -29,14 +29,14 @@ public struct Navigation: HTMLComponent {
 public struct NavigationItem: HTMLComponent {
     
     private let isActive: Conditionable
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(isActive: Conditionable = false, @HTMLBuilder builder: () -> HTML) {
+    public init(isActive: Conditionable = false, @HTMLBuilder builder: () -> HTMLContent) {
         self.isActive = isActive
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         ListItem {
             content
         }
@@ -49,10 +49,10 @@ public struct NavigationItem: HTMLComponent {
 
 public struct NavigationLink: HTMLComponent {
     
-    private let link: HTML
-    private let content: HTML
+    private let link: HTMLContent
+    private let content: HTMLContent
     
-    public init(uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @HTMLBuilder builder: () -> HTML) {
+    public init(uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @HTMLBuilder builder: () -> HTMLContent) {
         
         if let id = id {
             self.link = uri + "/" + id
@@ -63,9 +63,9 @@ public struct NavigationLink: HTMLComponent {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Anchor { content }
-            .href(link)
+            .reference(link)
             .class("navigation-link")
             .role("link")
     }

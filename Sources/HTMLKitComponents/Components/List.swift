@@ -8,13 +8,13 @@ public enum ColumnAlignment: String {
 
 public struct ListContainer: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -24,13 +24,13 @@ public struct ListContainer: HTMLComponent {
 
 public struct ListHeader: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -40,13 +40,13 @@ public struct ListHeader: HTMLComponent {
 
 public struct ListBody: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         UnorderedList {
             content
         }
@@ -56,13 +56,13 @@ public struct ListBody: HTMLComponent {
 
 public struct ListRow: HTMLComponent {
 
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         ListItem {
             content
         }
@@ -74,15 +74,15 @@ public struct ListColumn: HTMLComponent {
     
     private let size: ColumnSize
     private let alignment: ColumnAlignment
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(size: ColumnSize, alignment: ColumnAlignment = .left, @HTMLBuilder builder: () -> HTML) {
+    public init(size: ColumnSize, alignment: ColumnAlignment = .left, @HTMLBuilder builder: () -> HTMLContent) {
         self.size = size
         self.alignment = alignment
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
@@ -92,13 +92,13 @@ public struct ListColumn: HTMLComponent {
 
 public struct ListFooter: HTMLComponent {
     
-    private let content: HTML
+    private let content: HTMLContent
     
-    public init(@HTMLBuilder builder: () -> HTML) {
+    public init(@HTMLBuilder builder: () -> HTMLContent) {
         self.content = builder()
     }
     
-    public var body: HTML {
+    public var body: HTMLContent {
         Div {
             content
         }
