@@ -1,14 +1,14 @@
 import HTMLKit
 
-public struct FormContainer: HTMLComponent {
+public struct FormContainer: Component {
     
-    private let content: HTMLContent
+    private let content: [FormElement]
     
-    init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    init(@ContentBuilder<FormElement> content: () -> [FormElement]) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
+    public var body: AnyContent {
         Form {
             content
         }
@@ -17,130 +17,137 @@ public struct FormContainer: HTMLComponent {
     }
 }
 
-public struct FormHeader: HTMLComponent {
+public struct FormHeader: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("form-header")
     }
 }
 
-public struct FormBody: HTMLComponent {
+public struct FormBody: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("form-body")
     }
 }
 
-public struct FormFooter: HTMLComponent {
+public struct FormFooter: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("form-footer")
     }
 }
 
-public struct FormRow: HTMLComponent {
+public struct FormRow: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("form-row")
     }
 }
 
-public struct FormColumn: HTMLComponent {
+public struct FormColumn: Component {
     
     private let size: ColumnSize
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(size: ColumnSize, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.size = size
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
-        .class("form-column size:\(size)")
+        .class("form-column size:\(size.rawValue)")
     }
 }
 
-public struct TextareaInput: HTMLComponent {
+public struct TextareaInput: Component {
     
     private let title: TemplateValue<String>
     private let name: TemplateValue<String>
-    private var placeholder: TemplateValue<String>?
-    private let isRequired: Conditionable
-    private let content: HTMLContent
+    private var placeholder: TemplateValue<String?>
+    private let isRequired: Bool
+    private let content: [String]
     
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, placeholder: TemplateValue<String>? = nil, isRequired: Conditionable = false, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(title: TemplateValue<String>, name: TemplateValue<String>, placeholder: TemplateValue<String?>, isRequired: Bool = false, @ContentBuilder<String> content: () -> [String]) {
         self.title = title
         self.name = name
         self.placeholder = placeholder
         self.isRequired = isRequired
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
-            Label { title }
-                .class("label")
-                .modify(if: isRequired) {
-                    $0.class("label required-indicator")
-                }
-            TextArea { content }
-                .id(name)
-                .name(name)
-                .placeholder(placeholder)
-                .class("input type:textarea")
+    public var body: AnyContent {
+        Division {
+            Label {
+                title
+                
+            }
+            .class("label")
+            .modify(if: isRequired) {
+                $0.class("label required-indicator")
+            }
+            TextArea {
+                content
+            }
+            .id(name.rawValue)
+            .name(name.rawValue)
+            .class("input type:textarea")
+            .modify(unwrap: placeholder) {
+                $0.placeholder($1)
+            }
         }
         .class("input-group")
     }
 }
 
-public struct TextInput: HTMLComponent {
+public struct TextInput: Component {
     
     private let title: TemplateValue<String>
     private let name: TemplateValue<String>
-    private var placeholder: TemplateValue<String>?
-    private var value: TemplateValue<String>?
-    private let isRequired: Conditionable
+    private var placeholder: TemplateValue<String?>
+    private var value: TemplateValue<String?>
+    private let isRequired: Bool
     
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String>? = nil, placeholder: TemplateValue<String>? = nil, isRequired: Conditionable = false) {
+    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String?>, placeholder: TemplateValue<String?>, isRequired: Bool = false) {
         self.title = title
         self.name = name
         self.value = value
@@ -148,8 +155,8 @@ public struct TextInput: HTMLComponent {
         self.isRequired = isRequired
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             Label { title }
                 .class("label")
                 .modify(if: isRequired) {
@@ -159,22 +166,24 @@ public struct TextInput: HTMLComponent {
                 .type(.text)
                 .id(name)
                 .name(name)
-                .placeholder(placeholder)
                 .class("input type:text")
+                .modify(unwrap: placeholder) {
+                    $0.placeholder($1)
+                }
         }
         .class("input-group")
     }
 }
 
-public struct PasswordInput: HTMLComponent {
+public struct PasswordInput: Component {
     
     private let title: TemplateValue<String>
     private let name: TemplateValue<String>
-    private var value: TemplateValue<String>?
-    private var placeholder: TemplateValue<String>?
-    private let isRequired: Conditionable
+    private var value: TemplateValue<String?>
+    private var placeholder: TemplateValue<String?>
+    private let isRequired: Bool
     
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String>? = nil, placeholder: TemplateValue<String>?, isRequired: Conditionable = false) {
+    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String?>, placeholder: TemplateValue<String?>, isRequired: Bool = false) {
         self.title = title
         self.name = name
         self.value = value
@@ -182,8 +191,8 @@ public struct PasswordInput: HTMLComponent {
         self.isRequired = isRequired
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             Label { title }
                 .class("label")
                 .modify(if: isRequired) {
@@ -193,14 +202,16 @@ public struct PasswordInput: HTMLComponent {
                 .type(.password)
                 .id(name)
                 .name(name)
-                .placeholder(placeholder)
                 .class("input type:password")
+                .modify(unwrap: placeholder) {
+                    $0.placeholder($1)
+                }
         }
         .class("input-group")
     }
 }
 
-public struct SubmitButton: HTMLComponent {
+public struct SubmitButton: Component {
     
     private let title: TemplateValue<String>
     
@@ -208,7 +219,7 @@ public struct SubmitButton: HTMLComponent {
         self.title = title
     }
     
-    public var body: HTMLContent {
+    public var body: AnyContent {
         Button { title }
             .type(.submit)
             .class("button variation:primary")
@@ -216,7 +227,7 @@ public struct SubmitButton: HTMLComponent {
     }
 }
 
-public struct ResetButton: HTMLComponent {
+public struct ResetButton: Component {
     
     private let title: TemplateValue<String>
     
@@ -224,10 +235,12 @@ public struct ResetButton: HTMLComponent {
         self.title = title
     }
     
-    public var body: HTMLContent {
-        Button { title }
-            .type(.reset)
-            .class("button variation:secondary")
-            .role("button")
+    public var body: AnyContent {
+        Button {
+            title
+        }
+        .type(.reset)
+        .class("button variation:secondary")
+        .role("button")
     }
 }

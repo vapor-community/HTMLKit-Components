@@ -1,27 +1,33 @@
 import HTMLKit
 
-public struct Collection: HTMLComponent {
+public struct Collection: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        content
+    public var body: AnyContent {
+        Division {
+            content
+        }
+        .class("collection")
     }
 }
 
-public struct CollectionItem: HTMLComponent {
+public struct CollectionItem: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        content
+    public var body: AnyContent {
+        Division {
+            content
+        }
+        .class("collection-item")
     }
 }

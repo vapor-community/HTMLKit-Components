@@ -14,9 +14,9 @@ public enum AvatarStatus: String {
     case offline
 }
 
-public struct Avatar: HTMLComponent {
+public struct Avatar: Component {
     
-    private let link: HTMLContent
+    private let link: TemplateValue<String>
     private let size: AvatarSize
     private let status: AvatarStatus
     
@@ -26,29 +26,29 @@ public struct Avatar: HTMLComponent {
         self.status = status
     }
     
-    public var body: HTMLContent {
-        Div {
-            Div {
-                Img()
-                    .source(link)
+    public var body: AnyContent {
+        Division {
+            Division {
+                Image()
+                    .source(link.rawValue)
                     .class("avatar-image")
             }
-            .class("avatar-status status:\(status)")
+            .class("avatar-status status:\(status.rawValue)")
         }
         .class("avatar")
     }
 }
 
-public struct AvatarGroup: HTMLComponent {
+public struct AvatarGroup: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("avatar-group")

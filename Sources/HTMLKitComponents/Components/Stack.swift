@@ -22,38 +22,38 @@ public enum ColumnSize: String {
     case twelve = "12"
 }
 
-public struct Stack: HTMLComponent {
+public struct Stack: Component {
     
     private let direction: StackDirection
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(direction: StackDirection, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(direction: StackDirection, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.direction = direction
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
-        .class("stack direction:\(direction)")
+        .class("stack direction:\(direction.rawValue)")
     }
 }
 
-public struct StackColumn: HTMLComponent {
+public struct StackColumn: Component {
     
     private let size: ColumnSize
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(size: ColumnSize, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.size = size
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
-        .class("stack-column size:\(size)")
+        .class("stack-column size:\(size.rawValue)")
     }
 }

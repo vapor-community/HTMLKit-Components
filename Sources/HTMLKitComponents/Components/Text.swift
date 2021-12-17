@@ -22,22 +22,24 @@ public enum FontWeight: String {
     case bold
 }
 
-public struct Text: HTMLComponent {
+public struct Text: Component {
 
     private let size: FontSize
     private let weight: FontWeight
     private let transformation: TextTransformation
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(size: FontSize = .regular, weight: FontWeight = .regular, transformation: TextTransformation = .normal, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(size: FontSize = .regular, weight: FontWeight = .regular, transformation: TextTransformation = .normal, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.size = size
         self.weight = weight
         self.transformation = transformation
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        P { content }
-            .class("text size:\(size) weight:\(weight) transformation:\(transformation)")
+    public var body: AnyContent {
+        Paragraph {
+            content
+        }
+        .class("text size:\(size.rawValue) weight:\(weight.rawValue) transformation:\(transformation.rawValue)")
     }
 }

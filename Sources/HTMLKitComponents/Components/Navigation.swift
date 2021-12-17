@@ -7,36 +7,36 @@ public enum NavigationDirection: String {
     case horizontal
 }
 
-public struct Navigation: HTMLComponent {
+public struct NavigationContainer: Component {
     
     private let direction: NavigationDirection
     
-    private let content: HTMLContent
+    private let content: [ListElement]
     
-    public init(direction: NavigationDirection, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(direction: NavigationDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         self.direction = direction
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
+    public var body: AnyContent {
         UnorderedList {
             content
         }
-        .class("navigation direction:\(direction)")
+        .class("navigation direction:\(direction.rawValue)")
     }
 }
 
-public struct NavigationItem: HTMLComponent {
+public struct NavigationItem: Component, ListElement {
     
-    private let isActive: Conditionable
-    private let content: HTMLContent
+    private let isActive: Bool
+    private let content: AnyContent
     
-    public init(isActive: Conditionable = false, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(isActive: Bool = false, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.isActive = isActive
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
+    public var body: AnyContent {
         ListItem {
             content
         }
@@ -47,27 +47,29 @@ public struct NavigationItem: HTMLComponent {
     }
 }
 
-public struct NavigationLink: HTMLComponent {
+public struct NavigationLink: Component {
     
-    private let link: HTMLContent
-    private let content: HTMLContent
+    private let link: TemplateValue<String>
+    private let content: AnyContent
     
-    public init(uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         
         if let id = id {
-            self.link = uri + "/" + id
+            self.link = .constant("\(uri)/\(id)")
         } else {
             self.link = uri
         }
         
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Anchor { content }
-            .reference(link)
-            .class("navigation-link")
-            .role("link")
+    public var body: AnyContent {
+        Anchor {
+            content
+        }
+        .reference(link.rawValue)
+        .class("navigation-link")
+        .role("link")
     }
 }
 

@@ -1,18 +1,18 @@
 import HTMLKit
 
-public struct Image: HTMLComponent {
+public struct ImageContainer: Component {
     
-    private let link: HTMLContent
+    private let link: TemplateValue<String>
     
     public init(uri: TemplateValue<String>) {
         self.link = uri
     }
     
-    public var body: HTMLContent {
-        Div {
-            Img()
-                .source(link)
-                .alt("thumbnail")
+    public var body: AnyContent {
+        Division {
+            Image()
+                .source(link.rawValue)
+                .alternate("thumbnail")
         }
         .class("image")
     }

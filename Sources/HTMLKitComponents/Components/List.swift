@@ -6,47 +6,47 @@ public enum ColumnAlignment: String {
     case right
 }
 
-public struct ListContainer: HTMLComponent {
+public struct ListContainer: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("list")
     }
 }
 
-public struct ListHeader: HTMLComponent {
+public struct ListHeader: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("list-header")
     }
 }
 
-public struct ListBody: HTMLComponent {
+public struct ListBody: Component {
     
-    private let content: HTMLContent
+    private let content: [ListElement]
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
+    public var body: AnyContent {
         UnorderedList {
             content
         }
@@ -54,15 +54,15 @@ public struct ListBody: HTMLComponent {
     }
 }
 
-public struct ListRow: HTMLComponent {
+public struct ListRow: Component {
 
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
+    public var body: AnyContent {
         ListItem {
             content
         }
@@ -70,36 +70,36 @@ public struct ListRow: HTMLComponent {
     }
 }
 
-public struct ListColumn: HTMLComponent {
+public struct ListColumn: Component {
     
     private let size: ColumnSize
     private let alignment: ColumnAlignment
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(size: ColumnSize, alignment: ColumnAlignment = .left, @HTMLBuilder builder: () -> HTMLContent) {
+    public init(size: ColumnSize, alignment: ColumnAlignment = .left, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.size = size
         self.alignment = alignment
-        self.content = builder()
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
-        .class("list-column size:\(size) alignment:\(alignment)")
+        .class("list-column size:\(size.rawValue) alignment:\(alignment.rawValue)")
     }
 }
 
-public struct ListFooter: HTMLComponent {
+public struct ListFooter: Component {
     
-    private let content: HTMLContent
+    private let content: AnyContent
     
-    public init(@HTMLBuilder builder: () -> HTMLContent) {
-        self.content = builder()
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
-    public var body: HTMLContent {
-        Div {
+    public var body: AnyContent {
+        Division {
             content
         }
         .class("list-footer")
