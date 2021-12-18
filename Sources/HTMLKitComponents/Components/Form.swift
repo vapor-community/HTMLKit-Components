@@ -4,7 +4,7 @@ public struct FormContainer: Component {
     
     private let content: [FormElement]
     
-    init(@ContentBuilder<FormElement> content: () -> [FormElement]) {
+    public init(@ContentBuilder<FormElement> content: () -> [FormElement]) {
         self.content = content()
     }
     
