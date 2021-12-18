@@ -157,11 +157,13 @@ public struct TextInput: Component {
     
     public var body: AnyContent {
         Division {
-            Label { title }
-                .class("label")
-                .modify(if: isRequired) {
-                    $0.class("label required-indicator")
-                }
+            Label {
+                title
+            }
+            .class("label")
+            .modify(if: isRequired) {
+                $0.class("label required-indicator")
+            }
             Input()
                 .type(.text)
                 .id(name)
@@ -170,6 +172,37 @@ public struct TextInput: Component {
                 .modify(unwrap: placeholder) {
                     $0.placeholder($1)
                 }
+        }
+        .class("input-group")
+    }
+}
+
+public struct SelectInput: Component {
+    
+    private let title: TemplateValue<String>
+    private let name: TemplateValue<String>
+    private let isRequired: Bool
+    
+    public init(title: TemplateValue<String>, name: TemplateValue<String>, isRequired: Bool = false) {
+        self.title = title
+        self.name = name
+        self.isRequired = isRequired
+    }
+    
+    public var body: AnyContent {
+        Division {
+            Label {
+                title
+            }
+            .class("label")
+            .modify(if: isRequired) {
+                $0.class("label required-indicator")
+            }
+            Select {
+            }
+            .id(name)
+            .name(name)
+            .class("input type:select")
         }
         .class("input-group")
     }
