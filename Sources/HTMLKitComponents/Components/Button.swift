@@ -56,7 +56,55 @@ public struct DropdownButton: Component {
         Division {
             content
         }
-        .class("button")
+        .class("dropdown")
+    }
+}
+
+public struct DropdownMenu: Component {
+    
+    private let content: [ListElement]
+    
+    public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
+        self.content = content()
+    }
+    
+    public var body: AnyContent {
+        UnorderedList {
+            content
+        }
+        .class("dropdown-menu")
+    }
+}
+
+public struct DropdownItem: Component {
+    
+    private let content: AnyContent
+    
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
+    }
+    
+    public var body: AnyContent {
+        ListItem {
+            content
+        }
+        .class("dropdown-item")
+    }
+}
+
+public struct DropdownLink: Component {
+    
+    private let content: AnyContent
+    
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
+    }
+    
+    public var body: AnyContent {
+        Anchor {
+            content
+        }
+        .class("dropdown-link")
     }
 }
 
