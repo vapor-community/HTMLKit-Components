@@ -1,0 +1,92 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    border: var(--listBorderWidth) solid var(--listBorderColor);
+    border-radius: var(--listBorderRadius);
+    background-color: var(--listBackgroundColor);
+}
+
+.list-header {
+    padding: 15px 25px;
+}
+
+.list-body {
+    padding: 15px 25px;
+}
+
+.list-footer {
+    padding: 15px 25px;
+}
+
+.list-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+    .item-action {
+    }
+
+       .item-action .action-toggle {
+
+           text-align: center;
+           cursor: pointer;
+        }
+
+        .item-action .action-toggle i {
+            color: #6c757d;
+            font-size: 1.4em;
+        }
+
+        .item-action .action-menu {
+            display: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            min-height: 150px;
+            list-style: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+            .item-action .action-menu .action-item {
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+                .item-action .action-menu .action-item:hover {
+                    background-color: #dee2e6;
+                }
+
+                .item-action .action-menu .action-item a {
+                    display: block;
+                    padding: 10px 15px;
+                    color: #006fe6;
+                    text-decoration: none;
+                }
+
+                .item-action .action-menu .action-item:hover a {
+                    color: #006fe6;
+                }
+
+                .item-action .action-menu .action-item:last-child a {
+                    color: #ff6160;
+                }
+
+.sortable-indicator {
+    cursor: pointer;
+}
+
+    .sortable-indicator:hover {
+        color: #000;
+    }
+
+    .sortable-indicator:after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f0dc";
+    }

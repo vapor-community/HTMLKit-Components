@@ -1,0 +1,29 @@
+.tab-group {
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    
+    border-bottom: 1px solid var(--tabGroupBorderColor)
+}
+
+.tab-item {
+
+    padding: 1.0rem 1.25rem;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+    text-transform: none;
+    cursor: pointer
+}
+
+    .tab-item.active-status {
+        color: var(--tabItemActiveColor);
+        border-bottom: 2px solid var(--tabItemActiveColor)
+        
+    }
+
+    .tab-item:hover {
+        color: var(--tabItemHoverColor)
+    }

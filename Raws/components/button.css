@@ -1,0 +1,78 @@
+.button {
+
+    display: inline-block;
+    padding: var(--buttonPadding);
+    border: var(--buttonBorderWidth) solid transparent;
+    border-radius: var(--buttonBorderRadius);
+    font-size: var(--buttonFontSize);
+    font-weight: var(--buttonFontWeight);
+    line-height: var(--buttonLineHeight);
+    text-decoration: none;
+    cursor: pointer;
+}
+    .button.size\:large {
+        width: 100%;
+    }
+
+    .button.variation\:primary {
+        color: var(--whiteColor);
+        background-color: hsl(var(--primaryColor), 100%, 50%);
+    }
+
+        .button.variation\:primary:hover {
+            background-color: hsl(var(--primaryColor), 100%, 60%);
+        }
+
+    .button.variation\:secondary {
+        color: var(--whiteColor);
+        background-color: hsl(var(--secondaryColor), 100%, 50%);
+    }
+
+        .button.variation\:secondary:hover {
+            background-color: hsl(var(--secondaryColor), 100%, 60%);
+        }
+
+    .button.variation\:outline {
+        color: hsl(var(--buttonBorderColor), 100%, 60%);
+        background-color: transparent;
+        border-color: hsl(var(--buttonBorderColor), 100%, 60%);
+    }
+
+        .button.variation\:outline:hover {
+            color: var(--whiteColor);
+            background-color: hsl(var(--buttonBorderColor), 100%, 60%);
+            border-color: transparent;
+        }
+
+    .button.variation\:ghost {
+        color: var(--blackColor);
+        background-color: transparent;
+    }
+
+.button i {
+    padding: 0px 10px;
+}
+
+
+.button-group {
+    
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+    .button-group .button {
+        border-radius: 0;
+    }
+
+    .button-group .button:first-child {
+        
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .button-group .button:last-child {
+        
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }

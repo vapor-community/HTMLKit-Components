@@ -1,0 +1,27 @@
+.panel {
+    overflow: hidden
+}
+
+    .panel.size\:small {
+        width: 30%;
+    }
+
+    .panel.size\:medium {
+        width: 50%;
+    }
+
+    .panel.size\:large {
+        width: 100%;
+    }
+
+.panel-header {
+    padding: 15px 25px;
+}
+
+.panel-body {
+    padding: 25px 25px;
+}
+
+.panel-footer {
+    padding: 15px 25px;
+}

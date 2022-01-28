@@ -1,0 +1,96 @@
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--avatarBorderRadius);
+    border: var(--avatarBorderWidth) solid var(--avatarBorderColor);
+    background-color: var(--avatarBackgroundColor);
+    overflow: hidden;
+}
+
+    .avatar.size\:small {
+        width: 30px;
+        height: 30px;
+    }
+
+    .avatar.size\:small img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .avatar.size\:medium {
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .avatar.size\:medium img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .avatar.size\:large {
+
+        width: 150px;
+        height: 150px;
+    }
+
+    .avatar.size\:large img{
+        width: 150px;
+        height: 150px;
+    }
+
+    .avatar .avatar-thumbnail {
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .avatar-status {
+
+        display: inline-block;
+        position: relative;
+    }
+
+    .avatar-status:before {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        z-index: 1;
+
+        content:"";
+    }
+
+        .avatar-status.status\:available:before {
+            background-color: var(--greenColor);
+        }
+
+        .avatar-status.status\:offline:before {
+            background-color: var(--redColor);
+        }
+
+        .avatar-status.status\:unavailable:before {
+            background-color: var(--orangeColor);
+        }
+
+        .avatar-status.status\:busy:before {
+            background-color: var(--blueColor);
+        }
+
+.avatar-group {
+
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.avatar-group .avatar:not(:last-child) {
+
+    margin-left: -40px;
+}

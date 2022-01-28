@@ -1,0 +1,128 @@
+.text {}
+
+    .text.size\:small {
+        font-size: var(--smallFontSize);
+        line-height: var(--smallLineHeight)
+    }
+
+    .text.size\:medium {
+        font-size: var(--mediumFontSize);
+        line-height: var(--mediumLineHeight)
+    }
+
+    .text.size\:large {
+        font-size: var(--largeFontSize);
+        line-height: var(--largeLineHeight)
+    }
+
+    .text.weight\:300 {
+        font-weight: 300
+    }
+
+    .text.weight\:400 {
+        font-weight: 400
+    }
+
+    .text.weight\:700 {
+        font-weight: 700
+    }
+
+    .text.weight\:900 {
+        font-weight: 900
+    }
+
+    .text.color\:silver {
+        color: var(--silverColor)
+    }
+
+    .text.color\:darkgrey {
+        color: var(--darkgreyColor)
+    }
+
+    .text.color\:grey {
+        color: var(--greyColor)
+    }
+
+    .text.color\:red {
+        color: var(--redColor)
+    }
+
+    .text.color\:orange {
+        color: var(--orangeColor)
+    }
+
+    .text.color\:blue {
+        color: var(--blueColor)
+    }
+
+    .text.color\:lightblue {
+        color: var(--lightblueColor)
+    }
+
+    .text.color\:green {
+        color: var(--greenColor)
+    }
+
+    .text.color\:yellow {
+        color: var(--yellowColor)
+    }
+
+    .text.color\:white {
+        color: var(--whiteColor)
+    }
+
+    .text.color\:black {
+        color: var(--blackColor)
+    }
+
+    .text.color\:primary {
+        color: var(--primaryColor)
+    }
+
+    .text.color\:secondary {
+        color: var(--secondaryColor)
+    }
+
+    .text.color\:tertiary {
+        color: var(--tertiaryColor)
+    }
+
+    .text.transformation\:uppercase {
+        text-transform: uppercase
+    }
+
+    .text.transformation\:lowercase {
+        text-transform: lowercase
+    }
+
+mark {
+    font-family: "Roboto Mono";
+    color: #FFF;
+    background-color: #CF173F;
+}
+
+kbd {
+    padding: 5px 5px;
+    color: #fff;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 5px
+}
+
+.link {
+    color: var(--linkColor);
+    text-decoration: none
+}
+
+.link:hover {
+    color: var(--linkHoverColor)
+}
+
+.quote {
+    padding: 15px 15px;
+    border-left: 1px solid #cf173f;
+    font-family: 'Quicksand';
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.43
+}

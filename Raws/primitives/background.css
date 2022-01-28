@@ -1,0 +1,89 @@
+.background {}
+
+.background.color\:darkgrey {
+    background-Color: var(--darkgreyColor)
+}
+
+.background.color\:grey {
+    background-Color: var(--greyColor)
+}
+
+.background.color\:silver {
+    background-Color: var(--silverColor)
+}
+
+.background.color\:darkred {
+    background-Color: var(--darkredColor)
+}
+
+.background.color\:red {
+    background-Color: var(--redColor)
+}
+
+.background.color\:lightred {
+    background-Color: var(--lightredColor)
+}
+
+.background.color\:darkorange {
+    background-Color: var(--darkorangeColor)
+}
+
+.background.color\:orange {
+    background-Color: var(--orangeColor)
+}
+
+.background.color\:lightorange {
+    background-Color: var(--lightorangeColor)
+}
+
+.background.color\:darkblue {
+    background-Color: var(--darkblueColor)
+}
+
+.background.color\:blue {
+    background-Color: var(--blueColor)
+}
+
+.background.color\:lightblue {
+    background-Color: var(--lightblueColor)
+}
+
+.background.color\:darkgreen {
+    background-Color: var(--darkgreenColor)
+}
+
+.background.color\:green {
+    background-Color: var(--greenColor)
+}
+
+.background.color\:lightgreen {
+    background-Color: var(--lightgreenColor)
+}
+
+.background.color\:darkyellow {
+    background-Color: var(--darkyellowColor)
+}
+
+.background.color\:yellow {
+    background-Color: var(--yellowColor)
+}
+
+.background.color\:lightyellow {
+    background-Color: var(--lightyellowColor)
+}
+
+.background.color\:white {
+    background-Color: var(--whiteColor)
+}
+
+.background.color\:black {
+    background-Color: var(--blackColor)
+}
+
+.background.color\:primary {
+    background-Color: var(--primaryColor)
+}
+
+.background.color\:secondary {
+    background-Color: var(--secondaryColor)
+}

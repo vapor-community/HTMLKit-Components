@@ -1,0 +1,113 @@
+:root {
+    
+    /* - default colors - */
+    --darkgreyColor: #5E5E5E;
+    --greyColor: #E7E7E7;
+    --silverColor: #F8F9FA;
+    --darkredColor: #9b2335;
+    --redColor: #E63946;
+    --lightredColor: #FF6160;
+    --darkorangeColor: #E85D04;
+    --orangeColor: #F77F00;
+    --lightorangeColor: #E15D44;
+    --darkblueColor: #003049;
+    --blueColor: #4F86C7;
+    --lightblueColor: #6DA0FC;
+    --darkgreenColor: #007200;
+    --greenColor: #94B33D;
+    --lightgreenColor: #A1C349;
+    --darkyellowColor: #FFBA08;
+    --yellowColor: #FEE440;
+    --lightyellowColor: #F9D053;
+    --whiteColor: #FFFFFF;
+    --blackColor: #000000;
+    --highlightColor: #6DA0FC;
+    
+    /* - custom colors - */
+    --primaryColor: 0;
+    --secondaryColor: 1;
+    
+    /* - button - */
+    --buttonPadding: 10px 24px;
+    --buttonBorderColor: 5;
+    --buttonBorderWidth: 1px;
+    --buttonBorderRadius: 5px;
+    --buttonFontSize: 14px;
+    --buttonFontWeight: normal;
+    --buttonLineHeight: 1.2rem;
+    
+    /* - avatar - */
+    --avatarBorderColor: 0;
+    --avatarBorderWidth: 3px;
+    --avatarBorderRadius: 40px;
+    --avatarBackgroundColor: transparent;
+    
+    /* - navigation - */
+    --navigationBorderWidth: 1px;
+    --navigationBorderColor: #DEE2E6;
+    --navigationBorderRadius: 5px;
+    --navigationBackgroundColor: #FFFFFF;
+    --navigationLinkColor: #000000;
+    --navigationLinkHoverColor: #000000;
+    --subnavigationBackgroundColor: #FFFFFF;
+    --subnavigationBorderColor: #F5F7FA;
+    
+    /* - cookie - */
+    --cookieTextColor: #000000;
+    --cookieBorderColor: #EFEFEF;;
+    --cookieBackgroundColor: #EFEFEF;
+    --cookieBoxShadow: transparent;
+    
+    /* - list - */
+    --listBorderWidth: 1px;
+    --listBorderColor: #DEE2E6;
+    --listBorderRadius: 5px;
+    --listBackgroundColor: #FFFFFF;
+    
+    /* - text - */
+    --smallFontSize: 0.8em;
+    --smallFontWeight: 600;
+    --smallLineHeight: 1.6em;
+    --normalFontSize: 1.4em;
+    --normalFontWeight: 600;
+    --normalLineHeight: 1.8em;
+    --mediumFontSize: 1.6em;
+    --mediumFontWeight: 600;
+    --mediumLineHeight: 2.0em;
+    --largeFontSize: 2.3em;
+    --largeFontWeight: 900;
+    --largeLineHeight: 1.1em;
+    --linkColor: #000000;
+    --linkHoverColor: #000000;
+    
+    /* - tab - */
+    --tabItemHoverColor: #EFEFEF;
+    --tabItemActiveColor: #EFEFEF;
+    --tabGroupBorderColor: #EFEFEF;
+    
+    /* - table - */
+    --tableBorderColor: #000000;
+    
+    /* - card- */
+    --cardBorderColor: #34343d;
+    --cardBorderWidth: 1px;
+    --cardBorderRadius: 15px;
+    --cardBackgroundColor: #202024;
+    
+    /* - form - */
+    --formBorderColor: red;
+    --formBorderWidth: 1px;
+    --formBorderRadius: 5px;
+    --formBackgroundColor: transparent;
+    --formLabelColor: #637282;
+    
+    --inputBorderColor: #dee2e6;
+    --inputBorderWidth: 1px;
+    --inputBorderRadius: 5px;
+    
+    /* - image - */
+    --imageBorderColor: red;
+    --imageBorderWidth: 1px;
+    --imageBorderRadius: 5px;
+    --imageBackgroundColor: transparent;
+}

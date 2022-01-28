@@ -1,0 +1,36 @@
+.toolbar {
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    padding: 10px 25px;
+    
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #fff;
+    
+}
+
+.toolbar-item {
+    cursor: pointer;
+}
+
+    .toolbar-item+.toolbar-item:before {
+
+        content: "|";
+        color: #dee2e6;
+        padding: 10px 10px;
+    }
+
+.toolbar-item a {
+    
+    color: #000;
+}
+
+.toolbar-item a:hover {
+    
+    color: #dee2e6;
+}

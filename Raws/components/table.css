@@ -1,0 +1,37 @@
+.table {
+
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .table.style\:bordered {
+
+    }
+
+    .table.style\:bordered td {
+        border: 1px solid var(--tableBorderColor);
+    }
+
+.table-header {
+    
+}
+
+.table-body {
+    
+}
+
+.table-footer {
+    
+}
+
+.table-row {
+}
+
+.table-column {
+    padding: 12px 24px;
+}
+
+    .table-column .column-definition {
+        color: #000;
+        font-weight: bold;
+    }
