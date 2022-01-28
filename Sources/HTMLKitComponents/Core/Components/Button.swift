@@ -40,7 +40,7 @@ public struct ActionButton: Component {
         }
         .reference(link.rawValue)
         .class("button variation:\(variation.rawValue) size:\(size.rawValue)")
-        .role("button")
+        .role(.button)
     }
 }
 

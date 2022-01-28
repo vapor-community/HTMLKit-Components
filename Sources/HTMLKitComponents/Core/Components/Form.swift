@@ -256,7 +256,7 @@ public struct SubmitButton: Component {
         Button { title }
             .type(.submit)
             .class("button variation:primary")
-            .role("button")
+            .role(.button)
     }
 }
 
@@ -274,6 +274,6 @@ public struct ResetButton: Component {
         }
         .type(.reset)
         .class("button variation:secondary")
-        .role("button")
+        .role(.button)
     }
 }

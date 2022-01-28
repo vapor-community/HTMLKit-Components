@@ -69,7 +69,6 @@ public struct NavigationLink: Component {
         }
         .reference(link.rawValue)
         .class("navigation-link")
-        .role("link")
     }
 }
 
