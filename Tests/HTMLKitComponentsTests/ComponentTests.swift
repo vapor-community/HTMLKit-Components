@@ -500,4 +500,29 @@ final class ComponentTests: XCTestCase {
                        """
         )
     }
+    
+    func testTabs() throws {
+       
+        let view = TestPage {
+            TabGroup {
+                TabItem {
+                    Span {
+                        "Hallo"
+                    }
+                }
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <ul class="tab-group">\
+                       <li class="tab-item">\
+                       <span>Hallo</span>\
+                       </li>\
+                       </ul>
+                       """
+        )
+    }
 }
