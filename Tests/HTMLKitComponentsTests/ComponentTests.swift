@@ -58,7 +58,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="button"></div>
+                       <div class="dropdown"></div>
                        """
         )
     }
@@ -221,7 +221,7 @@ final class ComponentTests: XCTestCase {
                        """
                        <div class="input-group">\
                        <label class="label">title</label>\
-                       <textarea id="name" name="name" placeholder="" class="input type:textarea">Test</textarea>\
+                       <textarea id="name" name="name" class="input type:textarea">Test</textarea>\
                        </div>
                        """
         )
@@ -448,7 +448,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <a href="uri" class="navigation-link" role="link">link</a>
+                       <a href="uri" class="navigation-link">link</a>
                        """
         )
     }
