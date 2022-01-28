@@ -13,7 +13,7 @@ let package = Package(
             targets: ["HTMLKitComponents"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor-community/HTMLKit", from: "2.4.0"),
+        .package(url: "https://github.com/vapor-community/HTMLKit", from: "2.4.3"),
     ],
     targets: [
         .target(
