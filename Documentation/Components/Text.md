@@ -5,24 +5,26 @@ Lorem ipsum
 ### Properties
 
 #### Size
-- vertical
-- horizontal
+- small
+- medium
+- large
 
 #### Transformation
-- normal
 - uppercase
 - lowercase
 
 ### Weight
 - light
-- regular
 - medium
 - bold
 
 ### Examples
 
 ```swift
-Text(size: .medium, weight: .bold) {
+Text {
     ...
 }
+.foregroundColor(.red)
+.fontWeight(.bold)
+.fontTransformation(.uppercase)
 ```

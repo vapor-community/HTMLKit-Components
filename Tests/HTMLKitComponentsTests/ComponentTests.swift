@@ -488,15 +488,19 @@ final class ComponentTests: XCTestCase {
     func testText() throws {
        
         let view = TestPage {
-            Text(size: .large, weight: .bold, transformation: .normal) {
+            Text {
             }
+            .fontSize(.large)
+            .fontWeight(.medium)
+            .fontTransformation(.uppercase)
+            .foregroundColor(.blue)
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <p class="text size:large weight:bold transformation:normal"></p>
+                       <p class="text size:large weight:medium transformation:uppercase color:blue"></p>
                        """
         )
     }
