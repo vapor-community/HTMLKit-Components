@@ -1,7 +1,6 @@
 .list {
     
     display: flex;
-    flex-direction: column;
     border: var(--listBorderWidth) solid var(--listBorderColor);
     border-radius: var(--listBorderRadius);
     background-color: var(--listBackgroundColor);
@@ -13,4 +12,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.list.direction\:horizontal {
+    
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px
+}
+
+.list.direction\:vertical {
+    
+    flex-direction: column;
+    gap: 15px
 }

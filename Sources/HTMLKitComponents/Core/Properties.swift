@@ -1,4 +1,4 @@
-public enum StackDirection: String {
+public enum FlowDirection: String {
     
     case vertical = "direction:vertical"
     case horizontal = "direction:horizontal"

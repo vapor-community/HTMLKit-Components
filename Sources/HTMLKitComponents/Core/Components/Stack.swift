@@ -5,7 +5,7 @@ public struct Stack: Component {
     private let content: AnyContent
     private let classes: [String]
     
-    public init(direction: StackDirection, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(direction: FlowDirection, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.content = content()
         self.classes = ["stack", direction.rawValue]
     }

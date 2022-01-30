@@ -5,13 +5,14 @@ public struct List: Component {
     private let content: [ListElement]
     private var classes: [String]
     
-    public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
+    public init(direction: FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
-        self.classes = ["list"]
+        self.classes = ["list", direction.rawValue]
     }
     
     internal init(content: [ListElement], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }
