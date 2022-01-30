@@ -101,14 +101,17 @@ public enum BackgroundColor: String {
     case tertiary = "background color:tertiary"
 }
 
-public enum ResizingMode: String {
+public enum ObjectFit: String {
     
-    case stretch = "resizing:stretch"
-    case tile = "resizing:tile"
+    case contain = "fit:contain"
+    case cover = "fit:cover"
+    case fill = "fit:fill"
+    case scaleDown = "fit:scaledown"
+    case none = "fit:none"
 }
 
 public enum OpacityValue: String {
     
-    case full = "opacity:full"
-    case half = "opacity:half"
+    case intransparent = "opacity:intransparent"
+    case transparent = "opacity:transparent"
 }
