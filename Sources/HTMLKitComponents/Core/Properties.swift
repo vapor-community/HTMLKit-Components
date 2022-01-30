@@ -1,3 +1,32 @@
+public enum StackDirection: String {
+    
+    case vertical = "direction:vertical"
+    case horizontal = "direction:horizontal"
+}
+
+public enum ColumnAlignment: String {
+    
+    case left = "alignment:left"
+    case center = "alignment:center"
+    case right = "alignment:right"
+}
+
+public enum ColumnSize: String {
+    
+    case one = "size:1"
+    case two = "size:2"
+    case three = "size:3"
+    case four = "size:4"
+    case five = "size:5"
+    case six = "size:6"
+    case seven = "size:7"
+    case eight = "size:8"
+    case nine = "size:9"
+    case ten = "size:10"
+    case eleven = "size:11"
+    case twelve = "size:12"
+}
+
 public enum ForegroundColor: String {
     
     case silver = "color:silver"
@@ -55,4 +84,31 @@ public enum FontStyle: String {
     
     case italic = "style:italic"
     case oblique = "style:oblique"
+}
+
+public enum BackgroundColor: String {
+    
+    case silver = "background color:silver"
+    case grey = "background color:grey"
+    case red = "background color:red"
+    case orange = "background color:orange"
+    case blue = "background color:blue"
+    case green = "background color:green"
+    case yellow = "background color:yellow"
+    case white = "background color:white"
+    case primary = "background color:primary"
+    case secondary = "background color:secondary"
+    case tertiary = "background color:tertiary"
+}
+
+public enum ResizingMode: String {
+    
+    case stretch = "resizing:stretch"
+    case tile = "resizing:tile"
+}
+
+public enum OpacityValue: String {
+    
+    case full = "opacity:full"
+    case half = "opacity:half"
 }
