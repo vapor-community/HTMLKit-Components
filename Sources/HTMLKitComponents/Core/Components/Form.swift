@@ -246,31 +246,33 @@ public struct PasswordInput: Component {
 
 public struct SubmitButton: Component {
     
-    private let title: TemplateValue<String>
+    private let content: AnyContent
     
-    public init(title: TemplateValue<String>) {
-        self.title = title
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
     public var body: AnyContent {
-        Button { title }
-            .type(.submit)
-            .class("button variation:primary")
-            .role(.button)
+        Button {
+            content
+        }
+        .type(.submit)
+        .class("button variation:primary")
+        .role(.button)
     }
 }
 
 public struct ResetButton: Component {
     
-    private let title: TemplateValue<String>
+    private let content: AnyContent
     
-    public init(title: TemplateValue<String>) {
-        self.title = title
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        self.content = content()
     }
     
     public var body: AnyContent {
         Button {
-            title
+            content
         }
         .type(.reset)
         .class("button variation:secondary")

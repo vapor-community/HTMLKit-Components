@@ -11,25 +11,6 @@ final class ComponentTests: XCTestCase {
     
     let renderer = Renderer()
     
-    func testAvatar() throws {
-        
-        let view = TestPage {
-            Avatar(uri: "uri", size: .medium, status: .available)
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="avatar">\
-                       <div class="avatar-status status:available">\
-                       <img src="uri" class="avatar-image">\
-                       </div>\
-                       </div>
-                       """
-        )
-    }
-    
     func testButton() throws {
         
         let view = TestPage {
@@ -264,7 +245,9 @@ final class ComponentTests: XCTestCase {
     func testSubmitButton() throws {
         
         let view = TestPage {
-            SubmitButton(title: "Submit")
+            SubmitButton {
+                "Submit"
+            }
         }
         
         try renderer.add(view: view)
@@ -279,7 +262,9 @@ final class ComponentTests: XCTestCase {
     func testResetButton() throws {
         
         let view = TestPage {
-            ResetButton(title: "Reset")
+            ResetButton {
+                "Reset"
+            }
         }
         
         try renderer.add(view: view)
