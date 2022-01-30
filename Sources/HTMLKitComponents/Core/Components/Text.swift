@@ -1,25 +1,5 @@
 import HTMLKit
 
-public enum FontSize: String {
-    
-    case small = "size:small"
-    case medium = "size:medium"
-    case large = "size:large"
-}
-
-public enum TextTransformation: String {
-    
-    case uppercase = "transformation:uppercase"
-    case lowercase = "transformation:lowercase"
-}
-
-public enum FontWeight: String {
-    
-    case light = "weight:light"
-    case medium = "weight:medium"
-    case bold = "weight:bold"
-}
-
 public struct Text: Component {
 
     private let content: AnyContent
@@ -73,6 +53,30 @@ extension Text {
         
         var classes = self.classes
         classes.append(transformation.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    func bold() -> Text {
+        
+        var classes = self.classes
+        classes.append(FontWeight.bold.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    func italic() -> Text {
+        
+        var classes = self.classes
+        classes.append(FontStyle.italic.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    func underline() -> Text {
+     
+        var classes = self.classes
+        classes.append(TextDecoration.underline.rawValue)
         
         return Text(content: self.content, classes: classes)
     }
