@@ -95,14 +95,16 @@ final class ComponentTests: XCTestCase {
     func testTextField() throws {
         
         let view = TestPage {
-            TextField(name: "Firstname")
+            TextField(name: "Name") {
+                "TextField"
+            }
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <textarea id="Firstname" name="Firstname" class="input type:text" rows="1">nil</textarea>
+                       <textarea id="Name" name="Name" class="input type:text" rows="1">TextField</textarea>
                        """
         )
     }

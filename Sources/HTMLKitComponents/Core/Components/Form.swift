@@ -54,32 +54,41 @@ public struct FieldLabel: Component {
 public struct TextField: Component {
     
     private let name: TemplateValue<String>
-    private var value: TemplateValue<String?>
-    private var classes: [String]
     private var rows: Int = 1
+    private let content: [String]
+    private var classes: [String]
     
-    public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
+    public init(name: TemplateValue<String>, @ContentBuilder<String> content: () -> [String]) {
         
         self.name = name
-        self.value = value
+        self.content = content()
         self.classes = ["input", "type:text"]
     }
     
-    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String]) {
+    internal init(name: TemplateValue<String>, rows: Int, content: [String], classes: [String]) {
         
         self.name = name
-        self.value = value
+        self.rows = rows
+        self.content = content
         self.classes = classes
     }
     
     public var body: AnyContent {
         TextArea {
-            value.rawValue
+            content
         }
         .id(name)
         .name(name)
         .class(classes.joined(separator: " "))
         .rows(rows)
+    }
+}
+
+extension TextField {
+    
+    public func lineLimit(_ value: Int) -> TextField {
+        
+        return TextField(name: self.name, rows: value, content: self.content, classes: self.classes)
     }
 }
 
