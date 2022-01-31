@@ -1,59 +1,66 @@
 import HTMLKit
 
-public enum StackDirection: String {
-    
-    case vertical
-    case horizontal
-}
-
-public enum ColumnSize: String {
-    
-    case one = "1"
-    case two = "2"
-    case three = "3"
-    case four = "4"
-    case five = "5"
-    case six = "6"
-    case seven = "7"
-    case eight = "8"
-    case nine = "9"
-    case ten = "10"
-    case eleven = "11"
-    case twelve = "12"
-}
-
 public struct Stack: Component {
     
-    private let direction: StackDirection
     private let content: AnyContent
+    private let classes: [String]
     
-    public init(direction: StackDirection, @ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.direction = direction
+    public init(direction: FlowDirection, @ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.content = content()
+        self.classes = ["stack", direction.rawValue]
+    }
+    
+    internal init(content: AnyContent, classes: [String]) {
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
         Division {
             content
         }
-        .class("stack direction:\(direction.rawValue)")
+        .class(classes.joined(separator: " "))
     }
 }
 
 public struct StackColumn: Component {
     
-    private let size: ColumnSize
     private let content: AnyContent
+    private var classes: [String]
     
     public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.size = size
+        
         self.content = content()
+        self.classes = ["stack-column", size.rawValue]
+    }
+    
+    public init(size: ColumnSize, alignment: ColumnAlignment, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+        
+        self.content = content()
+        self.classes = ["stack-column", size.rawValue, alignment.rawValue]
+    }
+    
+    public init(size: ColumnSize, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+        
+        self.content = content()
+        self.classes = ["stack-column", size.rawValue, offset.rawValue]
+    }
+    
+    public init(size: ColumnSize, alignment: ColumnAlignment, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+        
+        self.content = content()
+        self.classes = ["stack-column", size.rawValue, alignment.rawValue, offset.rawValue]
+    }
+    
+    internal init(content: AnyContent, classes: [String]) {
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
         Division {
             content
         }
-        .class("stack-column size:\(size.rawValue)")
+        .class(classes.joined(separator: " "))
     }
 }

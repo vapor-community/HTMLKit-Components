@@ -1,45 +1,83 @@
 import HTMLKit
 
-public enum FontSize: String {
-    case small
-    case regular
-    case medium
-    case large
-}
-
-public enum TextTransformation: String {
-    
-    case normal
-    case uppercase
-    case lowercase
-}
-
-public enum FontWeight: String {
-    
-    case light
-    case regular
-    case medium
-    case bold
-}
-
 public struct Text: Component {
 
-    private let size: FontSize
-    private let weight: FontWeight
-    private let transformation: TextTransformation
     private let content: AnyContent
+    private var classes: [String]
     
-    public init(size: FontSize = .regular, weight: FontWeight = .regular, transformation: TextTransformation = .normal, @ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.size = size
-        self.weight = weight
-        self.transformation = transformation
+    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.content = content()
+        self.classes = ["text"]
+    }
+    
+    internal init(content: AnyContent, classes: [String]) {
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
         Paragraph {
             content
         }
-        .class("text size:\(size.rawValue) weight:\(weight.rawValue) transformation:\(transformation.rawValue)")
+        .class(classes.joined(separator: " "))
+    }
+}
+
+extension Text {
+    
+    public func foregroundColor(_ color: ForegroundColor) -> Text {
+        
+        var classes = self.classes
+        classes.append(color.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    public func fontSize(_ size: FontSize) -> Text {
+        
+        var classes = self.classes
+        classes.append(size.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    public func fontWeight(_ weight: FontWeight) -> Text {
+        
+        var classes = self.classes
+        classes.append(weight.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    public func fontTransformation(_ transformation: TextTransformation) -> Text {
+        
+        var classes = self.classes
+        classes.append(transformation.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    public func bold() -> Text {
+        
+        var classes = self.classes
+        classes.append(FontWeight.bold.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    public func italic() -> Text {
+        
+        var classes = self.classes
+        classes.append(FontStyle.italic.rawValue)
+        
+        return Text(content: self.content, classes: classes)
+    }
+    
+    public func underline() -> Text {
+     
+        var classes = self.classes
+        classes.append(TextDecoration.underline.rawValue)
+        
+        return Text(content: self.content, classes: classes)
     }
 }

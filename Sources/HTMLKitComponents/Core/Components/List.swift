@@ -1,108 +1,50 @@
 import HTMLKit
 
-public enum ColumnAlignment: String {
-    case left
-    case center
-    case right
-}
-
-public struct ListContainer: Component {
-    
-    private let content: AnyContent
-    
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("list")
-    }
-}
-
-public struct ListHeader: Component {
-    
-    private let content: AnyContent
-    
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("list-header")
-    }
-}
-
-public struct ListBody: Component {
+public struct List: Component {
     
     private let content: [ListElement]
+    private var classes: [String]
     
-    public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
+    public init(direction: FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
+        
         self.content = content()
+        self.classes = ["list", direction.rawValue]
+    }
+    
+    internal init(content: [ListElement], classes: [String]) {
+        
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
         UnorderedList {
             content
         }
-        .class("list-body")
+        .class(classes.joined(separator: " "))
     }
 }
 
 public struct ListRow: Component {
 
     private let content: AnyContent
+    private var classes: [String]
     
     public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+        
         self.content = content()
+        self.classes = ["list-row"]
+    }
+    
+    internal init(content: AnyContent, classes: [String]) {
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
         ListItem {
             content
         }
-        .class("list-row")
+        .class(classes.joined(separator: " "))
     }
 }
-
-public struct ListColumn: Component {
-    
-    private let size: ColumnSize
-    private let alignment: ColumnAlignment
-    private let content: AnyContent
-    
-    public init(size: ColumnSize, alignment: ColumnAlignment = .left, @ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.size = size
-        self.alignment = alignment
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("list-column size:\(size.rawValue) alignment:\(alignment.rawValue)")
-    }
-}
-
-public struct ListFooter: Component {
-    
-    private let content: AnyContent
-    
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("list-footer")
-    }
-}
-

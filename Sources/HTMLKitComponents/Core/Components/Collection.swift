@@ -2,32 +2,46 @@ import HTMLKit
 
 public struct Collection: Component {
     
-    private let content: AnyContent
+    private let content: [ListElement]
+    private var classes: [String]
     
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
         self.content = content()
+        self.classes = ["collection"]
+    }
+    
+    internal init(content: [ListElement], classes: [String]) {
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
-        Division {
+        UnorderedList {
             content
         }
-        .class("collection")
+        .class(classes.joined(separator: " "))
     }
 }
 
 public struct CollectionItem: Component {
     
     private let content: AnyContent
+    private var classes: [String]
     
     public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
         self.content = content()
+        self.classes = ["collection-item"]
+    }
+    
+    internal init(content: AnyContent, classes: [String]) {
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
-        Division {
+        ListItem {
             content
         }
-        .class("collection-item")
+        .class(classes.joined(separator: " "))
     }
 }

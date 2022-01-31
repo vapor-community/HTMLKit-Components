@@ -3,9 +3,18 @@ import HTMLKit
 public struct FormContainer: Component {
     
     private let content: [FormElement]
+    private var classes: [String]
     
     public init(@ContentBuilder<FormElement> content: () -> [FormElement]) {
+        
         self.content = content()
+        self.classes = ["form"]
+    }
+    
+    internal init(content: [FormElement], classes: [String]) {
+        
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
@@ -13,267 +22,207 @@ public struct FormContainer: Component {
             content
         }
         .method(.post)
-        .class("form")
+        .class(classes.joined(separator: " "))
     }
 }
 
-public struct FormHeader: Component {
+public struct FieldLabel: Component {
     
     private let content: AnyContent
+    private var classes: [String]
     
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    
         self.content = content()
+        self.classes = ["label"]
+    }
+    
+    internal init(content: AnyContent, classes: [String]) {
+        
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
-        Division {
+        Label {
             content
         }
-        .class("form-header")
+        .class(classes.joined(separator: " "))
     }
 }
 
-public struct FormBody: Component {
+public struct TextField: Component {
     
-    private let content: AnyContent
-    
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("form-body")
-    }
-}
-
-public struct FormFooter: Component {
-    
-    private let content: AnyContent
-    
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("form-footer")
-    }
-}
-
-public struct FormRow: Component {
-    
-    private let content: AnyContent
-    
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("form-row")
-    }
-}
-
-public struct FormColumn: Component {
-    
-    private let size: ColumnSize
-    private let content: AnyContent
-    
-    public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> AnyContent) {
-        self.size = size
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("form-column size:\(size.rawValue)")
-    }
-}
-
-public struct TextareaInput: Component {
-    
-    private let title: TemplateValue<String>
     private let name: TemplateValue<String>
-    private var placeholder: TemplateValue<String?>
-    private let isRequired: Bool
+    private var rows: Int = 1
     private let content: [String]
+    private var classes: [String]
     
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, placeholder: TemplateValue<String?>, isRequired: Bool = false, @ContentBuilder<String> content: () -> [String]) {
-        self.title = title
+    public init(name: TemplateValue<String>, @ContentBuilder<String> content: () -> [String]) {
+        
         self.name = name
-        self.placeholder = placeholder
-        self.isRequired = isRequired
         self.content = content()
+        self.classes = ["input", "type:text"]
+    }
+    
+    internal init(name: TemplateValue<String>, rows: Int, content: [String], classes: [String]) {
+        
+        self.name = name
+        self.rows = rows
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
-        Division {
-            Label {
-                title
-                
-            }
-            .class("label")
-            .modify(if: isRequired) {
-                $0.class("label required-indicator")
-            }
-            TextArea {
-                content
-            }
-            .id(name.rawValue)
-            .name(name.rawValue)
-            .class("input type:textarea")
-            .modify(unwrap: placeholder) {
-                $0.placeholder($1)
-            }
+        TextArea {
+            content
         }
-        .class("input-group")
+        .id(name)
+        .name(name)
+        .class(classes.joined(separator: " "))
+        .rows(rows)
     }
 }
 
-public struct TextInput: Component {
+extension TextField {
     
-    private let title: TemplateValue<String>
+    public func lineLimit(_ value: Int) -> TextField {
+        
+        return TextField(name: self.name, rows: value, content: self.content, classes: self.classes)
+    }
+}
+
+public struct SelectField: Component {
+    
     private let name: TemplateValue<String>
-    private var placeholder: TemplateValue<String?>
-    private var value: TemplateValue<String?>
-    private let isRequired: Bool
+    private let content: [InputElement]
+    private var classes: [String]
     
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String?>, placeholder: TemplateValue<String?>, isRequired: Bool = false) {
-        self.title = title
+    public init(name: TemplateValue<String>, content: [InputElement]) {
+        
+        self.name = name
+        self.content = content
+        self.classes = ["input", "type:select"]
+    }
+    
+    internal init(name: TemplateValue<String>, content: [InputElement], classes: [String]) {
+        
+        self.name = name
+        self.content = content
+        self.classes = classes
+    }
+    
+    public var body: AnyContent {
+        Select {
+            content
+        }
+        .id(name)
+        .name(name)
+        .class(classes.joined(separator: " "))
+    }
+}
+
+public struct SecureField: Component {
+    
+    private let name: TemplateValue<String>
+    private var value: TemplateValue<String?>
+    private var classes: [String]
+    
+    public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
+        
         self.name = name
         self.value = value
-        self.placeholder = placeholder
-        self.isRequired = isRequired
+        self.classes = ["input", "type:password"]
     }
     
-    public var body: AnyContent {
-        Division {
-            Label {
-                title
-            }
-            .class("label")
-            .modify(if: isRequired) {
-                $0.class("label required-indicator")
-            }
-            Input()
-                .type(.text)
-                .id(name)
-                .name(name)
-                .class("input type:text")
-                .modify(unwrap: placeholder) {
-                    $0.placeholder($1)
-                }
-        }
-        .class("input-group")
-    }
-}
-
-public struct SelectInput: Component {
-    
-    private let title: TemplateValue<String>
-    private let name: TemplateValue<String>
-    private let isRequired: Bool
-    
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, isRequired: Bool = false) {
-        self.title = title
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String]) {
+        
         self.name = name
-        self.isRequired = isRequired
+        self.value = value
+        self.classes = classes
     }
     
     public var body: AnyContent {
-        Division {
-            Label {
-                title
-            }
-            .class("label")
-            .modify(if: isRequired) {
-                $0.class("label required-indicator")
-            }
-            Select {
-            }
+        Input()
+            .type(.password)
             .id(name)
             .name(name)
-            .class("input type:select")
-        }
-        .class("input-group")
+            .class(classes.joined(separator: " "))
+            .modify(unwrap: value) {
+                $0.value($1)
+            }
     }
 }
 
-public struct PasswordInput: Component {
+public struct SearchField: Component {
     
-    private let title: TemplateValue<String>
     private let name: TemplateValue<String>
     private var value: TemplateValue<String?>
-    private var placeholder: TemplateValue<String?>
-    private let isRequired: Bool
+    private var classes: [String]
     
-    public init(title: TemplateValue<String>, name: TemplateValue<String>, value: TemplateValue<String?>, placeholder: TemplateValue<String?>, isRequired: Bool = false) {
-        self.title = title
+    public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
+        
         self.name = name
         self.value = value
-        self.placeholder = placeholder
-        self.isRequired = isRequired
+        self.classes = ["input", "type:search"]
+    }
+    
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String]) {
+        
+        self.name = name
+        self.value = value
+        self.classes = classes
     }
     
     public var body: AnyContent {
-        Division {
-            Label { title }
-                .class("label")
-                .modify(if: isRequired) {
-                    $0.class("label required-indicator")
-                }
-            Input()
-                .type(.password)
-                .id(name)
-                .name(name)
-                .class("input type:password")
-                .modify(unwrap: placeholder) {
-                    $0.placeholder($1)
-                }
-        }
-        .class("input-group")
+        Input()
+            .type(.search)
+            .id(name)
+            .name(name)
+            .class(classes.joined(separator: " "))
+            .modify(unwrap: value) {
+                $0.value($1)
+            }
     }
 }
 
 public struct SubmitButton: Component {
     
-    private let title: TemplateValue<String>
+    private let label: TemplateValue<String>
+    private var classes: [String]
     
-    public init(title: TemplateValue<String>) {
-        self.title = title
+    public init(label: TemplateValue<String>) {
+        self.label = label
+        self.classes = ["button", ButtonStyle.primary.rawValue]
     }
     
     public var body: AnyContent {
-        Button { title }
-            .type(.submit)
-            .class("button variation:primary")
-            .role(.button)
+        Button {
+            label
+        }
+        .type(.submit)
+        .class(classes.joined(separator: " "))
+        .role(.button)
     }
 }
 
 public struct ResetButton: Component {
     
-    private let title: TemplateValue<String>
+    private let label: TemplateValue<String>
+    private var classes: [String]
     
-    public init(title: TemplateValue<String>) {
-        self.title = title
+    public init(label: TemplateValue<String>) {
+        
+        self.label = label
+        self.classes = ["button", ButtonStyle.secondary.rawValue]
     }
     
     public var body: AnyContent {
         Button {
-            title
+            label
         }
         .type(.reset)
-        .class("button variation:secondary")
+        .class(classes.joined(separator: " "))
         .role(.button)
     }
 }
