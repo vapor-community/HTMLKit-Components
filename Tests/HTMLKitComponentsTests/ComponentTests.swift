@@ -11,10 +11,10 @@ final class ComponentTests: XCTestCase {
     
     let renderer = Renderer()
     
-    func testButton() throws {
+    func testActionButton() throws {
         
         let view = TestPage {
-            ActionButton(variation: .ghost, size: .large, uri: "uri", id: nil) {
+            ActionButton(style: .primary, uri: "uri") {
                 "Button"
             }
         }
@@ -23,23 +23,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <a href="uri" class="button variation:ghost size:large" role="button">Button</a>
-                       """
-        )
-    }
-    
-    func testDropdownButton() throws {
-        
-        let view = TestPage {
-            DropdownButton {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="dropdown"></div>
+                       <a href="uri" class="button style:primary" role="button">Button</a>
                        """
         )
     }
@@ -71,7 +55,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="collection"></div>
+                       <ul class="collection"></ul>
                        """
         )
     }
@@ -87,7 +71,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="collection-item"></div>
+                       <li class="collection-item"></li>
                        """
         )
     }
@@ -108,120 +92,17 @@ final class ComponentTests: XCTestCase {
         )
     }
     
-    func testFormHeader() throws {
+    func testTextField() throws {
         
         let view = TestPage {
-            FormHeader {
-            }
+            TextField(name: "Firstname")
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="form-header"></div>
-                       """
-        )
-    }
-    
-    func testFormBody() throws {
-        
-        let view = TestPage {
-            FormBody {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="form-body"></div>
-                       """
-        )
-    }
-    
-    func testFormFooter() throws {
-        
-        let view = TestPage {
-            FormFooter {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="form-footer"></div>
-                       """
-        )
-    }
-    
-    func testFormRow() throws {
-        
-        let view = TestPage {
-            FormRow {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="form-row"></div>
-                       """
-        )
-    }
-    
-    func testFormColumn() throws {
-        
-        let view = TestPage {
-            FormColumn(size: .twelve) {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="form-column size:12"></div>
-                       """
-        )
-    }
-    
-    func testTextareaInput() throws {
-        
-        let view = TestPage {
-            TextareaInput(title: "title", name: "name", placeholder: .constant(nil)) {
-                "Test"
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="input-group">\
-                       <label class="label">title</label>\
-                       <textarea id="name" name="name" class="input type:textarea">Test</textarea>\
-                       </div>
-                       """
-        )
-    }
-    
-    func testTextInput() throws {
-        
-        let view = TestPage {
-            TextInput(title: "title", name: "name", value: .constant(nil), placeholder: .constant(nil))
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="input-group">\
-                       <label class="label">title</label>\
-                       <input type="text" id="name" name="name" class="input type:text">\
-                       </div>
+                       <textarea id="Firstname" name="Firstname" class="input type:text" rows="1">nil</textarea>
                        """
         )
     }
@@ -229,49 +110,14 @@ final class ComponentTests: XCTestCase {
     func testPasswordInput() throws {
         
         let view = TestPage {
-            FormBody {
-            }
+            SecureField(name: "Password")
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="form-body"></div>
-                       """
-        )
-    }
-    
-    func testSubmitButton() throws {
-        
-        let view = TestPage {
-            SubmitButton {
-                "Submit"
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <button type="submit" class="button variation:primary" role="button">Submit</button>
-                       """
-        )
-    }
-    
-    func testResetButton() throws {
-        
-        let view = TestPage {
-            ResetButton {
-                "Reset"
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <button type="reset" class="button variation:secondary" role="button">Reset</button>
+                       <input type="password" id="Password" name="Password" class="input type:password">
                        """
         )
     }
@@ -279,7 +125,7 @@ final class ComponentTests: XCTestCase {
     func testImage() throws {
         
         let view = TestPage {
-            ImageContainer(uri: "source")
+            ImageView(uri: "source")
         }
         
         try renderer.add(view: view)
@@ -287,16 +133,16 @@ final class ComponentTests: XCTestCase {
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
                        <div class="image">\
-                       <img src="source" alt="thumbnail">\
+                       <img src="source" role="img">\
                        </div>
                        """
         )
     }
     
-    func testListContainer() throws {
+    func testList() throws {
         
         let view = TestPage {
-            ListContainer {
+            List(direction: .vertical) {
             }
         }
         
@@ -304,39 +150,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="list"></div>
-                       """
-        )
-    }
-    
-    func testListHeader() throws {
-        
-        let view = TestPage {
-            ListHeader {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="list-header"></div>
-                       """
-        )
-    }
-    
-    func testListBody() throws {
-        
-        let view = TestPage {
-            ListBody {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <ul class="list-body"></ul>
+                       <ul class="list direction:vertical"></ul>
                        """
         )
     }
@@ -357,74 +171,10 @@ final class ComponentTests: XCTestCase {
         )
     }
     
-    func testListColumn() throws {
+    func testLink() throws {
         
         let view = TestPage {
-            ListColumn(size: .twelve) {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="list-column size:12 alignment:left"></div>
-                       """
-        )
-    }
-    
-    func testListFooter() throws {
-        
-        let view = TestPage {
-            ListFooter {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <div class="list-footer"></div>
-                       """
-        )
-    }
-    
-    func testNavigation() throws {
-        
-        let view = TestPage {
-            NavigationContainer(direction: .horizontal) {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <ul class="navigation direction:horizontal"></ul>
-                       """
-        )
-    }
-    
-    func testNavigationItem() throws {
-        
-        let view = TestPage {
-            NavigationItem(isActive: true) {
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <li class="navigation-item active"></li>
-                       """
-        )
-    }
-    
-    func testNavigationLink() throws {
-        
-        let view = TestPage {
-            NavigationLink(uri: "uri", id: nil) {
+            Link(uri: "uri", id: nil) {
                 "link"
             }
         }
@@ -433,7 +183,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <a href="uri" class="navigation-link">link</a>
+                       <a href="uri" class="link">link</a>
                        """
         )
     }
@@ -476,41 +226,16 @@ final class ComponentTests: XCTestCase {
             Text {
             }
             .fontSize(.large)
-            .fontWeight(.medium)
             .fontTransformation(.uppercase)
             .foregroundColor(.blue)
+            .bold()
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <p class="text size:large weight:medium transformation:uppercase color:blue"></p>
-                       """
-        )
-    }
-    
-    func testTabs() throws {
-       
-        let view = TestPage {
-            TabGroup {
-                TabItem {
-                    Span {
-                        "Hallo"
-                    }
-                }
-            }
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <ul class="tab-group">\
-                       <li class="tab-item">\
-                       <span>Hallo</span>\
-                       </li>\
-                       </ul>
+                       <p class="text size:large transformation:uppercase color:blue weight:bold"></p>
                        """
         )
     }
