@@ -1,5 +1,4 @@
 .form {
-    
     display: flex;
     flex-direction: column;
     border: var(--formBorderWidth) solid var(--formBorderColor);
@@ -8,7 +7,6 @@
 }
 
 .input {
-    
     width: 100%;
     padding: 0px 15px;
     border: var(--inputBorderWidth) solid var(--inputBorderColor);
@@ -16,41 +14,29 @@
     font-size: 1.0em;
 }
 
-    .input:focus {
-        
-        outline: none;
-        border: 1px solid #6da0fc;
-    }
+.input.type\:text {
+    min-height: 35px;
+}
 
-    .input.type\:text {
-        
-        min-height: 35px;
-    }
+.input.type\:check {
+    height: 35px;
+}
 
-    .input.type\:check {
-        
-        height: 35px;
-    }
+.input.type\:password {
+    height: 35px;
+}
 
-    .input.type\:password {
-        
-        height: 35px;
-    }
+.input.type\:search {
+    min-width: 200px;
+    height: 35px;
+}
 
-    .input.type\:search {
-        
-        min-width: 200px;
-        height: 35px;
-    }
+.input.type\:select {
+    height: 40px;
+    -webkit-appearance: none;
+}
 
-    .input.type\:select {
-        
-        height: 40px;
-        -webkit-appearance: none;
-    }
-
-    .required\:true:after {
-
-        content: " *";
-        color: var(--redColor);
-    }
+.required\:true:after {
+    content: " *";
+    color: var(--redColor);
+}
