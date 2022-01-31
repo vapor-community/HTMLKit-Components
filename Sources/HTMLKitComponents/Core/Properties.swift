@@ -123,3 +123,18 @@ public enum ButtonStyle: String {
     case outline = "style:outline"
     case ghost = "style:ghost"
 }
+
+public enum ColumnOffset: String {
+    
+    case one = "offset:1"
+    case two = "offset:2"
+    case three = "offset:3"
+    case four = "offset:4"
+    case five = "offset:5"
+    case six = "offset:6"
+    case seven = "offset:7"
+    case eight = "offset:8"
+    case nine = "offset:9"
+    case ten = "offset:10"
+    case eleven = "offset:11"
+}
