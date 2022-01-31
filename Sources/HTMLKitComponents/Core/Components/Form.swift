@@ -176,3 +176,44 @@ public struct SearchField: Component {
             }
     }
 }
+
+public struct SubmitButton: Component {
+    
+    private let label: TemplateValue<String>
+    private var classes: [String]
+    
+    public init(label: TemplateValue<String>) {
+        self.label = label
+        self.classes = ["button", ButtonStyle.primary.rawValue]
+    }
+    
+    public var body: AnyContent {
+        Button {
+            label
+        }
+        .type(.submit)
+        .class(classes.joined(separator: " "))
+        .role(.button)
+    }
+}
+
+public struct ResetButton: Component {
+    
+    private let label: TemplateValue<String>
+    private var classes: [String]
+    
+    public init(label: TemplateValue<String>) {
+        
+        self.label = label
+        self.classes = ["button", ButtonStyle.secondary.rawValue]
+    }
+    
+    public var body: AnyContent {
+        Button {
+            label
+        }
+        .type(.reset)
+        .class(classes.joined(separator: " "))
+        .role(.button)
+    }
+}

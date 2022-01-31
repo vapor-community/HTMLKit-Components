@@ -115,3 +115,11 @@ public enum OpacityValue: String {
     case intransparent = "opacity:intransparent"
     case transparent = "opacity:transparent"
 }
+
+public enum ButtonStyle: String {
+    
+    case primary = "style:primary"
+    case secondary = "style:secondary"
+    case outline = "style:outline"
+    case ghost = "style:ghost"
+}
