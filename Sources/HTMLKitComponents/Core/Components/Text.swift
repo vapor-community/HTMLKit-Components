@@ -25,7 +25,7 @@ public struct Text: Component {
 
 extension Text {
     
-    func foregroundColor(_ color: ForegroundColor) -> Text {
+    public func foregroundColor(_ color: ForegroundColor) -> Text {
         
         var classes = self.classes
         classes.append(color.rawValue)
@@ -33,7 +33,7 @@ extension Text {
         return Text(content: self.content, classes: classes)
     }
     
-    func fontSize(_ size: FontSize) -> Text {
+    public func fontSize(_ size: FontSize) -> Text {
         
         var classes = self.classes
         classes.append(size.rawValue)
@@ -41,7 +41,7 @@ extension Text {
         return Text(content: self.content, classes: classes)
     }
     
-    func fontWeight(_ weight: FontWeight) -> Text {
+    public func fontWeight(_ weight: FontWeight) -> Text {
         
         var classes = self.classes
         classes.append(weight.rawValue)
@@ -49,7 +49,7 @@ extension Text {
         return Text(content: self.content, classes: classes)
     }
     
-    func fontTransformation(_ transformation: TextTransformation) -> Text {
+    public func fontTransformation(_ transformation: TextTransformation) -> Text {
         
         var classes = self.classes
         classes.append(transformation.rawValue)
@@ -57,7 +57,7 @@ extension Text {
         return Text(content: self.content, classes: classes)
     }
     
-    func bold() -> Text {
+    public func bold() -> Text {
         
         var classes = self.classes
         classes.append(FontWeight.bold.rawValue)
@@ -65,7 +65,7 @@ extension Text {
         return Text(content: self.content, classes: classes)
     }
     
-    func italic() -> Text {
+    public func italic() -> Text {
         
         var classes = self.classes
         classes.append(FontStyle.italic.rawValue)
@@ -73,7 +73,7 @@ extension Text {
         return Text(content: self.content, classes: classes)
     }
     
-    func underline() -> Text {
+    public func underline() -> Text {
      
         var classes = self.classes
         classes.append(TextDecoration.underline.rawValue)

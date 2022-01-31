@@ -27,7 +27,7 @@ public struct ImageView: Component {
 
 extension ImageView {
     
-    func objectFit(_ fit: ObjectFit) -> ImageView {
+    public func objectFit(_ fit: ObjectFit) -> ImageView {
         
         var classes = self.classes
         classes.append(fit.rawValue)
@@ -35,7 +35,7 @@ extension ImageView {
         return ImageView(uri: self.link, classes: classes)
     }
     
-    func opacity(_ value: OpacityValue) -> ImageView {
+    public func opacity(_ value: OpacityValue) -> ImageView {
         
         var classes = self.classes
         classes.append(value.rawValue)

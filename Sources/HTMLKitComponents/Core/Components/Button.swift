@@ -14,7 +14,7 @@ public struct ActionButton: Component {
         self.classes = ["button", style.rawValue]
     }
     
-    public init(uri: TemplateValue<String>, content: AnyContent, classes: [String]) {
+    internal init(uri: TemplateValue<String>, content: AnyContent, classes: [String]) {
         
         self.uri = uri
         self.content = content
