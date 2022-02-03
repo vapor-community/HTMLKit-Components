@@ -2,61 +2,75 @@
 }
 
 .text.size\:small {
+    
     font-size: var(--smallFontSize);
     line-height: var(--smallLineHeight)
 }
 
 .text.size\:medium {
+    
     font-size: var(--mediumFontSize);
     line-height: var(--mediumLineHeight)
 }
 
 .text.size\:large {
+    
     font-size: var(--largeFontSize);
     line-height: var(--largeLineHeight)
 }
 
 .text.weight\:thin {
+    
     font-weight: 100
 }
 
 .text.weight\:ultralight {
+    
     font-weight: 200
 }
 
 .text.weight\:light {
+    
     font-weight: 300
 }
 
 .text.weight\:regular {
+    
     font-weight: 400
 }
 
 .text.weight\:semibold {
+    
     font-weight: 500
 }
 
 .text.weight\:semibold {
+    
     font-weight: 600
 }
 
 .text.weight\:bold {
+    
     font-weight: 700
 }
 
 .text.weight\:heavy {
+    
     font-weight: 900
 }
 
 .text.weight\:black {
+    
     font-weight: 950
 }
 
 .text.color\:silver {
+    
     color: var(--silverColor)
 }
 
 .text.color\:darkgrey {
+    
     color: var(--darkgreyColor)
 }
 
@@ -65,81 +79,101 @@
 }
 
 .text.color\:red {
+    
     color: var(--redColor)
 }
 
 .text.color\:orange {
+    
     color: var(--orangeColor)
 }
 
 .text.color\:blue {
+    
     color: var(--blueColor)
 }
 
 .text.color\:lightblue {
+    
     color: var(--lightblueColor)
 }
 
 .text.color\:green {
+    
     color: var(--greenColor)
 }
 
 .text.color\:yellow {
+    
     color: var(--yellowColor)
 }
 
 .text.color\:white {
+    
     color: var(--whiteColor)
 }
 
 .text.color\:black {
+    
     color: var(--blackColor)
 }
 
 .text.color\:primary {
+    
     color: var(--primaryColor)
 }
 
 .text.color\:secondary {
+    
     color: var(--secondaryColor)
 }
 
 .text.color\:tertiary {
+    
     color: var(--tertiaryColor)
 }
 
 .text.transformation\:uppercase {
+    
     text-transform: uppercase
 }
 
 .text.transformation\:lowercase {
+    
     text-transform: lowercase
 }
 
 .text.transformation\:capitalize {
+    
     text-transform: capitalize
 }
 
 .text.transformation\:underline {
+    
     text-decoration: underline
 }
 
 .text.transformation\:overline {
+    
     text-decoration: overline
 }
 
 .text.transformation\:strikethrough {
+    
     text-decoration: line-through
 }
 
 .text.transformation\:none {
+    
     text-decoration: none
 }
 
 .text.style\:italic {
+    
     font-style: italic
 }
 
 .text.style\:oblique {
+    
     font-style: oblique
 }

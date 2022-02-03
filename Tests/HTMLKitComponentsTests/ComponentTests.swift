@@ -14,7 +14,7 @@ final class ComponentTests: XCTestCase {
     func testActionButton() throws {
         
         let view = TestPage {
-            ActionButton(style: .primary, uri: "uri") {
+            ActionButton(destination: "uri") {
                 "Button"
             }
         }
@@ -23,7 +23,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <a href="uri" class="button style:primary" role="button">Button</a>
+                       <a href="uri" class="button" role="button">Button</a>
                        """
         )
     }

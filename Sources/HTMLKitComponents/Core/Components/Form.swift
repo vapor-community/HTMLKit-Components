@@ -2,8 +2,9 @@ import HTMLKit
 
 public struct FormContainer: Component {
     
-    private let content: [FormElement]
-    private var classes: [String]
+    internal var content: [FormElement]
+    
+    internal var classes: [String]
     
     public init(@ContentBuilder<FormElement> content: () -> [FormElement]) {
         
@@ -28,8 +29,9 @@ public struct FormContainer: Component {
 
 public struct FieldLabel: Component {
     
-    private let content: AnyContent
-    private var classes: [String]
+    internal var content: [AnyContent]
+    
+    internal var classes: [String]
     
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
     
@@ -37,7 +39,7 @@ public struct FieldLabel: Component {
         self.classes = ["label"]
     }
     
-    internal init(content: AnyContent, classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
         
         self.content = content
         self.classes = classes
@@ -53,10 +55,13 @@ public struct FieldLabel: Component {
 
 public struct TextField: Component {
     
-    private let name: TemplateValue<String>
-    private var rows: Int = 1
-    private let content: [String]
-    private var classes: [String]
+    internal let name: TemplateValue<String>
+    
+    internal var rows: Int = 1
+    
+    internal var content: [String]
+    
+    internal var classes: [String]
     
     public init(name: TemplateValue<String>, @ContentBuilder<String> content: () -> [String]) {
         
@@ -94,9 +99,11 @@ extension TextField {
 
 public struct SelectField: Component {
     
-    private let name: TemplateValue<String>
-    private let content: [InputElement]
-    private var classes: [String]
+    internal let name: TemplateValue<String>
+    
+    internal var content: [InputElement]
+    
+    internal var classes: [String]
     
     public init(name: TemplateValue<String>, content: [InputElement]) {
         
@@ -124,9 +131,11 @@ public struct SelectField: Component {
 
 public struct SecureField: Component {
     
-    private let name: TemplateValue<String>
-    private var value: TemplateValue<String?>
-    private var classes: [String]
+    internal let name: TemplateValue<String>
+    
+    internal let value: TemplateValue<String?>
+    
+    internal var classes: [String]
     
     public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
         
@@ -156,9 +165,11 @@ public struct SecureField: Component {
 
 public struct SearchField: Component {
     
-    private let name: TemplateValue<String>
-    private var value: TemplateValue<String?>
-    private var classes: [String]
+    internal let name: TemplateValue<String>
+    
+    internal let value: TemplateValue<String?>
+    
+    internal var classes: [String]
     
     public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
         
@@ -188,8 +199,9 @@ public struct SearchField: Component {
 
 public struct SubmitButton: Component {
     
-    private let label: TemplateValue<String>
-    private var classes: [String]
+    internal let label: TemplateValue<String>
+    
+    internal var classes: [String]
     
     public init(label: TemplateValue<String>) {
         self.label = label
@@ -208,8 +220,9 @@ public struct SubmitButton: Component {
 
 public struct ResetButton: Component {
     
-    private let label: TemplateValue<String>
-    private var classes: [String]
+    internal let label: TemplateValue<String>
+    
+    internal var classes: [String]
     
     public init(label: TemplateValue<String>) {
         

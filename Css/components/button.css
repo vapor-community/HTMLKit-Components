@@ -1,4 +1,5 @@
 .button {
+    
     display: inline-block;
     width: 100%;
     padding: var(--buttonPadding);
@@ -8,64 +9,76 @@
     font-weight: var(--buttonFontWeight);
     line-height: var(--buttonLineHeight);
     text-decoration: none;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .button.style\:primary {
+    
     color: var(--whiteColor);
-    background-color: hsl(var(--primaryColor), 100%, 50%);
+    background-color: hsl(var(--primaryColor), 100%, 50%)
 }
 
 .button.style\:primary:hover {
-    background-color: hsl(var(--primaryColor), 100%, 60%);
+    
+    background-color: hsl(var(--primaryColor), 100%, 60%)
 }
 
 .button.style\:secondary {
+    
     color: var(--whiteColor);
-    background-color: hsl(var(--secondaryColor), 100%, 50%);
+    background-color: hsl(var(--secondaryColor), 100%, 50%)
 }
 
 .button.style\:secondary:hover {
-    background-color: hsl(var(--secondaryColor), 100%, 60%);
+    
+    background-color: hsl(var(--secondaryColor), 100%, 60%)
 }
 
 .button.style\:outline {
+    
     color: hsl(var(--buttonBorderColor), 100%, 60%);
     background-color: transparent;
-    border-color: hsl(var(--buttonBorderColor), 100%, 60%);
+    border-color: hsl(var(--buttonBorderColor), 100%, 60%)
 }
 
 .button.style\:outline:hover {
+    
     color: var(--whiteColor);
     background-color: hsl(var(--buttonBorderColor), 100%, 60%);
-    border-color: transparent;
+    border-color: transparent
 }
 
 .button.style\:ghost {
+    
     color: var(--blackColor);
-    background-color: transparent;
+    background-color: transparent
 }
 
 .button i {
-    padding: 0px 10px;
+    
+    padding: 0px 10px
 }
 
 .button-group {
+    
     display: inline-flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center
 }
 
 .button-group .button {
-    border-radius: 0;
+    
+    border-radius: 0
 }
 
 .button-group .button:first-child {
+    
     border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px
 }
 
 .button-group .button:last-child {
+    
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px
 }

@@ -2,15 +2,18 @@ import HTMLKit
 
 public struct Stack: Component {
     
-    private let content: AnyContent
-    private let classes: [String]
+    internal var content: [AnyContent]
     
-    public init(direction: FlowDirection, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal var classes: [String]
+    
+    public init(direction: FlowDirection, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+        
         self.content = content()
         self.classes = ["stack", direction.rawValue]
     }
     
-    internal init(content: AnyContent, classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }
@@ -25,34 +28,36 @@ public struct Stack: Component {
 
 public struct StackColumn: Component {
     
-    private let content: AnyContent
-    private var classes: [String]
+    internal var content: [AnyContent]
     
-    public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal var classes: [String]
+    
+    public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue]
     }
     
-    public init(size: ColumnSize, alignment: ColumnAlignment, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(size: ColumnSize, alignment: ColumnAlignment, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue, alignment.rawValue]
     }
     
-    public init(size: ColumnSize, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(size: ColumnSize, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue, offset.rawValue]
     }
     
-    public init(size: ColumnSize, alignment: ColumnAlignment, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(size: ColumnSize, alignment: ColumnAlignment, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue, alignment.rawValue, offset.rawValue]
     }
     
-    internal init(content: AnyContent, classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }

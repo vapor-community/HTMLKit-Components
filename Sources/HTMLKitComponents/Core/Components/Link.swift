@@ -3,7 +3,7 @@ import Foundation
 
 public struct Link: Component, TextComponent {
 
-    internal var destination: TemplateValue<String>
+    internal let destination: TemplateValue<String>
     
     internal var content: [AnyContent]
     

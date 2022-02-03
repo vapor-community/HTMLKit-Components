@@ -3,20 +3,22 @@ import Foundation
 
 public struct ActionButton: Component {
     
-    private let uri: TemplateValue<String>
-    private let content: AnyContent
-    private var classes: [String]
+    internal let destination: TemplateValue<String>
     
-    public init(style: ButtonStyle, uri: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal var content: [AnyContent]
+    
+    internal var classes: [String]
+    
+    public init(destination: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
-        self.uri = uri
+        self.destination = destination
         self.content = content()
-        self.classes = ["button", style.rawValue]
+        self.classes = ["button"]
     }
     
-    internal init(uri: TemplateValue<String>, content: AnyContent, classes: [String]) {
+    internal init(destination: TemplateValue<String>, content: [AnyContent], classes: [String]) {
         
-        self.uri = uri
+        self.destination = destination
         self.content = content
         self.classes = classes
     }
@@ -25,7 +27,7 @@ public struct ActionButton: Component {
         Anchor {
             content
         }
-        .reference(uri.rawValue)
+        .reference(destination.rawValue)
         .class(classes.joined(separator: " "))
         .role(.button)
     }
@@ -33,9 +35,10 @@ public struct ActionButton: Component {
 
 public struct ButtonGroup: Component {
         
-    private let content: AnyContent
+    internal var content: [AnyContent]
     
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+    public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+        
         self.content = content()
     }
     

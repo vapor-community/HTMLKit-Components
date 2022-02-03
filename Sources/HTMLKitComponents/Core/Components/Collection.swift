@@ -2,15 +2,18 @@ import HTMLKit
 
 public struct Collection: Component {
     
-    private let content: [ListElement]
-    private var classes: [String]
+    internal var content: [ListElement]
+    
+    internal var classes: [String]
     
     public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
+        
         self.content = content()
         self.classes = ["collection"]
     }
     
     internal init(content: [ListElement], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }
@@ -25,15 +28,18 @@ public struct Collection: Component {
 
 public struct CollectionItem: Component {
     
-    private let content: AnyContent
-    private var classes: [String]
+    internal  var content: [AnyContent]
     
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal  var classes: [String]
+    
+    public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+        
         self.content = content()
         self.classes = ["collection-item"]
     }
     
-    internal init(content: AnyContent, classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }
