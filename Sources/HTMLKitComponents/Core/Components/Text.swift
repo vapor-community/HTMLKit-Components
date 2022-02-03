@@ -1,6 +1,6 @@
 import HTMLKit
 
-public struct Text: Component, TextComponent {
+public struct Text: Component {
 
     internal var content: [AnyContent]
     
@@ -23,5 +23,57 @@ public struct Text: Component, TextComponent {
             content
         }
         .class(classes.joined(separator: " "))
+    }
+}
+
+extension Text: TextComponent {
+    
+    public func foregroundColor(_ color: ForegroundColor) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
+    }
+    
+    public func fontSize(_ size: FontSize) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(size.rawValue)
+        return newSelf
+    }
+    
+    public func fontWeight(_ weight: FontWeight) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(weight.rawValue)
+        return newSelf
+    }
+    
+    public func fontTransformation(_ transformation: TextTransformation) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(transformation.rawValue)
+        return newSelf
+    }
+    
+    public func bold() -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(FontWeight.bold.rawValue)
+        return newSelf
+    }
+    
+    public func italic() -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(FontStyle.italic.rawValue)
+        return newSelf
+    }
+    
+    public func underline() -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(TextDecoration.underline.rawValue)
+        return newSelf
     }
 }

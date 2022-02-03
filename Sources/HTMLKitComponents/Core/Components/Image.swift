@@ -1,6 +1,6 @@
 import HTMLKit
 
-public struct ImageView: Component, ImageComponent, ViewComponent {
+public struct ImageView: Component {
     
     internal let source: TemplateValue<String>
     
@@ -25,5 +25,39 @@ public struct ImageView: Component, ImageComponent, ViewComponent {
                 .role(.img)
         }
         .class(classes.joined(separator: " "))
+    }
+}
+
+extension ImageView: ImageComponent {
+    
+    public func objectFit(_ fit: ObjectFit) -> ImageView {
+        
+        var newSelf = self
+        newSelf.classes.append(fit.rawValue)
+        return newSelf
+    }
+    
+    public func imageScale(_ scale: ImageScale) -> ImageView {
+        
+        var newSelf = self
+        newSelf.classes.append(scale.rawValue)
+        return newSelf
+    }
+    
+    public func clipShape(_ shape: ClipShape) -> ImageView {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        return newSelf
+    }
+}
+
+extension ImageView: ViewComponent {
+    
+    public func opacity(_ value: OpacityValue) -> ImageView {
+        
+        var newSelf = self
+        newSelf.classes.append(value.rawValue)
+        return newSelf
     }
 }

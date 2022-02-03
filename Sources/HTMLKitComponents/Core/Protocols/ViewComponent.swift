@@ -1,14 +1,4 @@
-internal protocol ViewComponent {
-    
-    var classes: [String] { get set }
-}
+public protocol ViewComponent {
 
-extension ViewComponent {
-    
-    public func opacity(_ value: OpacityValue) -> Self {
-        
-        var newSelf = self
-        newSelf.classes.append(value.rawValue)
-        return newSelf
-    }
+    func opacity(_ value: OpacityValue) -> Self
 }

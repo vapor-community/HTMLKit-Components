@@ -1,7 +1,7 @@
 import HTMLKit
 import Foundation
 
-public struct Link: Component, TextComponent {
+public struct Link: Component {
 
     internal let destination: TemplateValue<String>
     
@@ -29,5 +29,57 @@ public struct Link: Component, TextComponent {
         }
         .reference(destination.rawValue)
         .class(classes.joined(separator: " "))
+    }
+}
+
+extension Link: TextComponent {
+    
+    public func foregroundColor(_ color: ForegroundColor) -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
+    }
+    
+    public func fontSize(_ size: FontSize) -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(size.rawValue)
+        return newSelf
+    }
+    
+    public func fontWeight(_ weight: FontWeight) -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(weight.rawValue)
+        return newSelf
+    }
+    
+    public func fontTransformation(_ transformation: TextTransformation) -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(transformation.rawValue)
+        return newSelf
+    }
+    
+    public func bold() -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(FontWeight.bold.rawValue)
+        return newSelf
+    }
+    
+    public func italic() -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(FontStyle.italic.rawValue)
+        return newSelf
+    }
+    
+    public func underline() -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(TextDecoration.underline.rawValue)
+        return newSelf
     }
 }
