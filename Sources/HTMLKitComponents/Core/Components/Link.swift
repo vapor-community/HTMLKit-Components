@@ -1,27 +1,33 @@
 import HTMLKit
 import Foundation
 
-public struct Link: Component {
+public struct Link: Component, TextComponent {
+
+    internal var destination: TemplateValue<String>
     
-    private let link: TemplateValue<String>
-    private let content: AnyContent
+    internal var content: [AnyContent]
     
-    public init(uri: TemplateValue<String>, id: TemplateValue<UUID>? = nil, @ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal var classes: [String]
+    
+    public init(destination: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
-        if let id = id {
-            self.link = .constant("\(uri)/\(id)")
-        } else {
-            self.link = uri
-        }
-        
+        self.destination = destination
         self.content = content()
+        self.classes = ["link"]
+    }
+    
+    internal init(destination: TemplateValue<String>, content: [AnyContent], classes: [String]) {
+        
+        self.destination = destination
+        self.content = content
+        self.classes = classes
     }
     
     public var body: AnyContent {
         Anchor {
             content
         }
-        .reference(link.rawValue)
-        .class("link")
+        .reference(destination.rawValue)
+        .class(classes.joined(separator: " "))
     }
 }

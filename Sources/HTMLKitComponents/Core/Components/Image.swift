@@ -1,45 +1,29 @@
 import HTMLKit
 
-public struct ImageView: Component {
+public struct ImageView: Component, ImageComponent, ViewComponent {
     
-    private let link: TemplateValue<String>
-    private let classes: [String]
+    internal let source: TemplateValue<String>
     
-    public init(uri: TemplateValue<String>) {
-        self.link = uri
+    internal var classes: [String]
+    
+    public init(source: TemplateValue<String>) {
+        
+        self.source = source
         self.classes = ["image"]
     }
     
-    internal init(uri: TemplateValue<String>, classes: [String]) {
-        self.link = uri
+    internal init(source: TemplateValue<String>, classes: [String]) {
+        
+        self.source = source
         self.classes = classes
     }
     
     public var body: AnyContent {
         Division {
             Image()
-                .source(link.rawValue)
+                .source(source.rawValue)
                 .role(.img)
         }
         .class(classes.joined(separator: " "))
-    }
-}
-
-extension ImageView {
-    
-    public func objectFit(_ fit: ObjectFit) -> ImageView {
-        
-        var classes = self.classes
-        classes.append(fit.rawValue)
-        
-        return ImageView(uri: self.link, classes: classes)
-    }
-    
-    public func opacity(_ value: OpacityValue) -> ImageView {
-        
-        var classes = self.classes
-        classes.append(value.rawValue)
-        
-        return ImageView(uri: self.link, classes: classes)
     }
 }

@@ -1,3 +1,4 @@
+import HTMLKit
 public enum FlowDirection: String {
     
     case vertical = "direction:vertical"
@@ -137,4 +138,17 @@ public enum ColumnOffset: String {
     case nine = "offset:9"
     case ten = "offset:10"
     case eleven = "offset:11"
+}
+
+public enum ImageScale: String {
+    
+    case small = "scale:small"
+    case medium = "scale:medium"
+    case large = "scale:large"
+}
+
+public enum ClipShape: String {
+    
+    case cirle = "shape:circle"
+    case rectangle = "shape:rectangle"
 }

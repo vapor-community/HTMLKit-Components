@@ -127,7 +127,7 @@ final class ComponentTests: XCTestCase {
     func testImage() throws {
         
         let view = TestPage {
-            ImageView(uri: "source")
+            ImageView(source: "source")
         }
         
         try renderer.add(view: view)
@@ -176,7 +176,7 @@ final class ComponentTests: XCTestCase {
     func testLink() throws {
         
         let view = TestPage {
-            Link(uri: "uri", id: nil) {
+            Link(destination: "uri") {
                 "link"
             }
         }
