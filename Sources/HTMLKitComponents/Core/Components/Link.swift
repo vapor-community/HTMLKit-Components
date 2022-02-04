@@ -34,6 +34,13 @@ public struct Link: Component {
 
 extension Link: TextComponent {
     
+    public func font(_ style: TextStyle) -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
+    }
+    
     public func foregroundColor(_ color: ForegroundColor) -> Link {
         
         var newSelf = self
@@ -59,6 +66,13 @@ extension Link: TextComponent {
         
         var newSelf = self
         newSelf.classes.append(transformation.rawValue)
+        return newSelf
+    }
+    
+    public func fontStyle(_ style: FontStyle) -> Link {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
         return newSelf
     }
     

@@ -28,6 +28,13 @@ public struct Text: Component {
 
 extension Text: TextComponent {
     
+    public func font(_ style: TextStyle) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
+    }
+    
     public func foregroundColor(_ color: ForegroundColor) -> Text {
         
         var newSelf = self
@@ -53,6 +60,13 @@ extension Text: TextComponent {
         
         var newSelf = self
         newSelf.classes.append(transformation.rawValue)
+        return newSelf
+    }
+    
+    public func fontStyle(_ style: FontStyle) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
         return newSelf
     }
     

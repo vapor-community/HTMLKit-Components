@@ -54,6 +54,20 @@ extension ImageView: ImageComponent {
 
 extension ImageView: ViewComponent {
     
+    public func backgroundColor(_ color: BackgroundColor) -> ImageView {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
+    }
+    
+    public func zIndex(_ index: PositionIndex) -> ImageView {
+        
+        var newSelf = self
+        newSelf.classes.append(index.rawValue)
+        return newSelf
+    }
+    
     public func opacity(_ value: OpacityValue) -> ImageView {
         
         var newSelf = self

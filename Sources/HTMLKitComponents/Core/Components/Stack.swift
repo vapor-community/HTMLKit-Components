@@ -26,6 +26,30 @@ public struct Stack: Component {
     }
 }
 
+extension Stack: ViewComponent {
+    
+    public func backgroundColor(_ color: BackgroundColor) -> Stack {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
+    }
+
+    public func opacity(_ value: OpacityValue) -> Stack {
+        
+        var newSelf = self
+        newSelf.classes.append(value.rawValue)
+        return newSelf
+    }
+    
+    public func zIndex(_ index: PositionIndex) -> Stack {
+        
+        var newSelf = self
+        newSelf.classes.append(index.rawValue)
+        return newSelf
+    }
+}
+
 public struct StackColumn: Component {
     
     internal var content: [AnyContent]
