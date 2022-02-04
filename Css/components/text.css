@@ -64,38 +64,28 @@
     font-weight: 950
 }
 
-.text.color\:silver {
+.text.color\:black {
     
-    color: var(--silverColor)
-}
-
-.text.color\:darkgrey {
-    
-    color: var(--darkgreyColor)
-}
-
-.text.color\:grey {
-    color: var(--greyColor)
-}
-
-.text.color\:red {
-    
-    color: var(--redColor)
-}
-
-.text.color\:orange {
-    
-    color: var(--orangeColor)
+    color: var(--blackColor)
 }
 
 .text.color\:blue {
-    
     color: var(--blueColor)
 }
 
-.text.color\:lightblue {
+.text.color\:brown {
     
-    color: var(--lightblueColor)
+    color: var(--brownColor)
+}
+
+.text.color\:cyan {
+    
+    color: var(--cyanColor)
+}
+
+.text.color\:gray {
+    
+    color: var(--grayColor)
 }
 
 .text.color\:green {
@@ -103,9 +93,39 @@
     color: var(--greenColor)
 }
 
-.text.color\:yellow {
+.text.color\:indigo {
     
-    color: var(--yellowColor)
+    color: var(--indigoColor)
+}
+
+.text.color\:mint {
+    
+    color: var(--mintColor)
+}
+
+.text.color\:orange {
+    
+    color: var(--orangeColor)
+}
+
+.text.color\:pink {
+    
+    color: var(--pinkColor)
+}
+
+.text.color\:purple {
+    
+    color: var(--purpleColor)
+}
+
+.text.color\:red {
+    
+    color: var(--redColor)
+}
+
+.text.color\:teal {
+    
+    color: var(--tealColor)
 }
 
 .text.color\:white {
@@ -113,9 +133,19 @@
     color: var(--whiteColor)
 }
 
-.text.color\:black {
+.text.color\:yellow {
     
-    color: var(--blackColor)
+    color: var(--yellowColor)
+}
+
+.text.color\:silver {
+    
+    color: var(--silverColor)
+}
+
+.text.color\:highlight {
+    
+    color: var(--highlightColor)
 }
 
 .text.color\:primary {
@@ -126,11 +156,6 @@
 .text.color\:secondary {
     
     color: var(--secondaryColor)
-}
-
-.text.color\:tertiary {
-    
-    color: var(--tertiaryColor)
 }
 
 .text.transformation\:uppercase {
@@ -176,4 +201,62 @@
 .text.style\:oblique {
     
     font-style: oblique
+}
+
+.text.style\:title {
+    
+    font-size: 2.441rem;
+    font-weight: 400;
+    line-height: 1.75
+}
+
+.text.style\:headline {
+    
+    font-size: 1.953rem;
+    font-weight: 400;
+    line-height: 1.75
+}
+
+.text.style\:subheadline {
+    
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.75
+}
+
+.text.style\:body {
+    
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75
+}
+
+.text.style\:callout {
+    
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75
+}
+
+.text.style\:caption {
+    
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.75
+}
+
+.text.style\:footnote {
+    
+    font-size: 0.64rem;
+    font-weight: 400;
+    line-height: 1.75
+    color: var(--grayColor)
+}
+
+.text.style\:code {
+    
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.75
 }

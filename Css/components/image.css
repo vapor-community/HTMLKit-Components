@@ -4,9 +4,6 @@
     width: 100%;
     height: 100%;
     display: inline-block;
-    border: var(--imageBorderWidth) solid var(--imageBorderColor);
-    border-radius: var(--imageBorderRadius);
-    background-color: var(--imageBackgroundColor);
     overflow: hidden
 }
 

@@ -1,110 +1,99 @@
-.background {}
-
-.background.color\:darkgrey {
+.background\:black {
     
-    background-Color: var(--darkgreyColor)
+    background-color: var(--blackColor)
 }
 
-.background.color\:grey {
+.background\:blue {
     
-    background-Color: var(--greyColor)
+    background-color: var(--blueColor)
 }
 
-.background.color\:silver {
+.background\:brown {
     
-    background-Color: var(--silverColor)
+    background-color: var(--brownColor)
 }
 
-.background.color\:darkred {
+.background\:transparent {
     
-    background-Color: var(--darkredColor)
+    background-color: transparent
 }
 
-.background.color\:red {
+.background\:cyan {
     
-    background-Color: var(--redColor)
+    background-color: var(--cyanColor)
 }
 
-.background.color\:lightred {
+.background\:gray {
     
-    background-Color: var(--lightredColor)
+    background-color: var(--grayColor)
 }
 
-.background.color\:darkorange {
+.background\:green {
     
-    background-Color: var(--darkorangeColor)
+    background-color: var(--greenColor)
 }
 
-.background.color\:orange {
+.background\:indigo {
     
-    background-Color: var(--orangeColor)
+    background-color: var(--indigoColor)
 }
 
-.background.color\:lightorange {
+.background\:mint {
     
-    background-Color: var(--lightorangeColor)
+    background-color: var(--mintColor)
 }
 
-.background.color\:darkblue {
+.background\:orange {
     
-    background-Color: var(--darkblueColor)
+    background-color: var(--orangeColor)
 }
 
-.background.color\:blue {
+.background\:pink {
     
-    background-Color: var(--blueColor)
+    background-color: var(--pinkColor)
 }
 
-.background.color\:lightblue {
-    background-Color: var(--lightblueColor)
+.background\:purple {
+    
+    background-color: var(--purpleColor)
 }
 
-.background.color\:darkgreen {
+.background\:red {
     
-    background-Color: var(--darkgreenColor)
+    background-color: var(--redColor)
 }
 
-.background.color\:green {
+.background\:teal {
     
-    background-Color: var(--greenColor)
+    background-color: var(--tealColor)
 }
 
-.background.color\:lightgreen {
+.background\:white {
     
-    background-Color: var(--lightgreenColor)
+    background-color: var(--whiteColor)
 }
 
-.background.color\:darkyellow {
+.background\:yellow {
     
-    background-Color: var(--darkyellowColor)
+    background-color: var(--yellowColor)
 }
 
-.background.color\:yellow {
+.background\:silver {
     
-    background-Color: var(--yellowColor)
+    background-color: var(--silverColor)
 }
 
-.background.color\:lightyellow {
+.background\:highlight {
     
-    background-Color: var(--lightyellowColor)
+    background-color: var(--yellowColor)
 }
 
-.background.color\:white {
+.background\:primary {
     
-    background-Color: var(--whiteColor)
+    background-color: var(--primaryColor)
 }
 
-.background.color\:black {
+.background\:secondary {
     
-    background-Color: var(--blackColor)
-}
-
-.background.color\:primary {
-    
-    background-Color: var(--primaryColor)
-}
-
-.background.color\:secondary {
-    
-    background-Color: var(--secondaryColor)
+    background-color: var(--secondaryColor)
 }

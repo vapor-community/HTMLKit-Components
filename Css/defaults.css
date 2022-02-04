@@ -1,29 +1,24 @@
 :root {
     
-    --darkgreyColor: #5E5E5E;
-    --greyColor: #E7E7E7;
-    --silverColor: #F8F9FA;
-    --darkredColor: #9b2335;
-    --redColor: #E63946;
-    --lightredColor: #FF6160;
-    --darkorangeColor: #E85D04;
-    --orangeColor: #F77F00;
-    --lightorangeColor: #E15D44;
-    --darkblueColor: #003049;
-    --blueColor: #4F86C7;
-    --lightblueColor: #6DA0FC;
-    --darkgreenColor: #007200;
-    --greenColor: #94B33D;
-    --lightgreenColor: #A1C349;
-    --darkyellowColor: #FFBA08;
-    --yellowColor: #FEE440;
-    --lightyellowColor: #F9D053;
-    --whiteColor: #FFFFFF;
     --blackColor: #000000;
-    --highlightColor: #6DA0FC;
+    --blueColor: #277DA1;
+    --brownColor: #65442F;
+    --cyanColor: #75DDDD;
+    --grayColor: #5E6472;
+    --greenColor: #90BE6D;
+    --indigoColor: #577590;
+    --mintColor: #4D908E;
+    --orangeColor: #F8961E;
+    --pinkColor: #FF87AB;
+    --purpleColor: #9D4EDD;
+    --redColor: #F94144;
+    --tealColor: #43AA8B;
+    --whiteColor: #FFFFFF;
+    --yellowColor: #F9C74F;
+    --silverColor: #F8F9FA;
+    --highlightColor: #000000;
     --primaryColor: #000000;
     --secondaryColor: #000000;
-    --tertiaryColor: #000000;
     
     --buttonPadding: 10px 24px;
     --buttonBorderColor: 5;
@@ -46,7 +41,7 @@
     --largeFontWeight: 900;
     --largeLineHeight: 1.1em;
     
-    --inputBorderColor: #dee2e6;
+    --inputBorderColor: #DEE2E6;
     --inputBorderWidth: 1px;
     --inputBorderRadius: 5px;
 }
