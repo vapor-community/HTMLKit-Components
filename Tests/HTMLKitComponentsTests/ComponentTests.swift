@@ -190,10 +190,10 @@ final class ComponentTests: XCTestCase {
         )
     }
     
-    func testStack() throws {
+    func testVStack() throws {
         
         let view = TestPage {
-            Stack(direction: .horizontal) {
+            VStack {
             }
         }
         
@@ -201,10 +201,43 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="stack direction:horizontal"></div>
+                       <div class="vstack alignment:leading"></div>
                        """
         )
     }
+    
+    func testHStack() throws {
+        
+        let view = TestPage {
+            HStack {
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <div class="hstack alignment:center"></div>
+                       """
+        )
+    }
+
+    func testZStack() throws {
+        
+        let view = TestPage {
+            ZStack {
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <div class="zstack"></div>
+                       """
+        )
+    }
+    
     
     func testStackColumn() throws {
         

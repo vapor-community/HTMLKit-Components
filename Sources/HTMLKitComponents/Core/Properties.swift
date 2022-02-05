@@ -1,11 +1,12 @@
 import HTMLKit
+
 public enum FlowDirection: String {
     
     case vertical = "direction:vertical"
     case horizontal = "direction:horizontal"
 }
 
-public enum ColumnAlignment: String {
+public enum TextAlignment: String {
     
     case left = "alignment:left"
     case center = "alignment:center"
@@ -186,4 +187,26 @@ public enum TextStyle: String {
     case caption = "style:caption"
     case footnote = "style:footnote"
     case code = "style:code"
+}
+
+public enum VerticalAlignment: String {
+    
+    case top = "alignment:top"
+    case center = "alignment:center"
+    case bottom = "alignment:bottom"
+    case baseline = "alignment:baseline"
+}
+
+public enum HorizontalAlignment: String {
+    
+    case leading = "alignment:leading"
+    case center = "alignment:center"
+    case trailing = "alignment:trailing"
+}
+
+public enum ContentSpace: String {
+    
+    case around = "space:around"
+    case between = "space:between"
+    case evenly = "space:evenly"
 }
