@@ -8,8 +8,8 @@
     
     flex-direction: row;
     align-items: center;
-    justify-content: center
-    gap: 15px;
+    justify-content: center;
+    gap: 15px
 }
 
 .list.direction\:vertical {
