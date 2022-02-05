@@ -2,26 +2,27 @@
 
 Lorem ipsum
 
-### Properties
+## List
 
-#### Alignment
-- left
-- center
-- right
-
-### Examples
+Lorem ipsum
 
 ```swift
-ListContainer {
-    ListHeader {
-    }
-    ListBody {
-        ListRow {
-            ListColumn {
-            }
-        }
-    }
-    ListFooter {
-    }
+List(direction: .horizontal) {
+    ...
+}
+```
+
+### Attributes
+
+- direction: FlowDirection
+
+
+## ListRow
+
+Lorem ipsum
+
+```swift
+ListRow {
+    ...
 }
 ```

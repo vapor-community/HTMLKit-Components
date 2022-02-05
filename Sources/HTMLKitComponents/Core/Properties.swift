@@ -1,10 +1,12 @@
+import HTMLKit
+
 public enum FlowDirection: String {
     
     case vertical = "direction:vertical"
     case horizontal = "direction:horizontal"
 }
 
-public enum ColumnAlignment: String {
+public enum TextAlignment: String {
     
     case left = "alignment:left"
     case center = "alignment:center"
@@ -29,20 +31,25 @@ public enum ColumnSize: String {
 
 public enum ForegroundColor: String {
     
-    case silver = "color:silver"
-    case darkgrey = "color:darkgrey"
-    case grey = "color:grey"
-    case red = "color:red"
-    case orange = "color:orange"
-    case blue = "color:blue"
-    case lightblue = "color:lightblue"
-    case green = "color:green"
-    case yellow = "color:yellow"
-    case white = "color:white"
     case black = "color:black"
+    case blue = "color:blue"
+    case brown = "color:brown"
+    case cyan = "color:cyan"
+    case gray = "color:gray"
+    case green = "color:green"
+    case indigo = "color:indigo"
+    case mint = "color:mint"
+    case orange = "color:orange"
+    case pink = "color:pink"
+    case purple = "color:purple"
+    case red = "color:red"
+    case teal = "color:teal"
+    case white = "color:white"
+    case yellow = "color:yellow"
+    case silver = "color:silver"
+    case highlight = "color:highlight"
     case primary = "color:primary"
     case secondary = "color:secondary"
-    case tertiary = "color:tertiary"
 }
 
 public enum FontSize: String {
@@ -88,17 +95,26 @@ public enum FontStyle: String {
 
 public enum BackgroundColor: String {
     
-    case silver = "background color:silver"
-    case grey = "background color:grey"
-    case red = "background color:red"
-    case orange = "background color:orange"
-    case blue = "background color:blue"
-    case green = "background color:green"
-    case yellow = "background color:yellow"
-    case white = "background color:white"
-    case primary = "background color:primary"
-    case secondary = "background color:secondary"
-    case tertiary = "background color:tertiary"
+    case black = "background:black"
+    case blue = "background:blue"
+    case brown = "background:brown"
+    case transparent = "background:transparent"
+    case cyan = "background:cyan"
+    case gray = "background:gray"
+    case green = "background:green"
+    case indigo = "background:indigo"
+    case mint = "background:mint"
+    case orange = "background:orange"
+    case pink = "background:pink"
+    case purple = "background:purple"
+    case red = "background:red"
+    case teal = "background:teal"
+    case white = "background:white"
+    case yellow = "background:yellow"
+    case silver = "background:silver"
+    case highlight = "background:highlight"
+    case primary = "background:primary"
+    case secondary = "background:secondary"
 }
 
 public enum ObjectFit: String {
@@ -137,4 +153,60 @@ public enum ColumnOffset: String {
     case nine = "offset:9"
     case ten = "offset:10"
     case eleven = "offset:11"
+}
+
+public enum ImageScale: String {
+    
+    case small = "scale:small"
+    case medium = "scale:medium"
+    case large = "scale:large"
+}
+
+public enum ClipShape: String {
+    
+    case cirle = "shape:circle"
+    case rectangle = "shape:rectangle"
+}
+
+public enum PositionIndex: String {
+    
+    case one = "zindex:1"
+    case two = "zindex:2"
+    case three = "zindex:3"
+    case four = "zindex:4"
+    case five = "zindex:5"
+}
+
+public enum TextStyle: String {
+    
+    case title = "style:title"
+    case headline = "style:headline"
+    case subheadline = "style:subheadline"
+    case body = "style:body"
+    case callout = "style:callout"
+    case caption = "style:caption"
+    case footnote = "style:footnote"
+    case code = "style:code"
+}
+
+public enum VerticalAlignment: String {
+    
+    case top = "alignment:top"
+    case center = "alignment:center"
+    case bottom = "alignment:bottom"
+    case baseline = "alignment:baseline"
+}
+
+public enum HorizontalAlignment: String {
+    
+    case leading = "alignment:leading"
+    case center = "alignment:center"
+    case trailing = "alignment:trailing"
+}
+
+public enum ContentSpace: String {
+    
+    case around = "space:around"
+    case between = "space:between"
+    case evenly = "space:evenly"
 }

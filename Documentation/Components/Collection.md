@@ -2,13 +2,22 @@
 
 Lorem ipsum
 
-### Properties
+## Collection
 
-### Examples
+Lorem ipsum
 
 ```swift
 Collection {
-    CollectionItem {
-    }
+    ...
+}
+```
+
+## CollectionItem
+
+Lorem ipsum
+
+```swift
+CollectionItem {
+    ...
 }
 ```

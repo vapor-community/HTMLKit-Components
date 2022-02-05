@@ -14,7 +14,7 @@ final class ComponentTests: XCTestCase {
     func testActionButton() throws {
         
         let view = TestPage {
-            ActionButton(style: .primary, uri: "uri") {
+            ActionButton(destination: "uri") {
                 "Button"
             }
         }
@@ -23,7 +23,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <a href="uri" class="button style:primary" role="button">Button</a>
+                       <a href="uri" class="button" role="button">Button</a>
                        """
         )
     }
@@ -127,7 +127,7 @@ final class ComponentTests: XCTestCase {
     func testImage() throws {
         
         let view = TestPage {
-            ImageView(uri: "source")
+            ImageView(source: "source")
         }
         
         try renderer.add(view: view)
@@ -176,7 +176,7 @@ final class ComponentTests: XCTestCase {
     func testLink() throws {
         
         let view = TestPage {
-            Link(uri: "uri", id: nil) {
+            Link(destination: "uri") {
                 "link"
             }
         }
@@ -190,10 +190,10 @@ final class ComponentTests: XCTestCase {
         )
     }
     
-    func testStack() throws {
+    func testVStack() throws {
         
         let view = TestPage {
-            Stack(direction: .horizontal) {
+            VStack {
             }
         }
         
@@ -201,10 +201,43 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="stack direction:horizontal"></div>
+                       <div class="vstack alignment:leading"></div>
                        """
         )
     }
+    
+    func testHStack() throws {
+        
+        let view = TestPage {
+            HStack {
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <div class="hstack alignment:center"></div>
+                       """
+        )
+    }
+
+    func testZStack() throws {
+        
+        let view = TestPage {
+            ZStack {
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <div class="zstack"></div>
+                       """
+        )
+    }
+    
     
     func testStackColumn() throws {
         

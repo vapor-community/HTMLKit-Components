@@ -2,28 +2,29 @@
 
 Lorem ipsum
 
-### Properties
+## ActionButton
 
-#### Variation
-- primary
-- secondary
-- outline
-- ghost
-
-#### Size
-- regular
-- large
-
-### Examples
+Lorem ipsum
 
 ```swift
-ActionButton(variation: .primary, uri: "#", id: 0) {
+ActionButton(destination: "#") {
+    ...
 }
 ```
 
+### Attributes
+
+- destination: String
+    
+
+## ButtonGroup
+
+Lorem ipsum
+
 ```swift 
 ButtonGroup {
-    ActionButton(variation: .primary, uri: "#", id: 0) {
+    ActionButton(destination: "#") {
+        ...
     }
 }
 ```

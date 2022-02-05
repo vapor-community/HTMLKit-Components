@@ -2,15 +2,18 @@ import HTMLKit
 
 public struct Text: Component {
 
-    private let content: AnyContent
-    private var classes: [String]
+    internal var content: [AnyContent]
     
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal var classes: [String]
+    
+    public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+        
         self.content = content()
         self.classes = ["text"]
     }
     
-    internal init(content: AnyContent, classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }
@@ -23,61 +26,68 @@ public struct Text: Component {
     }
 }
 
-extension Text {
+extension Text: TextComponent {
+    
+    public func font(_ style: TextStyle) -> Text {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
+    }
     
     public func foregroundColor(_ color: ForegroundColor) -> Text {
         
-        var classes = self.classes
-        classes.append(color.rawValue)
-        
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
     }
     
     public func fontSize(_ size: FontSize) -> Text {
         
-        var classes = self.classes
-        classes.append(size.rawValue)
-        
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(size.rawValue)
+        return newSelf
     }
     
     public func fontWeight(_ weight: FontWeight) -> Text {
         
-        var classes = self.classes
-        classes.append(weight.rawValue)
-        
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(weight.rawValue)
+        return newSelf
     }
     
     public func fontTransformation(_ transformation: TextTransformation) -> Text {
         
-        var classes = self.classes
-        classes.append(transformation.rawValue)
+        var newSelf = self
+        newSelf.classes.append(transformation.rawValue)
+        return newSelf
+    }
+    
+    public func fontStyle(_ style: FontStyle) -> Text {
         
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
     }
     
     public func bold() -> Text {
         
-        var classes = self.classes
-        classes.append(FontWeight.bold.rawValue)
-        
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(FontWeight.bold.rawValue)
+        return newSelf
     }
     
     public func italic() -> Text {
         
-        var classes = self.classes
-        classes.append(FontStyle.italic.rawValue)
-        
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(FontStyle.italic.rawValue)
+        return newSelf
     }
     
     public func underline() -> Text {
-     
-        var classes = self.classes
-        classes.append(TextDecoration.underline.rawValue)
         
-        return Text(content: self.content, classes: classes)
+        var newSelf = self
+        newSelf.classes.append(TextDecoration.underline.rawValue)
+        return newSelf
     }
 }

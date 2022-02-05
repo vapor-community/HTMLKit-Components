@@ -2,8 +2,9 @@ import HTMLKit
 
 public struct List: Component {
     
-    private let content: [ListElement]
-    private var classes: [String]
+    internal var content: [ListElement]
+    
+    internal var classes: [String]
     
     public init(direction: FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
@@ -27,16 +28,18 @@ public struct List: Component {
 
 public struct ListRow: Component {
 
-    private let content: AnyContent
-    private var classes: [String]
+    internal var content: [AnyContent]
     
-    public init(@ContentBuilder<AnyContent> content: () -> AnyContent) {
+    internal var classes: [String]
+    
+    public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["list-row"]
     }
     
-    internal init(content: AnyContent, classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
+        
         self.content = content
         self.classes = classes
     }
