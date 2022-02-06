@@ -9,7 +9,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px
+    gap: var(--listGapSize)
 }
 
 .list.direction\:vertical {

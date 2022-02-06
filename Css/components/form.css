@@ -1,35 +1,58 @@
-.form {}
+.form {
+
+    width: 100%;
+    height: 100%;
+    display: block
+}
+
+.label {
+    
+    display: block;
+    margin: 8px 0px
+}
 
 .input {
     
+    display: block;
     width: 100%;
-    padding: 0px 15px;
+    margin: 8px 0px;
+    padding: 7px 12px;
     border: var(--inputBorderWidth) solid var(--inputBorderColor);
     border-radius: var(--inputBorderRadius);
-    font-size: 1.0em
+    font-size: 1.0rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--inputTextColor);
+    background-color: var(--inputBackgroundColor)
 }
 
-.input.type\:text {
+.input:focus {
+    
+    outline: 0;
+    box-shadow: 0 0 0 4px var(--inputFocusColor)
+}
+
+.input.type\:textfield {
     
     min-height: 35px
 }
 
-.input.type\:check {
+.input.type\:checkbox {
     
     height: 35px
 }
 
-.input.type\:password {
+.input.type\:securefield {
     
     height: 35px
 }
 
-.input.type\:search {
+.input.type\:searchfield {
 
     height: 35px
 }
 
-.input.type\:select {
+.input.type\:selectfield {
     
     height: 40px;
     -webkit-appearance: none
@@ -39,4 +62,9 @@
     
     content: " *";
     color: var(--redColor)
+}
+
+.resize\:false {
+    
+    resize: none
 }
