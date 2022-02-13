@@ -7,18 +7,14 @@ public struct Symbol: Component {
     
     internal var classes: [String]
     
-    public init?(named name: String) {
+    public init(name: String) {
         
         let url = URL(fileURLWithPath: "./public/css/symbols").appendingPathComponent(name).appendingPathExtension("svg")
-        
-        if !FileManager.default.fileExists(atPath: url.path) {
-            return nil
-        }
 
         do {
             self.content = try Parser.load(contentsOfFile: url)
         } catch {
-            return nil
+            self.content = []
         }
 
         self.classes = ["symbol"]
@@ -34,6 +30,10 @@ public struct Symbol: Component {
         Vector {
             content
         }
+        .width(16)
+        .height(16)
+        .viewBox("0 0 16 16")
+        .fill("currentColor")
         .class(classes.joined(separator: " "))
     }
 }
