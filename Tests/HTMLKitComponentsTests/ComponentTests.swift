@@ -92,10 +92,27 @@ final class ComponentTests: XCTestCase {
         )
     }
     
+    func testFieldLabel() throws {
+        
+        let view = TestPage {
+            FieldLabel(for: "name") {
+                "Name"
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <label for="name" class="label">Name</label>
+                       """
+        )
+    }
+    
     func testTextField() throws {
         
         let view = TestPage {
-            TextField(name: "Name") {
+            TextField(name: "name") {
                 "TextField"
             }
         }
@@ -104,22 +121,52 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <textarea id="Name" name="Name" class="input type:text" rows="1">TextField</textarea>
+                       <textarea id="name" name="name" class="input type:textfield resize:false" rows="1">TextField</textarea>
                        """
         )
     }
     
-    func testPasswordInput() throws {
+    func testSecureField() throws {
         
         let view = TestPage {
-            SecureField(name: "Password")
+            SecureField(name: "password")
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <input type="password" id="Password" name="Password" class="input type:password">
+                       <input type="password" id="password" name="password" class="input type:securefield">
+                       """
+        )
+    }
+    
+    func testCheckField() throws {
+        
+        let view = TestPage {
+            CheckField(name: "name", value: "value")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <input type="checkbox" id="name" name="name" value="value" class="input type:checkfield">
+                       """
+        )
+    }
+    
+    func testRadioSelect() throws {
+        
+        let view = TestPage {
+            RadioSelect(name: "name", value: "value")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <input type="radio" id="name" name="name" value="value" class="input type:radioselect">
                        """
         )
     }

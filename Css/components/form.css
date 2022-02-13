@@ -42,6 +42,12 @@
     height: 35px
 }
 
+.input.type\:checkfield {
+}
+
+.input.type\:radioselect {
+}
+
 .input.type\:securefield {
     
     height: 35px
