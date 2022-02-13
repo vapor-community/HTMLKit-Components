@@ -9,30 +9,37 @@
 }
 
 .hstack.alignment\:top {
+    
     align-items: flex-start
 }
 
 .hstack.alignment\:center {
+    
     align-items: center
 }
 
 .hstack.alignment\:bottom {
+    
     align-items: flex-end
 }
 
 .hstack.alignment\:baseline {
+    
     align-items: baseline
 }
 
 .hstack.space\:around {
+    
     justify-content: space-around
 }
 
 .hstack.space\:between {
+    
     justify-content: space-between
 }
 
 .hstack.space\:evenly {
+    
     justify-content: space-evenly
 }
 
@@ -43,18 +50,20 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap
 }
 
 .vstack.alignment\:leading {
+    
     justify-content: flex-start
 }
 
 .vstack.alignment\:center {
+    
     justify-content: center
 }
 
 .vstack.alignment\:trailing {
+    
     justify-content: flex-end
 }
 
@@ -68,8 +77,6 @@
 }
 
 .stack-column {
-    
-    overflow: hidden
 }
 
 .stack-column.size\:1 {

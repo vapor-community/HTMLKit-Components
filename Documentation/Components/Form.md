@@ -51,6 +51,32 @@ SelectField(name: "#") {
 
 - name: String
 
+## CheckField
+
+Lorem ipsum
+
+```swift
+CheckField(name: "#", value: "#")
+```
+
+### Attributes
+
+- name: String
+- value: String
+
+## RadioSelect
+
+Lorem ipsum
+
+```swift
+RadioSelect(name: "#", value: "#")
+```
+
+### Attributes
+
+- name: String
+- value: String
+
 ## SecureField
 
 Lorem ipsum
