@@ -1,20 +1,18 @@
 .form {
 
+    display: block
     width: 100%;
     height: 100%;
-    display: block
 }
 
 .label {
     
-    display: block;
+    display: inline-block;
     margin: 8px 0px
 }
 
 .input {
     
-    display: block;
-    width: 100%;
     margin: 8px 0px;
     padding: 7px 12px;
     border: var(--inputBorderWidth) solid var(--inputBorderColor);
@@ -34,32 +32,47 @@
 
 .input.type\:textfield {
     
+    display: block;
+    width: 100%;
     min-height: 35px
 }
 
 .input.type\:checkbox {
     
+    display: inline-block;
     height: 35px
 }
 
 .input.type\:checkfield {
+    
+    display: inline-block;
+    width: 35px;
 }
 
 .input.type\:radioselect {
+    
+    display: inline-block;
+    width: 35px;
 }
 
 .input.type\:securefield {
     
+    display: block;
+    width: 100%;
     height: 35px
 }
 
 .input.type\:searchfield {
 
+    display: block;
+    width: 100%;
     height: 35px
 }
 
 .input.type\:selectfield {
     
+    display: block;
+    width: 100%;
     height: 40px;
     -webkit-appearance: none
 }
@@ -73,4 +86,9 @@
 .resize\:false {
     
     resize: none
+}
+
+.resize\:true {
+    
+    resize: vertical
 }
