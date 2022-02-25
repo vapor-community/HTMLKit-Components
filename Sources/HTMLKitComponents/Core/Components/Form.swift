@@ -232,6 +232,34 @@ public struct SecureField: Component {
     }
 }
 
+public struct RangeSlider: Component {
+    
+    internal let name: TemplateValue<String>
+    
+    internal var classes: [String]
+    
+    public init(name: TemplateValue<String>) {
+        
+        self.name = name
+        self.classes = ["input", "type:rangeslider"]
+    }
+    
+    internal init(name: TemplateValue<String>, classes: [String]) {
+        
+        self.name = name
+        self.classes = classes
+    }
+    
+    public var body: AnyContent {
+        Input()
+            .type(.range)
+            .id(name)
+            .name(name)
+            .class(classes.joined(separator: " "))
+    }
+    
+}
+
 public struct SearchField: Component {
     
     internal let name: TemplateValue<String>

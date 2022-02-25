@@ -55,6 +55,12 @@
     width: 35px;
 }
 
+.input.type\:rangeslider {
+    
+    display: inline-block;
+    width: 35px;
+}
+
 .input.type\:securefield {
     
     display: block;
