@@ -32,20 +32,3 @@ public struct ActionButton: Component {
         .role(.button)
     }
 }
-
-public struct ButtonGroup: Component {
-        
-    internal var content: [AnyContent]
-    
-    public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
-        
-        self.content = content()
-    }
-    
-    public var body: AnyContent {
-        Division {
-            content
-        }
-        .class("button-group")
-    }
-}
