@@ -25,4 +25,8 @@ public struct Group: Component {
         }
         .class(classes.joined(separator: " "))
     }
+    
+    public var scripts: AnyContent {
+        return [content.scripts]
+    }
 }

@@ -6,16 +6,19 @@ public struct List: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(direction: FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
         self.classes = ["list", direction.rawValue]
     }
     
-    internal init(content: [ListElement], classes: [String]) {
+    internal init(content: [ListElement], classes: [String], events: [String]?) {
         
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -23,6 +26,15 @@ public struct List: Component {
             content
         }
         .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
     }
 }
 
@@ -32,16 +44,19 @@ public struct ListRow: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["list-row"]
     }
     
-    internal init(content: [AnyContent], classes: [String]) {
+    internal init(content: [AnyContent], classes: [String], events: [String]?) {
         
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -50,4 +65,14 @@ public struct ListRow: Component {
         }
         .class(classes.joined(separator: " "))
     }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
+    }
 }
+

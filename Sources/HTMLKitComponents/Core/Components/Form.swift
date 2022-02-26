@@ -6,16 +6,19 @@ public struct FormContainer: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(@ContentBuilder<FormElement> content: () -> [FormElement]) {
         
         self.content = content()
         self.classes = ["form"]
     }
     
-    internal init(content: [FormElement], classes: [String]) {
+    internal init(content: [FormElement], classes: [String], events: [String]?) {
         
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -24,6 +27,15 @@ public struct FormContainer: Component {
         }
         .method(.post)
         .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
     }
 }
 
@@ -35,6 +47,8 @@ public struct FieldLabel: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(for id: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
     
         self.id = id
@@ -42,11 +56,12 @@ public struct FieldLabel: Component {
         self.classes = ["label"]
     }
     
-    internal init(for id: TemplateValue<String>, content: [AnyContent], classes: [String]) {
+    internal init(for id: TemplateValue<String>, content: [AnyContent], classes: [String], events: [String]?) {
         
         self.id = id
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -68,6 +83,8 @@ public struct TextField: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>, @ContentBuilder<String> content: () -> [String]) {
         
         self.name = name
@@ -75,12 +92,13 @@ public struct TextField: Component {
         self.classes = ["input", "type:textfield", "resize:false"]
     }
     
-    internal init(name: TemplateValue<String>, rows: Int, content: [String], classes: [String]) {
+    internal init(name: TemplateValue<String>, rows: Int, content: [String], classes: [String], events: [String]?) {
         
         self.name = name
         self.rows = rows
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -92,13 +110,22 @@ public struct TextField: Component {
         .class(classes.joined(separator: " "))
         .rows(rows)
     }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
+    }
 }
 
 extension TextField {
     
     public func lineLimit(_ value: Int) -> TextField {
         
-        return TextField(name: self.name, rows: value, content: self.content, classes: self.classes)
+        return TextField(name: self.name, rows: value, content: self.content, classes: self.classes, events: self.events)
     }
 }
 
@@ -110,6 +137,8 @@ public struct CheckField: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>, value: TemplateValue<String>) {
         
         self.name = name
@@ -117,11 +146,12 @@ public struct CheckField: Component {
         self.classes = ["input", "type:checkfield"]
     }
     
-    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String]) {
+    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String], events: [String]?) {
         
         self.name = name
         self.value = value
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -131,6 +161,15 @@ public struct CheckField: Component {
             .name(name)
             .value(value)
             .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
     }
 }
 
@@ -142,6 +181,8 @@ public struct RadioSelect: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>, value: TemplateValue<String>) {
         
         self.name = name
@@ -149,11 +190,12 @@ public struct RadioSelect: Component {
         self.classes = ["input", "type:radioselect"]
     }
     
-    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String]) {
+    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String], events: [String]?) {
         
         self.name = name
         self.value = value
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -163,6 +205,15 @@ public struct RadioSelect: Component {
             .name(name)
             .value(value)
             .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
     }
 }
 
@@ -174,6 +225,8 @@ public struct SelectField: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>, content: [InputElement]) {
         
         self.name = name
@@ -181,11 +234,12 @@ public struct SelectField: Component {
         self.classes = ["input", "type:selectfield"]
     }
     
-    internal init(name: TemplateValue<String>, content: [InputElement], classes: [String]) {
+    internal init(name: TemplateValue<String>, content: [InputElement], classes: [String], events: [String]?) {
         
         self.name = name
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -195,6 +249,15 @@ public struct SelectField: Component {
         .id(name)
         .name(name)
         .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
     }
 }
 
@@ -206,6 +269,8 @@ public struct SecureField: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
         
         self.name = name
@@ -213,11 +278,12 @@ public struct SecureField: Component {
         self.classes = ["input", "type:securefield"]
     }
     
-    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String]) {
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String], events: [String]?) {
         
         self.name = name
         self.value = value
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -230,6 +296,15 @@ public struct SecureField: Component {
                 $0.value($1)
             }
     }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
+    }
 }
 
 public struct RangeSlider: Component {
@@ -238,16 +313,19 @@ public struct RangeSlider: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>) {
         
         self.name = name
         self.classes = ["input", "type:rangeslider"]
     }
     
-    internal init(name: TemplateValue<String>, classes: [String]) {
+    internal init(name: TemplateValue<String>, classes: [String], events: [String]?) {
         
         self.name = name
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -258,6 +336,14 @@ public struct RangeSlider: Component {
             .class(classes.joined(separator: " "))
     }
     
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
+    }
 }
 
 public struct SearchField: Component {
@@ -268,6 +354,8 @@ public struct SearchField: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
         
         self.name = name
@@ -275,11 +363,12 @@ public struct SearchField: Component {
         self.classes = ["input", "type:searchfield"]
     }
     
-    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String]) {
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String], events: [String]?) {
         
         self.name = name
         self.value = value
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -291,6 +380,15 @@ public struct SearchField: Component {
             .modify(unwrap: value) {
                 $0.value($1)
             }
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
     }
 }
 
