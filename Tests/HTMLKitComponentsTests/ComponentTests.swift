@@ -28,10 +28,10 @@ final class ComponentTests: XCTestCase {
         )
     }
     
-    func testButtonGroup() throws {
+    func testGroup() throws {
         
         let view = TestPage {
-            ButtonGroup {
+            Group {
             }
         }
         
@@ -39,7 +39,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <div class="button-group"></div>
+                       <div class="group"></div>
                        """
         )
     }
