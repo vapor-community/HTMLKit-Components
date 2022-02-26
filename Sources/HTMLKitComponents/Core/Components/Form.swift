@@ -353,7 +353,7 @@ public struct SecureField: Component {
     }
 }
 
-public struct RangeSlider: Component {
+public struct Slider: Component {
     
     internal let name: TemplateValue<String>
     
@@ -364,7 +364,7 @@ public struct RangeSlider: Component {
     public init(name: TemplateValue<String>) {
         
         self.name = name
-        self.classes = ["input", "type:rangeslider"]
+        self.classes = ["input", "type:slider"]
     }
     
     internal init(name: TemplateValue<String>, classes: [String], events: [String]?) {
@@ -380,6 +380,91 @@ public struct RangeSlider: Component {
             .id(name)
             .name(name)
             .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
+    }
+}
+
+public struct Toggle: Component {
+    
+    internal let name: TemplateValue<String>
+    
+    internal var classes: [String]
+    
+    internal var events: [String]?
+    
+    public init(name: TemplateValue<String>) {
+        
+        self.name = name
+        self.classes = ["input", "type:toggle"]
+    }
+    
+    internal init(name: TemplateValue<String>, classes: [String], events: [String]?) {
+        
+        self.name = name
+        self.classes = classes
+        self.events = events
+    }
+    
+    public var body: AnyContent {
+        Input()
+            .type(.checkbox)
+            .id(name)
+            .name(name)
+            .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
+    }
+}
+
+public struct DatePicker: Component {
+    
+    internal let name: TemplateValue<String>
+    
+    internal let value: TemplateValue<String?>
+    
+    internal var classes: [String]
+    
+    internal var events: [String]?
+    
+    public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
+        
+        self.name = name
+        self.value = value
+        self.classes = ["input", "type:datepicker"]
+    }
+    
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String], events: [String]?) {
+        
+        self.name = name
+        self.value = value
+        self.classes = classes
+        self.events = events
+    }
+    
+    public var body: AnyContent {
+        Input()
+            .type(.date)
+            .id(name)
+            .name(name)
+            .class(classes.joined(separator: " "))
+            .modify(unwrap: value) {
+                $0.value($1)
+            }
     }
     
     public var scripts: AnyContent {
@@ -426,6 +511,56 @@ public struct SearchField: Component {
             .modify(unwrap: value) {
                 $0.value($1)
             }
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
+    }
+}
+
+
+public struct ProgressView: Component {
+    
+    internal let name: TemplateValue<String>
+    
+    internal let value: TemplateValue<String?>
+    
+    internal var content: [AnyContent]
+    
+    internal var classes: [String]
+    
+    internal var events: [String]?
+    
+    public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil), @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+        
+        self.name = name
+        self.value = value
+        self.content = content()
+        self.classes = ["progress"]
+    }
+    
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, content: [AnyContent], classes: [String], events: [String]?) {
+        
+        self.name = name
+        self.value = value
+        self.content = content
+        self.classes = classes
+        self.events = events
+    }
+    
+    public var body: AnyContent {
+        Progress {
+            content
+        }
+        .class(classes.joined(separator: " "))
+        .modify(unwrap: value) {
+            $0.value($1)
+        }
     }
     
     public var scripts: AnyContent {

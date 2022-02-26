@@ -34,15 +34,15 @@
     
     display: block;
     width: 100%;
-    min-height: 35px;
-    resize: none
+    height: 35px
 }
 
 .input.type\:texteditor {
     
     display: block;
     width: 100%;
-    min-height: 35px
+    min-height: 35px;
+    resize: none
 }
 
 .input.type\:checkbox {
@@ -54,19 +54,32 @@
 .input.type\:checkfield {
     
     display: inline-block;
-    width: 35px;
+    width: 35px
 }
 
 .input.type\:radioselect {
     
     display: inline-block;
-    width: 35px;
+    width: 35px
 }
 
-.input.type\:rangeslider {
+.input.type\:slider {
     
     display: inline-block;
-    width: 35px;
+    width: 35px
+}
+
+.input.type\:toggle {
+    
+    display: inline-block;
+    width: 35px
+}
+
+.input.type\:datepicker {
+    
+    display: block;
+    width: 100%;
+    height: 35px
 }
 
 .input.type\:securefield {

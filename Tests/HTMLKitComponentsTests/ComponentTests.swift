@@ -141,6 +141,51 @@ final class ComponentTests: XCTestCase {
         )
     }
     
+    func testSlider() throws {
+        
+        let view = TestPage {
+            Slider(name: "name")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <input type="range" id="name" name="name" class="input type:slider">
+                       """
+        )
+    }
+    
+    func testToggle() throws {
+        
+        let view = TestPage {
+            Toggle(name: "name")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <input type="checkbox" id="name" name="name" class="input type:toggle">
+                       """
+        )
+    }
+    
+    func testDatePicker() throws {
+        
+        let view = TestPage {
+            DatePicker(name: "name")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <input type="date" id="name" name="name" class="input type:datepicker">
+                       """
+        )
+    }
+    
     func testSecureField() throws {
         
         let view = TestPage {
@@ -333,6 +378,22 @@ final class ComponentTests: XCTestCase {
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
                        <p class="text size:large transformation:uppercase color:blue weight:bold"></p>
+                       """
+        )
+    }
+    
+    func testProgressView() throws {
+        
+        let view = TestPage {
+            ProgressView(name: "name") {
+            }
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <progress class="progress"></progress>
                        """
         )
     }
