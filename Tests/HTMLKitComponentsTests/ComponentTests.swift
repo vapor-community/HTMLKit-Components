@@ -112,8 +112,23 @@ final class ComponentTests: XCTestCase {
     func testTextField() throws {
         
         let view = TestPage {
-            TextField(name: "name") {
-                "TextField"
+            TextField(name: "name")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <input type="text" id="name" name="name" class="input type:textfield">
+                       """
+        )
+    }
+    
+    func testTextEditor() throws {
+        
+        let view = TestPage {
+            TextEditor(name: "name") {
+                "value"
             }
         }
         
@@ -121,7 +136,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <textarea id="name" name="name" class="input type:textfield resize:false" rows="1">TextField</textarea>
+                       <textarea id="name" name="name" class="input type:texteditor" rows="1">value</textarea>
                        """
         )
     }

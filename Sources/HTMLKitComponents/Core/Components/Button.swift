@@ -44,3 +44,46 @@ public struct ActionButton: Component {
         return [content.scripts]
     }
 }
+
+public struct SubmitButton: Component {
+    
+    internal let label: TemplateValue<String>
+    
+    internal var classes: [String]
+    
+    public init(label: TemplateValue<String>) {
+        self.label = label
+        self.classes = ["button", ButtonStyle.primary.rawValue]
+    }
+    
+    public var body: AnyContent {
+        Button {
+            label
+        }
+        .type(.submit)
+        .class(classes.joined(separator: " "))
+        .role(.button)
+    }
+}
+
+public struct ResetButton: Component {
+    
+    internal let label: TemplateValue<String>
+    
+    internal var classes: [String]
+    
+    public init(label: TemplateValue<String>) {
+        
+        self.label = label
+        self.classes = ["button", ButtonStyle.secondary.rawValue]
+    }
+    
+    public var body: AnyContent {
+        Button {
+            label
+        }
+        .type(.reset)
+        .class(classes.joined(separator: " "))
+        .role(.button)
+    }
+}

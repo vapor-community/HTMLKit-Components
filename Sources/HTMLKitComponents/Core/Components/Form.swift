@@ -77,6 +77,52 @@ public struct TextField: Component {
     
     internal let name: TemplateValue<String>
     
+    internal let value: TemplateValue<String?>
+    
+    internal var classes: [String]
+    
+    internal var events: [String]?
+    
+    public init(name: TemplateValue<String>, value: TemplateValue<String?> = .constant(nil)) {
+        
+        self.name = name
+        self.value = value
+        self.classes = ["input", "type:textfield"]
+    }
+    
+    internal init(name: TemplateValue<String>, value: TemplateValue<String?>, classes: [String], events: [String]?) {
+        
+        self.name = name
+        self.value = value
+        self.classes = classes
+        self.events = events
+    }
+    
+    public var body: AnyContent {
+        Input()
+            .type(.text)
+            .id(name)
+            .name(name)
+            .class(classes.joined(separator: " "))
+            .modify(unwrap: value) {
+                $0.value($1)
+            }
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [Script { events }]
+        }
+        
+        return []
+    }
+}
+
+public struct TextEditor: Component {
+    
+    internal let name: TemplateValue<String>
+    
     internal var rows: Int = 1
     
     internal var content: [String]
@@ -89,7 +135,7 @@ public struct TextField: Component {
         
         self.name = name
         self.content = content()
-        self.classes = ["input", "type:textfield", "resize:false"]
+        self.classes = ["input", "type:texteditor"]
     }
     
     internal init(name: TemplateValue<String>, rows: Int, content: [String], classes: [String], events: [String]?) {
@@ -121,11 +167,11 @@ public struct TextField: Component {
     }
 }
 
-extension TextField {
+extension TextEditor {
     
-    public func lineLimit(_ value: Int) -> TextField {
+    public func lineLimit(_ value: Int) -> TextEditor {
         
-        return TextField(name: self.name, rows: value, content: self.content, classes: self.classes, events: self.events)
+        return TextEditor(name: self.name, rows: value, content: self.content, classes: self.classes, events: self.events)
     }
 }
 
@@ -389,48 +435,5 @@ public struct SearchField: Component {
         }
         
         return []
-    }
-}
-
-public struct SubmitButton: Component {
-    
-    internal let label: TemplateValue<String>
-    
-    internal var classes: [String]
-    
-    public init(label: TemplateValue<String>) {
-        self.label = label
-        self.classes = ["button", ButtonStyle.primary.rawValue]
-    }
-    
-    public var body: AnyContent {
-        Button {
-            label
-        }
-        .type(.submit)
-        .class(classes.joined(separator: " "))
-        .role(.button)
-    }
-}
-
-public struct ResetButton: Component {
-    
-    internal let label: TemplateValue<String>
-    
-    internal var classes: [String]
-    
-    public init(label: TemplateValue<String>) {
-        
-        self.label = label
-        self.classes = ["button", ButtonStyle.secondary.rawValue]
-    }
-    
-    public var body: AnyContent {
-        Button {
-            label
-        }
-        .type(.reset)
-        .class(classes.joined(separator: " "))
-        .role(.button)
     }
 }

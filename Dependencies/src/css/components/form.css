@@ -34,6 +34,14 @@
     
     display: block;
     width: 100%;
+    min-height: 35px;
+    resize: none
+}
+
+.input.type\:texteditor {
+    
+    display: block;
+    width: 100%;
     min-height: 35px
 }
 
@@ -87,14 +95,4 @@
     
     content: " *";
     color: var(--redColor)
-}
-
-.resize\:false {
-    
-    resize: none
-}
-
-.resize\:true {
-    
-    resize: vertical
 }
