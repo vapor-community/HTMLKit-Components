@@ -8,17 +8,21 @@ public struct Text: Component {
     
     internal var events: [String]?
     
+    internal var id: TemplateValue<String?>
+    
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["text"]
+        self.id = .constant(nil)
     }
     
-    internal init(content: [AnyContent], classes: [String], events: [String]?) {
+    internal init(content: [AnyContent], classes: [String], events: [String]?, id: TemplateValue<String?>) {
         
         self.content = content
         self.classes = classes
         self.events = events
+        self.id = id
     }
     
     public var body: AnyContent {
@@ -26,6 +30,9 @@ public struct Text: Component {
             content
         }
         .class(classes.joined(separator: " "))
+        .modify(unwrap: id) {
+            $0.id($1)
+        }
     }
     
     public var scripts: AnyContent {
@@ -35,6 +42,13 @@ public struct Text: Component {
         }
         
         return [content.scripts]
+    }
+    
+    public func id(_ value: String) -> Text {
+        
+        var newSelf = self
+        newSelf.id = .constant(value)
+        return newSelf
     }
 }
 
@@ -100,6 +114,25 @@ extension Text: TextComponent {
         
         var newSelf = self
         newSelf.classes.append(TextDecoration.underline.rawValue)
+        return newSelf
+    }
+    
+    public func onHover(perfom action: ViewAction) -> Text {
+        
+        var newSelf = self
+        
+        let event = """
+                    $('#\(newSelf.id)').on('hover', function() {
+                        \(action.script)
+                    })
+                    """
+        
+        if var events = newSelf.events {
+            events.append(event)
+        } else {
+            newSelf.events = [event]
+        }
+        
         return newSelf
     }
 }
