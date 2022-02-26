@@ -121,9 +121,25 @@ extension Text: TextComponent {
         
         var newSelf = self
         
+        let id: TemplateValue<String>
+        
+        switch newSelf.id {
+        case .constant(let optional):
+            
+            guard let value = optional else {
+                return self
+            }
+            
+            id = .constant(value)
+            
+        default:
+            
+            id = .constant("")
+        }
+        
         let event = """
-                    $('#\(newSelf.id)').on('hover', function() {
-                        \(action.script)
+                    $('#\(id.rawValue)').on('hover', function() {
+                    \(action.script)
                     })
                     """
         
