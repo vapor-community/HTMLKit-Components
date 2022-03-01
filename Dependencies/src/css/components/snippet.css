@@ -1,0 +1,21 @@
+.snippet {
+
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    counter-reset: line;
+}
+
+.snippet > code {
+
+    counter-increment: line;
+}
+
+.snippet > code::before {
+
+    width: 1.5em;
+    display: inline-block;
+    border-right: 1px solid black;
+    content: counter(line);
+}

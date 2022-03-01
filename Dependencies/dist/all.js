@@ -98,6 +98,8 @@ var $ = (function () {
      * This function is for
      */
     constructor.prototype.animate = function({params}, speed) {
+        
+        this.elems[0].animate({params}, speed);
     };
     
     var instantiate = function (selector) {

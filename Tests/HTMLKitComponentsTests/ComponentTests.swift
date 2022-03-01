@@ -397,4 +397,22 @@ final class ComponentTests: XCTestCase {
                        """
         )
     }
+    
+    func testSnippet() throws {
+        
+        let view = TestPage {
+            Snippet(lines: ["line", "line"])
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <pre class="snippet">\
+                       <code>line</code>\
+                       <code>line</code>\
+                       </pre>
+                       """
+        )
+    }
 }
