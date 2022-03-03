@@ -210,3 +210,11 @@ public enum ContentSpace: String {
     case between = "space:between"
     case evenly = "space:evenly"
 }
+
+public enum SyntaxHighlight: String {
+    
+    case plaintext = "hightlight:plaintext"
+    case html = "hightlight:html"
+    case css = "hightlight:css"
+    case javascript = "hightlight:javascript"
+}

@@ -401,16 +401,23 @@ final class ComponentTests: XCTestCase {
     func testSnippet() throws {
         
         let view = TestPage {
-            Snippet(lines: ["line", "line"])
+            Snippet(highlight: .html) {
+                """
+                <div>
+                <h3>headline</h3>
+                </div>
+                """
+            }
         }
         
         try renderer.add(view: view)
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <pre class="snippet">\
-                       <code>line</code>\
-                       <code>line</code>\
+                       <pre class="snippet language:html">\
+                       <p>&lt;div&gt;</p>\
+                       <p>&lt;h3&gt;headline&lt;/h3&gt;</p>\
+                       <p>&lt;/div&gt;</p>\
                        </pre>
                        """
         )

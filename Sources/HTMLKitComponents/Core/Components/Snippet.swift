@@ -2,25 +2,33 @@ import HTMLKit
 
 public struct Snippet: Component {
     
-    internal var lines: [AnyContent]
+    internal var content: [AnyContent]
     
     internal var classes: [String]
     
-    public init(lines: [String]) {
+    public init(highlight: SyntaxHighlight, content: () -> String) {
         
-        self.lines = lines.map { line in Code { line } }
-        self.classes = ["snippet"]
+        self.content = content()
+            .replacingOccurrences(of: "<", with: "&lt;")
+            .replacingOccurrences(of: ">", with: "&gt;")
+            .components(separatedBy: "\n")
+            .map { line in
+                
+                return Paragraph { line }
+            }
+        
+        self.classes = ["snippet", highlight.rawValue]
     }
     
-    internal init(lines: [AnyContent], classes: [String]) {
+    internal init(content: [AnyContent], classes: [String]) {
         
-        self.lines = lines
+        self.content = content
         self.classes = classes
     }
     
     public var body: AnyContent {
         PreformattedText {
-            lines
+            content
         }
         .class(classes.joined(separator: " "))
     }
