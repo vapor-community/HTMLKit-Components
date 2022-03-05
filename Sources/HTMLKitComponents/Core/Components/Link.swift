@@ -9,6 +9,8 @@ public struct Link: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
     public init(destination: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.destination = destination
@@ -16,11 +18,12 @@ public struct Link: Component {
         self.classes = ["link"]
     }
     
-    internal init(destination: TemplateValue<String>, content: [AnyContent], classes: [String]) {
+    internal init(destination: TemplateValue<String>, content: [AnyContent], classes: [String], events: [String]?) {
         
         self.destination = destination
         self.content = content
         self.classes = classes
+        self.events = events
     }
     
     public var body: AnyContent {
@@ -29,6 +32,15 @@ public struct Link: Component {
         }
         .reference(destination.rawValue)
         .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
     }
 }
 

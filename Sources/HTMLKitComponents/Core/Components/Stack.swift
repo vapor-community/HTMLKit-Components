@@ -25,12 +25,18 @@ public struct HStack: Component {
         .class(classes.joined(separator: " "))
     }
     
+    public var scripts: AnyContent {
+        return [content.scripts]
+    }
+    
     public func contentSpace(_ value: ContentSpace) -> HStack {
         
         var newSelf = self
         newSelf.classes.append(value.rawValue)
         return newSelf
     }
+    
+    
 }
 
 extension HStack: ViewComponent {
@@ -80,6 +86,10 @@ public struct VStack: Component {
             content
         }
         .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        return [content.scripts]
     }
 }
 
@@ -131,6 +141,10 @@ public struct ZStack: Component {
         }
         .class(classes.joined(separator: " "))
     }
+    
+    public var scripts: AnyContent {
+        return [content.scripts]
+    }
 }
 
 public struct StackColumn: Component {
@@ -174,5 +188,9 @@ public struct StackColumn: Component {
             content
         }
         .class(classes.joined(separator: " "))
+    }
+    
+    public var scripts: AnyContent {
+        return [content.scripts]
     }
 }

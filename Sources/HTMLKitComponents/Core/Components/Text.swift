@@ -6,16 +6,23 @@ public struct Text: Component {
     
     internal var classes: [String]
     
+    internal var events: [String]?
+    
+    internal var id: TemplateValue<String?>
+    
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["text"]
+        self.id = .constant(nil)
     }
     
-    internal init(content: [AnyContent], classes: [String]) {
+    internal init(content: [AnyContent], classes: [String], events: [String]?, id: TemplateValue<String?>) {
         
         self.content = content
         self.classes = classes
+        self.events = events
+        self.id = id
     }
     
     public var body: AnyContent {
@@ -23,6 +30,25 @@ public struct Text: Component {
             content
         }
         .class(classes.joined(separator: " "))
+        .modify(unwrap: id) {
+            $0.id($1)
+        }
+    }
+    
+    public var scripts: AnyContent {
+        
+        if let events = self.events {
+            return [content.scripts, Script { events }]
+        }
+        
+        return [content.scripts]
+    }
+    
+    public func id(_ value: String) -> Text {
+        
+        var newSelf = self
+        newSelf.id = .constant(value)
+        return newSelf
     }
 }
 
@@ -88,6 +114,42 @@ extension Text: TextComponent {
         
         var newSelf = self
         newSelf.classes.append(TextDecoration.underline.rawValue)
+        return newSelf
+    }
+    
+    public func onHover(perfom action: Actions) -> Text {
+        
+        var newSelf = self
+        
+        let id: TemplateValue<String>
+        
+        switch newSelf.id {
+        case .constant(let optional):
+            
+            guard let value = optional else {
+                return self
+            }
+            
+            id = .constant(value)
+            
+        default:
+            
+            id = .constant("")
+        }
+        
+        let event = Events.hover(selector: id.rawValue, action: action.script)
+        
+        if var events = newSelf.events {
+            
+            events.append(event)
+            
+            newSelf.events = events
+            
+        } else {
+            
+            newSelf.events = [event]
+        }
+        
         return newSelf
     }
 }

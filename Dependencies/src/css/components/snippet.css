@@ -1,0 +1,43 @@
+:root {
+    
+    --snippetBackgroundColor: #FFFFFF;
+    --snippetFontColor: #000000;
+    --lineNumberFontColor: #000000;
+}
+
+.snippet {
+
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    counter-reset: line;
+    background-color: var(--snippetBackgroundColor);
+    overflow-x: auto;
+}
+
+.snippet > p {
+    
+    display: block;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--snippetFontColor);
+    word-wrap: normal;
+    white-space: pre;
+    counter-increment: line;
+}
+
+.snippet > p::before {
+    
+    position: relative;
+    width: 1%;
+    min-width: 15px;
+    display: inline-block;
+    margin: 0px 15px 0px 0px;
+    padding: 0px 15px 0px 15px;
+    white-space: nowrap;
+    text-align: right;
+    content: counter(line);
+    color: var(--lineNumberFontColor);
+    -webkit-user-select: none;
+}

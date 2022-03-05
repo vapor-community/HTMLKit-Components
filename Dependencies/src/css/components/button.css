@@ -1,0 +1,95 @@
+:root {
+    
+    --buttonPadding: 10px 24px 10px 24px;
+    --buttonBorderColor: 5;
+    --buttonBorderWidth: 1px;
+    --buttonBorderRadius: 5px;
+    --buttonFontSize: 14px;
+    --buttonFontWeight: normal;
+    --buttonLineHeight: 1.2rem;
+}
+
+.button {
+    
+    display: inline-block;
+    width: 100%;
+    padding: var(--buttonPadding);
+    border: var(--buttonBorderWidth) solid transparent;
+    border-radius: var(--buttonBorderRadius);
+    font-size: var(--buttonFontSize);
+    font-weight: var(--buttonFontWeight);
+    line-height: var(--buttonLineHeight);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button.style\:primary {
+    
+    color: var(--whiteColor);
+    background-color: var(--primaryColor);
+}
+
+.button.style\:primary:hover {
+    
+    background-color: var(--primaryDarkColor);
+}
+
+.button.style\:secondary {
+    
+    color: var(--whiteColor);
+    background-color: var(--secondaryColor);
+}
+
+.button.style\:secondary:hover {
+    
+    background-color: var(--secondaryDarkColor);
+}
+
+.button.style\:outline {
+    
+    color: var(--secondaryColor);
+    background-color: transparent;
+    border-color: var(--secondaryColor);
+}
+
+.button.style\:outline:hover {
+    
+    color: var(--whiteColor);
+    background-color: var(--secondaryDarkColor);
+    border-color: transparent;
+}
+
+.button.style\:ghost {
+    
+    color: var(--blackColor);
+    background-color: transparent;
+}
+
+.button i {
+    
+    padding: 0px 10px 0px 10px;
+}
+
+.group {
+    
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.group > .button {
+    
+    border-radius: 0;
+}
+
+.group > .button:first-child {
+    
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.group > .button:last-child {
+    
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
