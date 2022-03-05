@@ -23,9 +23,9 @@ final class PageTests: XCTestCase {
                        </li>\
                        </ul>\
                        <script>\
-                       $('#selector').on('hover', function() {
-                       $('#target').show();
-                       })\
+                       $('#selector').onHover(function() {
+                           $('#target').show();
+                       });\
                        </script>\
                        </body>\
                        </html>

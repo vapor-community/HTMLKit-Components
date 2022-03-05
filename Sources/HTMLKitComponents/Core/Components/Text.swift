@@ -117,7 +117,7 @@ extension Text: TextComponent {
         return newSelf
     }
     
-    public func onHover(perfom action: ViewAction) -> Text {
+    public func onHover(perfom action: Actions) -> Text {
         
         var newSelf = self
         
@@ -137,15 +137,16 @@ extension Text: TextComponent {
             id = .constant("")
         }
         
-        let event = """
-                    $('#\(id.rawValue)').on('hover', function() {
-                    \(action.script)
-                    })
-                    """
+        let event = Events.hover(selector: id.rawValue, action: action.script)
         
         if var events = newSelf.events {
+            
             events.append(event)
+            
+            newSelf.events = events
+            
         } else {
+            
             newSelf.events = [event]
         }
         

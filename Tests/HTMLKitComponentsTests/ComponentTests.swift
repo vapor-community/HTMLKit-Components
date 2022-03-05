@@ -399,7 +399,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <pre class="snippet language:html">\
+                       <pre class="snippet hightlight:html">\
                        <p>&lt;div&gt;</p>\
                        <p>&lt;h3&gt;headline&lt;/h3&gt;</p>\
                        <p>&lt;/div&gt;</p>\
