@@ -50,14 +50,14 @@ public struct FieldLabel: Component {
     internal var events: [String]?
     
     public init(for id: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
-    
+      
         self.id = id
         self.content = content()
         self.classes = ["label"]
     }
     
     internal init(for id: TemplateValue<String>, content: [AnyContent], classes: [String], events: [String]?) {
-        
+      
         self.id = id
         self.content = content
         self.classes = classes
@@ -136,6 +136,7 @@ public struct TextEditor: Component {
         self.name = name
         self.content = content()
         self.classes = ["input", "type:texteditor"]
+
     }
     
     internal init(name: TemplateValue<String>, rows: Int, content: [String], classes: [String], events: [String]?) {
@@ -260,6 +261,70 @@ public struct RadioSelect: Component {
         }
         
         return []
+    }
+}
+
+public struct CheckField: Component {
+    
+    internal let name: TemplateValue<String>
+    
+    internal let value: TemplateValue<String>
+    
+    internal var classes: [String]
+    
+    public init(name: TemplateValue<String>, value: TemplateValue<String>) {
+        
+        self.name = name
+        self.value = value
+        self.classes = ["input", "type:checkfield"]
+    }
+    
+    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String]) {
+        
+        self.name = name
+        self.value = value
+        self.classes = classes
+    }
+    
+    public var body: AnyContent {
+        Input()
+            .type(.checkbox)
+            .id(name)
+            .name(name)
+            .value(value)
+            .class(classes.joined(separator: " "))
+    }
+}
+
+public struct RadioSelect: Component {
+    
+    internal let name: TemplateValue<String>
+    
+    internal let value: TemplateValue<String>
+    
+    internal var classes: [String]
+    
+    public init(name: TemplateValue<String>, value: TemplateValue<String>) {
+        
+        self.name = name
+        self.value = value
+        self.classes = ["input", "type:radioselect"]
+    }
+    
+    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String]) {
+        
+        self.name = name
+        self.value = value
+        self.classes = classes
+    }
+    
+    public var body: AnyContent {
+        Input()
+            .type(.radio)
+            .id(name)
+            .name(name)
+            .value(value)
+            .class(classes.joined(separator: " "))
     }
 }
 

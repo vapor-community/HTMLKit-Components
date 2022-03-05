@@ -140,7 +140,7 @@ final class ComponentTests: XCTestCase {
                        """
         )
     }
-    
+
     func testSlider() throws {
         
         let view = TestPage {
@@ -155,7 +155,7 @@ final class ComponentTests: XCTestCase {
                        """
         )
     }
-    
+  
     func testDatePicker() throws {
         
         let view = TestPage {
@@ -170,7 +170,7 @@ final class ComponentTests: XCTestCase {
                        """
         )
     }
-    
+  
     func testSecureField() throws {
         
         let view = TestPage {
