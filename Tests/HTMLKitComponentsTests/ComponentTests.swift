@@ -156,21 +156,6 @@ final class ComponentTests: XCTestCase {
         )
     }
     
-    func testToggle() throws {
-        
-        let view = TestPage {
-            Toggle(name: "name")
-        }
-        
-        try renderer.add(view: view)
-        
-        XCTAssertEqual(try renderer.render(raw: TestPage.self),
-                       """
-                       <input type="checkbox" id="name" name="name" class="input type:toggle">
-                       """
-        )
-    }
-    
     func testDatePicker() throws {
         
         let view = TestPage {
@@ -419,6 +404,24 @@ final class ComponentTests: XCTestCase {
                        <p>&lt;h3&gt;headline&lt;/h3&gt;</p>\
                        <p>&lt;/div&gt;</p>\
                        </pre>
+                       """
+        )
+    }
+    
+    func testToggle() throws {
+        
+        let view = TestPage {
+            Toggle(name: "name")
+        }
+        
+        try renderer.add(view: view)
+        
+        XCTAssertEqual(try renderer.render(raw: TestPage.self),
+                       """
+                       <label tabindex="0" class="toggle">\
+                       <input type="checkbox" id="name" name="name">\
+                       <div class="toggle-slider"></div>\
+                       </label>
                        """
         )
     }

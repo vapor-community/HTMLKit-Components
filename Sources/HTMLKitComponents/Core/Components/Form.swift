@@ -392,45 +392,6 @@ public struct Slider: Component {
     }
 }
 
-public struct Toggle: Component {
-    
-    internal let name: TemplateValue<String>
-    
-    internal var classes: [String]
-    
-    internal var events: [String]?
-    
-    public init(name: TemplateValue<String>) {
-        
-        self.name = name
-        self.classes = ["input", "type:toggle"]
-    }
-    
-    internal init(name: TemplateValue<String>, classes: [String], events: [String]?) {
-        
-        self.name = name
-        self.classes = classes
-        self.events = events
-    }
-    
-    public var body: AnyContent {
-        Input()
-            .type(.checkbox)
-            .id(name)
-            .name(name)
-            .class(classes.joined(separator: " "))
-    }
-    
-    public var scripts: AnyContent {
-        
-        if let events = self.events {
-            return [Script { events }]
-        }
-        
-        return []
-    }
-}
-
 public struct DatePicker: Component {
     
     internal let name: TemplateValue<String>
