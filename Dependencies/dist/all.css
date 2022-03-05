@@ -393,12 +393,16 @@ zindex\:5 {
 
 :root {
     
-    --inputTextColor: #000000;
-    --inputBackgroundColor: #FFFFFF;
-    --inputBorderColor: #DEE2E6;
+    --inputTextColor: var(--blackColor);
+    --inputBackgroundColor: var(--whiteColor);
+    --inputBorderColor: hsla(210, 14%, 89%, 100%);
     --inputBorderWidth: 1px;
     --inputBorderRadius: 5px;
     --inputFocusColor: hsla(210, 14%, 89%, 40%);
+    --sliderBackgroundColor: var(--whiteColor);
+    --sliderBorderColor: var(--whiteColor);
+    --thumbBorderColor: var(--whiteColor);
+    --thumbBackgroundColor: var(--whiteColor);
 }
 
 .form {
@@ -425,6 +429,7 @@ zindex\:5 {
     line-height: 1.5;
     color: var(--inputTextColor);
     background-color: var(--inputBackgroundColor);
+    box-sizing: border-box;
 }
 
 .input:focus {
@@ -469,13 +474,36 @@ zindex\:5 {
 .input.type\:slider {
     
     display: block;
-    width: 35px;
+    width: 100% !important;
+    height: 3px;
+    padding: 0 0 0 0;
+    background-color: var(--sliderBackgroundColor);
+    border: 1px solid var(--sliderBorderColor);
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
-.input.type\:toggle {
+.input.type\:slider::-webkit-slider-thumb {
     
-    display: inline-block;
-    width: 35px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--thumbBorderColor);
+    border-radius: 50%;
+    background-color: var(--thumbBackgroundColor);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.input.type\:slider::-moz-range-thumb {
+    
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--thumbBorderColor);
+    border-radius: 50%;
+    background-color: var(--thumbBackgroundColor);
+    cursor: pointer;
 }
 
 .input.type\:datepicker {
