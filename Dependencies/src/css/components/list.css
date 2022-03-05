@@ -1,7 +1,12 @@
+:root {
+
+    --listGapSize: 15px;
+}
+
 .list {
     
     display: flex;
-    list-style-type: none
+    list-style-type: none;
 }
 
 .list.direction\:horizontal {
@@ -9,12 +14,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--listGapSize)
+    gap: var(--listGapSize);
 }
 
 .list.direction\:vertical {
     
-    flex-direction: column
+    flex-direction: column;
 }
 
 .list-row {}

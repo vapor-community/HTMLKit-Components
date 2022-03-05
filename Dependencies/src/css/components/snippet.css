@@ -1,3 +1,10 @@
+:root {
+    
+    --snippetBackgroundColor: #FFFFFF;
+    --snippetFontColor: #000000;
+    --lineNumberFontColor: #000000;
+}
+
 .snippet {
 
     position: relative;
@@ -11,11 +18,10 @@
 
 .snippet > p {
     
+    display: block;
     font-size: 12px;
     line-height: 20px;
     color: var(--snippetFontColor);
-    
-    display: block;
     word-wrap: normal;
     white-space: pre;
     counter-increment: line;
@@ -33,6 +39,5 @@
     text-align: right;
     content: counter(line);
     color: var(--lineNumberFontColor);
-    background-color: var(--lineNumberBackgroundColor);
     -webkit-user-select: none;
 }

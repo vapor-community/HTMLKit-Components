@@ -1,6 +1,11 @@
+:root {
+    
+    --dividerColor: #FFFFFF;
+}
+
 .divider {
 
     width: 100%;
     display: block;
-    background-color: var(--dividerColor)
+    background-color: var(--dividerColor);
 }

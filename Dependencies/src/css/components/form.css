@@ -1,40 +1,50 @@
+:root {
+    
+    --inputTextColor: #000000;
+    --inputBackgroundColor: #FFFFFF;
+    --inputBorderColor: #DEE2E6;
+    --inputBorderWidth: 1px;
+    --inputBorderRadius: 5px;
+    --inputFocusColor: hsla(210, 14%, 89%, 40%);
+}
+
 .form {
 
-    display: block
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .label {
     
     display: inline-block;
-    margin: 8px 0px
+    margin: 8px 0px 8px 0px;
 }
 
 .input {
     
-    margin: 8px 0px;
-    padding: 7px 12px;
+    margin: 8px 0px 8px 0px;
+    padding: 7px 12px 7px 12px;
     border: var(--inputBorderWidth) solid var(--inputBorderColor);
     border-radius: var(--inputBorderRadius);
     font-size: 1.0rem;
     font-weight: 400;
     line-height: 1.5;
     color: var(--inputTextColor);
-    background-color: var(--inputBackgroundColor)
+    background-color: var(--inputBackgroundColor);
 }
 
 .input:focus {
     
     outline: 0;
-    box-shadow: 0 0 0 4px var(--inputFocusColor)
+    box-shadow: 0 0 0 4px var(--inputFocusColor);
 }
 
 .input.type\:textfield {
     
     display: block;
     width: 100%;
-    height: 35px
+    height: 35px;
 }
 
 .input.type\:texteditor {
@@ -42,58 +52,58 @@
     display: block;
     width: 100%;
     min-height: 35px;
-    resize: none
+    resize: none;
 }
 
 .input.type\:checkbox {
     
     display: inline-block;
-    height: 35px
+    height: 35px;
 }
 
 .input.type\:checkfield {
     
     display: inline-block;
-    width: 35px
+    width: 35px;
 }
 
 .input.type\:radioselect {
     
     display: inline-block;
-    width: 35px
+    width: 35px;
 }
 
 .input.type\:slider {
     
-    display: inline-block;
-    width: 35px
+    display: block;
+    width: 35px;
 }
 
 .input.type\:toggle {
     
     display: inline-block;
-    width: 35px
+    width: 35px;
 }
 
 .input.type\:datepicker {
     
     display: block;
     width: 100%;
-    height: 35px
+    height: 35px;
 }
 
 .input.type\:securefield {
     
     display: block;
     width: 100%;
-    height: 35px
+    height: 35px;
 }
 
 .input.type\:searchfield {
 
     display: block;
     width: 100%;
-    height: 35px
+    height: 35px;
 }
 
 .input.type\:selectfield {
@@ -101,11 +111,11 @@
     display: block;
     width: 100%;
     height: 40px;
-    -webkit-appearance: none
+    -webkit-appearance: none;
 }
 
 .required\:true:after {
     
     content: " *";
-    color: var(--redColor)
+    color: var(--redColor);
 }
