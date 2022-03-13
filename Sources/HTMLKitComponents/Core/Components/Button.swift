@@ -45,6 +45,37 @@ public struct ActionButton: Component {
     }
 }
 
+extension ActionButton: ButtonComponent {
+    
+    public func buttonSize(_ size: ButtonSize) -> ActionButton {
+        
+        var newSelf = self
+        newSelf.classes.append(size.rawValue)
+        return newSelf
+    }
+    
+    public func borderShape(_ shape: BorderShape) -> ActionButton {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        return newSelf
+    }
+    
+    public func buttonStyle(_ style: ButtonStyle) -> ActionButton {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: BackgroundColor) -> ActionButton {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
+    }
+}
+
 public struct SubmitButton: Component {
     
     internal let label: TemplateValue<String>
