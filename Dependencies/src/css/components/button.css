@@ -1,7 +1,10 @@
 :root {
     
+    /**
+     button variables
+     */
+    
     --buttonPadding: 10px 24px 10px 24px;
-    --buttonBorderColor: 5;
     --buttonBorderWidth: 1px;
     --buttonBorderRadius: 5px;
     --buttonFontSize: 14px;
@@ -12,15 +15,19 @@
 .button {
     
     display: inline-block;
-    width: 100%;
     padding: var(--buttonPadding);
-    border: var(--buttonBorderWidth) solid transparent;
-    border-radius: var(--buttonBorderRadius);
     font-size: var(--buttonFontSize);
     font-weight: var(--buttonFontWeight);
     line-height: var(--buttonLineHeight);
+    text-align: center;
+    vertical-align: middle;
     text-decoration: none;
     cursor: pointer;
+    -webkit-user-select: none;
+}
+
+.button:hover {
+    filter: brightness(90%) saturate(90%);
 }
 
 .button.style\:primary {
@@ -29,20 +36,10 @@
     background-color: var(--primaryColor);
 }
 
-.button.style\:primary:hover {
-    
-    background-color: var(--primaryDarkColor);
-}
-
 .button.style\:secondary {
     
     color: var(--whiteColor);
     background-color: var(--secondaryColor);
-}
-
-.button.style\:secondary:hover {
-    
-    background-color: var(--secondaryDarkColor);
 }
 
 .button.style\:outline {
@@ -52,44 +49,34 @@
     border-color: var(--secondaryColor);
 }
 
-.button.style\:outline:hover {
+.button.size\:full {
     
-    color: var(--whiteColor);
-    background-color: var(--secondaryDarkColor);
-    border-color: transparent;
+    width: 100%;
 }
 
-.button.style\:ghost {
+.button.size\:large {
     
-    color: var(--blackColor);
-    background-color: transparent;
+    width: 75%;
 }
 
-.button i {
+.button.size\:medium {
     
-    padding: 0px 10px 0px 10px;
+    width: 50%;
 }
 
-.group {
+.button.size\:small {
     
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
+    width: 25%;
 }
 
-.group > .button {
-    
-    border-radius: 0;
+.button.shape\:roundedrectangle {
+
+    border: var(--buttonBorderWidth) solid transparent;
+    border-radius: var(--buttonBorderRadius);
 }
 
-.group > .button:first-child {
-    
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
+.button.shape\:circle {
 
-.group > .button:last-child {
-    
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border: var(--buttonBorderWidth) solid transparent;
+    border-radius: 50%;
 }

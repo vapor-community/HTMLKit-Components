@@ -1,11 +1,20 @@
 :root {
     
+    /**
+     input variables
+     */
+    
     --inputTextColor: var(--blackColor);
     --inputBackgroundColor: var(--whiteColor);
     --inputBorderColor: hsla(210, 14%, 89%, 100%);
     --inputBorderWidth: 1px;
     --inputBorderRadius: 5px;
     --inputFocusColor: hsla(210, 14%, 89%, 40%);
+    
+    /**
+     slider variables
+     */
+    
     --sliderBackgroundColor: var(--whiteColor);
     --sliderBorderColor: var(--whiteColor);
     --thumbBorderColor: var(--whiteColor);
@@ -33,7 +42,6 @@
     border-radius: var(--inputBorderRadius);
     font-size: 1.0rem;
     font-weight: 400;
-    line-height: 1.5;
     color: var(--inputTextColor);
     background-color: var(--inputBackgroundColor);
     box-sizing: border-box;

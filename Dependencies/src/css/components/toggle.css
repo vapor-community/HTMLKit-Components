@@ -1,5 +1,9 @@
 :root {
 
+    /**
+     toggle variables
+     */
+    
     --toggleBackgroundColor: hsla(0, 0%, 90%, 100%);
     --toggleActiveBackgroundColor: hsla(94, 50%, 50%, 100%);
     --toggleBorderColor: hsla(210, 14%, 89%, 100%);

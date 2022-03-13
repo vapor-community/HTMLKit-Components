@@ -1,5 +1,10 @@
 :root {
 
+    /**
+     list variables
+     */
+    
+    --listRowPadding: 0 15px 0 15px;
     --listGapSize: 15px;
 }
 
@@ -7,6 +12,7 @@
     
     display: flex;
     list-style-type: none;
+    gap: var(--listGapSize);
 }
 
 .list.direction\:horizontal {
@@ -14,12 +20,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--listGapSize);
+    margin: 0 15px 0 15px;
 }
 
 .list.direction\:vertical {
     
     flex-direction: column;
+    margin: 15px 0 15px 0;
 }
 
-.list-row {}
+.list-row {
+    
+    padding: var(--listRowPadding);
+}

@@ -1,5 +1,9 @@
 :root {
     
+    /**
+     text variables
+     */
+    
     --smallFontSize: 0.8em;
     --smallFontWeight: 600;
     --smallLineHeight: 1.6em;

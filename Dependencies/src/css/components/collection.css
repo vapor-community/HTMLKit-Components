@@ -1,5 +1,9 @@
 :root {
     
+    /**
+     collection variables
+     */
+    
     --collectionItemHeight: 200px;
     --collectionGapSize: 35px;
 }

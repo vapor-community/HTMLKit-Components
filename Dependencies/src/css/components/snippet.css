@@ -1,5 +1,9 @@
 :root {
     
+    /**
+     snippet variables
+     */
+    
     --snippetBackgroundColor: #FFFFFF;
     --snippetFontColor: #000000;
     --lineNumberFontColor: #000000;
