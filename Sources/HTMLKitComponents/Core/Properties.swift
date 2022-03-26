@@ -156,8 +156,9 @@ public enum ImageScale: String {
 
 public enum ClipShape: String {
     
-    case cirle = "shape:circle"
-    case rectangle = "shape:rectangle"
+    case smallrounded = "shape:smallrounded"
+    case largerounded = "shape:largerounded"
+    case circle = "shape:circle"
 }
 
 public enum PositionIndex: String {
@@ -220,7 +221,9 @@ public enum ButtonStyle: String {
 
 public enum BorderShape: String {
     
-    case roundedRectangle = "shape:roundedrectangle"
+    case smallrounded = "shape:smallrounded"
+    case largerounded = "shape:largerounded"
+    case fullrounded = "shape:fullrounded"
     case circle = "shape:cirlce"
 }
 
