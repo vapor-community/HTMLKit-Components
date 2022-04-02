@@ -1,42 +1,30 @@
-:root {
-
-    /**
-     toggle variables
-     */
-    
-    --toggleBackgroundColor: hsla(0, 0%, 90%, 100%);
-    --toggleActiveBackgroundColor: hsla(94, 50%, 50%, 100%);
-    --toggleBorderColor: hsla(210, 14%, 89%, 100%);
-    --toggleFocusColor: hsla(210, 14%, 89%, 40%);
-    --sliderBackgroundColor: hsla(0, 0%, 100%, 100%);
-    --sliderBorderColor: hsla(0, 0%, 100%, 100%);
-}
+/**
+ toggle component
+ */
 
 .toggle {
-    
     position: relative;
     display: inline-block;
     width: 60px;
     height: 30px;
-    border: 1px solid var(--toggleBorderColor);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--toggleBorderColor);
     border-radius: 31px;
     overflow: hidden;
     cursor: pointer;
 }
 
 .toggle:focus {
-    
     outline: 0;
     box-shadow: 0 0 0 4px var(--toggleFocusColor);
 }
 
 .toggle > input {
-    
     display: none;
 }
 
 .toggle-slider {
-    
     position: absolute;
     width: 100%;
     height: 100%;
@@ -44,22 +32,21 @@
 }
 
 .toggle-slider::before {
-    
     position: absolute;
     content: "";
     width: 26px;
     height: 26px;
-    background-color: var(--sliderBackgroundColor);
-    border: 1px solid var(--sliderBorderColor);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--sliderBorderColor);
     border-radius: 50%;
+    background-color: var(--sliderBackgroundColor);
 }
 
 .toggle > input:checked + .toggle-slider {
-    
     background-color: var(--toggleActiveBackgroundColor);
 }
 
 .toggle > input:checked + .toggle-slider::before {
-    
     left: calc(100% - 26px);
 }

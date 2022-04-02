@@ -234,3 +234,23 @@ public enum ButtonSize: String {
     case medium = "size:medium"
     case small = "size:small"
 }
+
+public enum ItemRatio: String {
+    
+    case quarter = "ratio:25"
+    case third = "ratio:33"
+    case half = "ratio:50"
+}
+
+public enum CollectionStyle: String {
+    
+    case grid = "style:grid"
+    case carousel = "style:carousel"
+}
+
+public enum ListStyle: String {
+
+    case grouped = "style:grouped"
+    case accordion = "style:accordion"
+    case tab = "style:tab"
+}

@@ -38,6 +38,16 @@ public struct List: Component {
     }
 }
 
+extension List {
+    
+    public func listStyle(_ style: ListStyle) -> List {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
+    }
+}
+
 public struct ListRow: Component {
 
     internal var content: [AnyContent]

@@ -1,22 +1,44 @@
-:root {
-    
-    /**
-     collection variables
-     */
-    
-    --collectionItemHeight: 200px;
-    --collectionGapSize: 35px;
-}
+/**
+ collection component
+ */
 
 .collection {
-    
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 1fr;
-    grid-gap: var(--collectionGapSize);
+    gap: var(--collectionGapSize);
 }
 
 .collection-item {
+    overflow: hidden;
+}
+
+.collection.style\:grid > .collection-item {
     
-    height: var(--collectionItemHeight);
+    border-width: var(--collectionBorderWidth);
+    border-style: solid;
+    border-color: var(--collectionBorderColor);
+    border-radius: var(--collectionBorderRadius);
+}
+
+.collection.style\:carousel {
+    
+}
+
+.collection.ratio\:50 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.collection.ratio\:33 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.collection.ratio\:25 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.collection.ratio\:20 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.collection.ratio\:15 {
+    grid-template-columns: repeat(6, 1fr);
 }
