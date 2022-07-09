@@ -119,6 +119,23 @@ public struct TextField: Component {
     }
 }
 
+extension TextField: InputComponent {
+    
+    public func borderShape(_ shape: BorderShape) -> TextField {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: BackgroundColor) -> TextField {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        return newSelf
+    }
+}
+
 public struct TextEditor: Component {
     
     internal let name: TemplateValue<String>
@@ -173,94 +190,6 @@ extension TextEditor {
     public func lineLimit(_ value: Int) -> TextEditor {
         
         return TextEditor(name: self.name, rows: value, content: self.content, classes: self.classes, events: self.events)
-    }
-}
-
-public struct CheckField: Component {
-    
-    internal let name: TemplateValue<String>
-    
-    internal let value: TemplateValue<String>
-    
-    internal var classes: [String]
-    
-    internal var events: [String]?
-    
-    public init(name: TemplateValue<String>, value: TemplateValue<String>) {
-        
-        self.name = name
-        self.value = value
-        self.classes = ["input", "type:checkfield"]
-    }
-    
-    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String], events: [String]?) {
-        
-        self.name = name
-        self.value = value
-        self.classes = classes
-        self.events = events
-    }
-    
-    public var body: AnyContent {
-        Input()
-            .type(.checkbox)
-            .id(name)
-            .name(name)
-            .value(value)
-            .class(classes.joined(separator: " "))
-    }
-    
-    public var scripts: AnyContent {
-        
-        if let events = self.events {
-            return [Script { events }]
-        }
-        
-        return []
-    }
-}
-
-public struct RadioSelect: Component {
-    
-    internal let name: TemplateValue<String>
-    
-    internal let value: TemplateValue<String>
-    
-    internal var classes: [String]
-    
-    internal var events: [String]?
-    
-    public init(name: TemplateValue<String>, value: TemplateValue<String>) {
-        
-        self.name = name
-        self.value = value
-        self.classes = ["input", "type:radioselect"]
-    }
-    
-    internal init(name: TemplateValue<String>, value: TemplateValue<String>, classes: [String], events: [String]?) {
-        
-        self.name = name
-        self.value = value
-        self.classes = classes
-        self.events = events
-    }
-    
-    public var body: AnyContent {
-        Input()
-            .type(.radio)
-            .id(name)
-            .name(name)
-            .value(value)
-            .class(classes.joined(separator: " "))
-    }
-    
-    public var scripts: AnyContent {
-        
-        if let events = self.events {
-            return [Script { events }]
-        }
-        
-        return []
     }
 }
 
@@ -338,10 +267,10 @@ public struct SelectField: Component {
     
     internal var events: [String]?
     
-    public init(name: TemplateValue<String>, content: [InputElement]) {
+    public init(name: TemplateValue<String>, @ContentBuilder<InputElement> content: () -> [InputElement]) {
         
         self.name = name
-        self.content = content
+        self.content = content()
         self.classes = ["input", "type:selectfield"]
     }
     

@@ -9,7 +9,7 @@ public struct Symbol: Component {
     
     public init(name: String) {
         
-        let url = URL(fileURLWithPath: "./public/css/symbols").appendingPathComponent(name).appendingPathExtension("svg")
+        let url = URL(fileURLWithPath: "./public/assets/symbols").appendingPathComponent(name).appendingPathExtension("svg")
 
         do {
             self.content = try Parser.load(contentsOfFile: url)

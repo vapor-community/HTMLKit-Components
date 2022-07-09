@@ -1,12 +1,8 @@
-:root {
-    
-    --snippetBackgroundColor: #FFFFFF;
-    --snippetFontColor: #000000;
-    --lineNumberFontColor: #000000;
-}
+/**
+ snippet component
+ */
 
 .snippet {
-
     position: relative;
     width: 100%;
     height: auto;
@@ -17,10 +13,9 @@
 }
 
 .snippet > p {
-    
     display: block;
-    font-size: 12px;
-    line-height: 20px;
+    font-size: var(--snippetFontSize);
+    line-height: var(--snippetLineHeight);
     color: var(--snippetFontColor);
     word-wrap: normal;
     white-space: pre;
@@ -28,13 +23,13 @@
 }
 
 .snippet > p::before {
-    
     position: relative;
     width: 1%;
     min-width: 15px;
     display: inline-block;
-    margin: 0px 15px 0px 0px;
-    padding: 0px 15px 0px 15px;
+    margin-right: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
     white-space: nowrap;
     text-align: right;
     content: counter(line);

@@ -8,10 +8,10 @@ public struct Collection: Component {
     
     internal var events: [String]?
     
-    public init(@ContentBuilder<ListElement> content: () -> [ListElement]) {
+    public init(ratio: ItemRatio = .half, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
-        self.classes = ["collection"]
+        self.classes = ["collection", ratio.rawValue]
     }
     
     internal init(content: [ListElement], classes: [String], events: [String]?) {
@@ -35,6 +35,16 @@ public struct Collection: Component {
         }
         
         return [content.scripts]
+    }
+}
+
+extension Collection {
+    
+    public func collectionStyle(_ style: CollectionStyle) -> Collection {
+        
+        var newSelf = self
+        newSelf.classes.append(style.rawValue)
+        return newSelf
     }
 }
 

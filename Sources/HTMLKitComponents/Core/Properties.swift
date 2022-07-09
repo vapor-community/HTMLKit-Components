@@ -32,20 +32,20 @@ public enum ColumnSize: String {
 public enum ForegroundColor: String {
     
     case black = "color:black"
+    case white = "color:white"
     case blue = "color:blue"
     case brown = "color:brown"
     case cyan = "color:cyan"
-    case gray = "color:gray"
     case green = "color:green"
     case indigo = "color:indigo"
     case mint = "color:mint"
-    case orange = "color:orange"
     case pink = "color:pink"
     case purple = "color:purple"
     case red = "color:red"
     case teal = "color:teal"
-    case white = "color:white"
+    case orange = "color:orange"
     case yellow = "color:yellow"
+    case gray = "color:gray"
     case silver = "color:silver"
     case highlight = "color:highlight"
     case primary = "color:primary"
@@ -96,25 +96,25 @@ public enum FontStyle: String {
 public enum BackgroundColor: String {
     
     case black = "background:black"
+    case white = "background:white"
     case blue = "background:blue"
     case brown = "background:brown"
-    case transparent = "background:transparent"
     case cyan = "background:cyan"
-    case gray = "background:gray"
     case green = "background:green"
     case indigo = "background:indigo"
     case mint = "background:mint"
-    case orange = "background:orange"
     case pink = "background:pink"
     case purple = "background:purple"
     case red = "background:red"
     case teal = "background:teal"
-    case white = "background:white"
+    case orange = "background:orange"
     case yellow = "background:yellow"
+    case gray = "background:gray"
     case silver = "background:silver"
     case highlight = "background:highlight"
     case primary = "background:primary"
     case secondary = "background:secondary"
+    case transparent = "background:transparent"
 }
 
 public enum ObjectFit: String {
@@ -130,14 +130,6 @@ public enum OpacityValue: String {
     
     case intransparent = "opacity:intransparent"
     case transparent = "opacity:transparent"
-}
-
-public enum ButtonStyle: String {
-    
-    case primary = "style:primary"
-    case secondary = "style:secondary"
-    case outline = "style:outline"
-    case ghost = "style:ghost"
 }
 
 public enum ColumnOffset: String {
@@ -164,8 +156,9 @@ public enum ImageScale: String {
 
 public enum ClipShape: String {
     
-    case cirle = "shape:circle"
-    case rectangle = "shape:rectangle"
+    case smallrounded = "shape:smallrounded"
+    case largerounded = "shape:largerounded"
+    case circle = "shape:circle"
 }
 
 public enum PositionIndex: String {
@@ -217,4 +210,47 @@ public enum SyntaxHighlight: String {
     case html = "hightlight:html"
     case css = "hightlight:css"
     case javascript = "hightlight:javascript"
+}
+
+public enum ButtonStyle: String {
+    
+    case primary = "style:primary"
+    case secondary = "style:secondary"
+    case outline = "style:outline"
+}
+
+public enum BorderShape: String {
+    
+    case smallrounded = "shape:smallrounded"
+    case largerounded = "shape:largerounded"
+    case fullrounded = "shape:fullrounded"
+    case circle = "shape:cirlce"
+}
+
+public enum ButtonSize: String {
+    
+    case full = "size:full"
+    case large = "size:large"
+    case medium = "size:medium"
+    case small = "size:small"
+}
+
+public enum ItemRatio: String {
+    
+    case quarter = "ratio:25"
+    case third = "ratio:33"
+    case half = "ratio:50"
+}
+
+public enum CollectionStyle: String {
+    
+    case grid = "style:grid"
+    case carousel = "style:carousel"
+}
+
+public enum ListStyle: String {
+
+    case grouped = "style:grouped"
+    case accordion = "style:accordion"
+    case tab = "style:tab"
 }
