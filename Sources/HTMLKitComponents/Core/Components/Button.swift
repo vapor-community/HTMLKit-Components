@@ -1,16 +1,26 @@
+/*
+ Abstract:
+ The file contains everything related to buttons.
+ */
+
 import HTMLKit
 import Foundation
 
 public struct ActionButton: Component {
     
+    /// The url path of the target.
     internal let destination: TemplateValue<String>
     
+    /// The  content of the button.
     internal var content: [AnyContent]
     
+    /// The classes of the button.
     internal var classes: [String]
     
+    /// The events of the button.
     internal var events: [String]?
     
+    /// Creates a action button.
     public init(destination: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.destination = destination
@@ -18,6 +28,7 @@ public struct ActionButton: Component {
         self.classes = ["button"]
     }
     
+    /// Creates a action button.
     internal init(destination: TemplateValue<String>, content: [AnyContent], classes: [String], events: [String]?) {
         
         self.destination = destination
@@ -35,6 +46,7 @@ public struct ActionButton: Component {
         .role(.button)
     }
     
+    /// The behaviour of the button.
     public var scripts: AnyContent {
         
         if let events = self.events {
@@ -78,10 +90,13 @@ extension ActionButton: ButtonComponent {
 
 public struct SubmitButton: Component {
     
+    /// The  content of the button.
     internal var content: [AnyContent]
     
+    /// The classes of the button.
     internal var classes: [String]
     
+    /// Creates a submit button.
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
@@ -130,10 +145,13 @@ extension SubmitButton: ButtonComponent {
 
 public struct ResetButton: Component {
     
+    /// The  content of the button.
     internal var content: [AnyContent]
     
+    /// The classes of the button.
     internal var classes: [String]
     
+    /// Creates a reset button.
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()

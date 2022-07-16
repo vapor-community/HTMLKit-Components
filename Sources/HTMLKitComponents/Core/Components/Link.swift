@@ -1,16 +1,26 @@
+/*
+ Abstract:
+ The file contains everything related to the link component.
+ */
+
 import HTMLKit
 import Foundation
 
 public struct Link: Component {
 
+    /// The url path of the target.
     internal let destination: TemplateValue<String>
     
+    /// The content of the link.
     internal var content: [AnyContent]
     
+    /// The classes of the link.
     internal var classes: [String]
     
+    /// The events of the link.
     internal var events: [String]?
     
+    /// Creates a link.
     public init(destination: TemplateValue<String>, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.destination = destination
@@ -18,6 +28,7 @@ public struct Link: Component {
         self.classes = ["link"]
     }
     
+    /// Creates a link.
     internal init(destination: TemplateValue<String>, content: [AnyContent], classes: [String], events: [String]?) {
         
         self.destination = destination
@@ -34,6 +45,7 @@ public struct Link: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the link.
     public var scripts: AnyContent {
         
         if let events = self.events {

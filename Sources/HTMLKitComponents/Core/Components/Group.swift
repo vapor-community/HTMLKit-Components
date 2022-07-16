@@ -1,24 +1,31 @@
+/*
+ Abstract:
+ */
+
 import HTMLKit
 
-
 public struct Group: Component {
-        
+    
+    /// The content of the group.
     internal var content: [AnyContent]
     
+    /// The classes of the group.
     internal var classes: [String]
     
+    /// Creates a group.
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["group"]
     }
     
+    /// Creates a group.
     internal init(content: [AnyContent], classes: [String]) {
         
         self.content = content
         self.classes = classes
     }
-    
+
     public var body: AnyContent {
         Division {
             content
@@ -26,6 +33,7 @@ public struct Group: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the group.
     public var scripts: AnyContent {
         return [content.scripts]
     }

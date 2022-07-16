@@ -1,3 +1,8 @@
+/*
+ Abstract:
+ The file contains the script stencils for the js.
+ */
+
 public enum Events {
     
     static func hover(selector: String, action: String) -> String {

@@ -1,15 +1,25 @@
+/*
+ Abstract:
+ The file contains everything related to the text component.
+ */
+
 import HTMLKit
 
 public struct Text: Component {
 
-    internal var content: [AnyContent]
-    
-    internal var classes: [String]
-    
-    internal var events: [String]?
-    
+    /// The identifier of the text.
     internal var id: TemplateValue<String?>
     
+    /// The content of the text.
+    internal var content: [AnyContent]
+    
+    /// The classes of the text.
+    internal var classes: [String]
+    
+    /// The events of the text.
+    internal var events: [String]?
+    
+    /// Creates a text.
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
@@ -17,6 +27,7 @@ public struct Text: Component {
         self.id = .constant(nil)
     }
     
+    /// Creates a text.
     internal init(content: [AnyContent], classes: [String], events: [String]?, id: TemplateValue<String?>) {
         
         self.content = content
@@ -35,6 +46,7 @@ public struct Text: Component {
         }
     }
     
+    /// The behaviour of the text.
     public var scripts: AnyContent {
         
         if let events = self.events {

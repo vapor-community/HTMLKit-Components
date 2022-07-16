@@ -1,19 +1,29 @@
+/*
+ Abstract:
+ The file contains everything related to the text component.
+ */
+
 import HTMLKit
 
 public struct Toggle: Component {
     
+    /// The identifier of the toggle.
     internal let name: TemplateValue<String>
     
+    /// The classes of the toggle.
     internal var classes: [String]
     
+    /// The events of the toggle.
     internal var events: [String]?
     
+    /// Creates a toggle.
     public init(name: TemplateValue<String>) {
         
         self.name = name
         self.classes = ["toggle"]
     }
     
+    /// Creates a toggle.
     internal init(name: TemplateValue<String>, classes: [String], events: [String]?) {
         
         self.name = name
@@ -35,6 +45,7 @@ public struct Toggle: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the toggle.
     public var scripts: AnyContent {
         
         if let events = self.events {

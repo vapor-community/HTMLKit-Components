@@ -1,17 +1,26 @@
+/*
+ Abstract:
+ The file contains everything related to images.
+ */
+
 import HTMLKit
 
 public struct ImageView: Component {
     
+    /// The url path of the image.
     internal let source: TemplateValue<String>
     
+    /// The classes of the image view.
     internal var classes: [String]
     
+    /// Creates a image view.
     public init(source: TemplateValue<String>) {
         
         self.source = source
         self.classes = ["image"]
     }
     
+    /// Creates a image view.
     internal init(source: TemplateValue<String>, classes: [String]) {
         
         self.source = source

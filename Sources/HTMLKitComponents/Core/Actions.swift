@@ -1,3 +1,8 @@
+/*
+ Abstract:
+ The file contains the actions for the components.
+ */
+
 public enum Actions {
     
     case show(_ target: String)
