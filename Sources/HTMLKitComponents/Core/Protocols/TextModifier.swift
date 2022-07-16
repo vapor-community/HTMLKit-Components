@@ -3,7 +3,7 @@
  The file contains the modifiers for text components.
  */
 
-public protocol TextComponent {
+public protocol TextModifier {
     
     /// Sets the style of the text.
     ///
@@ -11,7 +11,7 @@ public protocol TextComponent {
     ///    - style:
     ///
     /// - Returns: A component
-    func font(_ style: TextStyle) -> Self
+    func font(_ style: Tokens.TextStyle) -> Self
     
     /// Sets the foreground color of the text.
     ///
@@ -19,7 +19,7 @@ public protocol TextComponent {
     ///    - color:
     ///
     /// - Returns: A component
-    func foregroundColor(_ color: ForegroundColor) -> Self
+    func foregroundColor(_ color: Tokens.ForegroundColor) -> Self
     
     /// Sets the size of the text.
     ///
@@ -27,7 +27,7 @@ public protocol TextComponent {
     ///    - size:
     ///
     /// - Returns: A component
-    func fontSize(_ size: FontSize) -> Self
+    func fontSize(_ size: Tokens.FontSize) -> Self
     
     /// Sets the weight of the text.
     ///
@@ -35,7 +35,7 @@ public protocol TextComponent {
     ///    - weight:
     ///
     /// - Returns:
-    func fontWeight(_ weight: FontWeight) -> Self
+    func fontWeight(_ weight: Tokens.FontWeight) -> Self
     
     /// Sets the transformation for the text.
     ///
@@ -43,7 +43,7 @@ public protocol TextComponent {
     ///    - transformation:
     ///
     /// - Returns: A component
-    func fontTransformation(_ transformation: TextTransformation) -> Self
+    func fontTransformation(_ transformation: Tokens.TextTransformation) -> Self
     
     /// Sets the style of the font.
     ///
@@ -51,7 +51,7 @@ public protocol TextComponent {
     ///    - style:
     ///
     /// - Returns: A component
-    func fontStyle(_ style: FontStyle) -> Self
+    func fontStyle(_ style: Tokens.FontStyle) -> Self
     
     /// Applies a bold font weight to the text.
     ///

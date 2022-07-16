@@ -39,10 +39,10 @@ public struct ActionButton: Component {
     
     public var body: AnyContent {
         Anchor {
-            content
+            self.content
         }
-        .reference(destination.rawValue)
-        .class(classes.joined(separator: " "))
+        .reference(self.destination.rawValue)
+        .class(self.classes.joined(separator: " "))
         .role(.button)
     }
     
@@ -50,40 +50,44 @@ public struct ActionButton: Component {
     public var scripts: AnyContent {
         
         if let events = self.events {
-            return [content.scripts, Script { events }]
+            return [self.content.scripts, Script { events }]
         }
         
-        return [content.scripts]
+        return [self.content.scripts]
     }
 }
 
-extension ActionButton: ButtonComponent {
+extension ActionButton: ButtonModifier {
     
-    public func buttonSize(_ size: ButtonSize) -> ActionButton {
+    public func buttonSize(_ size: Tokens.ButtonSize) -> ActionButton {
         
         var newSelf = self
         newSelf.classes.append(size.rawValue)
+        
         return newSelf
     }
     
-    public func borderShape(_ shape: BorderShape) -> ActionButton {
+    public func borderShape(_ shape: Tokens.BorderShape) -> ActionButton {
         
         var newSelf = self
         newSelf.classes.append(shape.rawValue)
+        
         return newSelf
     }
     
-    public func buttonStyle(_ style: ButtonStyle) -> ActionButton {
+    public func buttonStyle(_ style: Tokens.ButtonStyle) -> ActionButton {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
     
-    public func backgroundColor(_ color: BackgroundColor) -> ActionButton {
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> ActionButton {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 }
@@ -105,40 +109,44 @@ public struct SubmitButton: Component {
     
     public var body: AnyContent {
         Button {
-            content
+            self.content
         }
         .type(.submit)
-        .class(classes.joined(separator: " "))
+        .class(self.classes.joined(separator: " "))
     }
 }
 
-extension SubmitButton: ButtonComponent {
+extension SubmitButton: ButtonModifier {
     
-    public func buttonSize(_ size: ButtonSize) -> SubmitButton {
+    public func buttonSize(_ size: Tokens.ButtonSize) -> SubmitButton {
         
         var newSelf = self
         newSelf.classes.append(size.rawValue)
+        
         return newSelf
     }
     
-    public func borderShape(_ shape: BorderShape) -> SubmitButton {
+    public func borderShape(_ shape: Tokens.BorderShape) -> SubmitButton {
         
         var newSelf = self
         newSelf.classes.append(shape.rawValue)
+        
         return newSelf
     }
     
-    public func buttonStyle(_ style: ButtonStyle) -> SubmitButton {
+    public func buttonStyle(_ style: Tokens.ButtonStyle) -> SubmitButton {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
     
-    public func backgroundColor(_ color: BackgroundColor) -> SubmitButton {
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> SubmitButton {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 }
@@ -158,42 +166,53 @@ public struct ResetButton: Component {
         self.classes = ["button"]
     }
     
+    /// Creates a sbumit button.
+    internal init(content: [AnyContent], classes: [String]) {
+        
+        self.content = content
+        self.classes = classes
+    }
+
     public var body: AnyContent {
         Button {
-            content
+            self.content
         }
         .type(.reset)
-        .class(classes.joined(separator: " "))
+        .class(self.classes.joined(separator: " "))
     }
 }
 
-extension ResetButton: ButtonComponent {
+extension ResetButton: ButtonModifier {
     
-    public func buttonSize(_ size: ButtonSize) -> ResetButton {
+    public func buttonSize(_ size: Tokens.ButtonSize) -> ResetButton {
         
         var newSelf = self
         newSelf.classes.append(size.rawValue)
+        
         return newSelf
     }
     
-    public func borderShape(_ shape: BorderShape) -> ResetButton {
+    public func borderShape(_ shape: Tokens.BorderShape) -> ResetButton {
         
         var newSelf = self
         newSelf.classes.append(shape.rawValue)
+        
         return newSelf
     }
     
-    public func buttonStyle(_ style: ButtonStyle) -> ResetButton {
+    public func buttonStyle(_ style: Tokens.ButtonStyle) -> ResetButton {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
     
-    public func backgroundColor(_ color: BackgroundColor) -> ResetButton {
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> ResetButton {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 }

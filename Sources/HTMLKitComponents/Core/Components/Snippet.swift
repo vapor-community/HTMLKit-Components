@@ -14,7 +14,7 @@ public struct Snippet: Component {
     internal var classes: [String]
     
     /// Creates a snippet.
-    public init(highlight: SyntaxHighlight, content: () -> String) {
+    public init(highlight: Tokens.SyntaxHighlight, content: () -> String) {
         
         self.content = content()
             .replacingOccurrences(of: "<", with: "&lt;")

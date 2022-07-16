@@ -17,7 +17,7 @@ public struct Collection: Component {
     internal var events: [String]?
     
     /// Creates a collection.
-    public init(ratio: ItemRatio = .half, @ContentBuilder<ListElement> content: () -> [ListElement]) {
+    public init(ratio: Tokens.ItemRatio = .half, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
         self.classes = ["collection", ratio.rawValue]
@@ -47,15 +47,13 @@ public struct Collection: Component {
         
         return [content.scripts]
     }
-}
-
-extension Collection {
     
     /// Sets the style for the collection.
-    public func collectionStyle(_ style: CollectionStyle) -> Collection {
+    public func collectionStyle(_ style: Tokens.CollectionStyle) -> Collection {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
 }

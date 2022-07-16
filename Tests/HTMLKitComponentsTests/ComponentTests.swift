@@ -79,7 +79,7 @@ final class ComponentTests: XCTestCase {
     func testFormContainer() throws {
         
         let view = TestPage {
-            FormContainer {
+            Form {
             }
         }
         
@@ -219,7 +219,7 @@ final class ComponentTests: XCTestCase {
     func testImage() throws {
         
         let view = TestPage {
-            ImageView(source: "source")
+            Image(source: "source")
         }
         
         try renderer.add(view: view)

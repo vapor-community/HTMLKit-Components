@@ -3,7 +3,7 @@
  The file contains the modifiers for button components.
  */
 
-public protocol ButtonComponent {
+public protocol ButtonModifier {
     
     /// Sets the size of the button.
     ///
@@ -11,7 +11,7 @@ public protocol ButtonComponent {
     ///    - size:
     ///
     /// - Returns: A component
-    func buttonSize(_ size: ButtonSize) -> Self
+    func buttonSize(_ size: Tokens.ButtonSize) -> Self
  
     /// Sets the style of the button.
     ///
@@ -19,7 +19,7 @@ public protocol ButtonComponent {
     ///    - style:
     ///
     /// - Returns: A component
-    func buttonStyle(_ style: ButtonStyle) -> Self
+    func buttonStyle(_ style: Tokens.ButtonStyle) -> Self
     
     /// Sets the shape of the button.
     ///
@@ -27,7 +27,7 @@ public protocol ButtonComponent {
     ///    - shape:
     ///
     /// - Returns: A component
-    func borderShape(_ shape: BorderShape) -> Self
+    func borderShape(_ shape: Tokens.BorderShape) -> Self
     
     /// Sets the background color.
     ///
@@ -35,6 +35,6 @@ public protocol ButtonComponent {
     ///    - color:
     ///
     /// - Returns: A component
-    func backgroundColor(_ color: BackgroundColor) -> Self
+    func backgroundColor(_ color: Tokens.BackgroundColor) -> Self
 }
 

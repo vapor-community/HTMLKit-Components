@@ -14,7 +14,7 @@ public struct HStack: Component {
     internal var classes: [String]
     
     /// Creates a horizontal stack.
-    public init(alignment: VerticalAlignment = .center, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    public init(alignment: Tokens.VerticalAlignment = .center, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["hstack", alignment.rawValue]
@@ -40,34 +40,38 @@ public struct HStack: Component {
     }
     
     /// Sets the space of the content.
-    public func contentSpace(_ value: ContentSpace) -> HStack {
+    public func contentSpace(_ value: Tokens.ContentSpace) -> HStack {
         
         var newSelf = self
         newSelf.classes.append(value.rawValue)
+        
         return newSelf
     }
 }
 
-extension HStack: ViewComponent {
+extension HStack: ViewModifier {
     
-    public func backgroundColor(_ color: BackgroundColor) -> HStack {
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> HStack {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 
-    public func opacity(_ value: OpacityValue) -> HStack {
+    public func opacity(_ value: Tokens.OpacityValue) -> HStack {
         
         var newSelf = self
         newSelf.classes.append(value.rawValue)
+        
         return newSelf
     }
     
-    public func zIndex(_ index: PositionIndex) -> HStack {
+    public func zIndex(_ index: Tokens.PositionIndex) -> HStack {
         
         var newSelf = self
         newSelf.classes.append(index.rawValue)
+        
         return newSelf
     }
 }
@@ -81,7 +85,7 @@ public struct VStack: Component {
     internal var classes: [String]
     
     /// Creates a vertical stack.
-    public init(alignment: HorizontalAlignment = .leading, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    public init(alignment: Tokens.HorizontalAlignment = .leading, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["vstack", alignment.rawValue]
@@ -107,26 +111,29 @@ public struct VStack: Component {
     }
 }
 
-extension VStack: ViewComponent {
+extension VStack: ViewModifier {
     
-    public func backgroundColor(_ color: BackgroundColor) -> VStack {
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> VStack {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 
-    public func opacity(_ value: OpacityValue) -> VStack {
+    public func opacity(_ value: Tokens.OpacityValue) -> VStack {
         
         var newSelf = self
         newSelf.classes.append(value.rawValue)
+        
         return newSelf
     }
     
-    public func zIndex(_ index: PositionIndex) -> VStack {
+    public func zIndex(_ index: Tokens.PositionIndex) -> VStack {
         
         var newSelf = self
         newSelf.classes.append(index.rawValue)
+        
         return newSelf
     }
 }
@@ -166,6 +173,33 @@ public struct ZStack: Component {
     }
 }
 
+extension ZStack: ViewModifier {
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> ZStack {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
+    }
+
+    public func opacity(_ value: Tokens.OpacityValue) -> ZStack {
+        
+        var newSelf = self
+        newSelf.classes.append(value.rawValue)
+        
+        return newSelf
+    }
+    
+    public func zIndex(_ index: Tokens.PositionIndex) -> ZStack {
+        
+        var newSelf = self
+        newSelf.classes.append(index.rawValue)
+        
+        return newSelf
+    }
+}
+
 public struct StackColumn: Component {
     
     /// The content of the column.
@@ -175,28 +209,28 @@ public struct StackColumn: Component {
     internal var classes: [String]
     
     /// Creates a stack column.
-    public init(size: ColumnSize, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    public init(size: Tokens.ColumnSize, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue]
     }
     
     /// Creates a stack column.
-    public init(size: ColumnSize, alignment: TextAlignment, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    public init(size: Tokens.ColumnSize, alignment: Tokens.TextAlignment, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue, alignment.rawValue]
     }
     
     /// Creates a stack column.
-    public init(size: ColumnSize, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    public init(size: Tokens.ColumnSize, offset: Tokens.ColumnOffset, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue, offset.rawValue]
     }
     
     /// Creates a stack column.
-    public init(size: ColumnSize, alignment: TextAlignment, offset: ColumnOffset, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
+    public init(size: Tokens.ColumnSize, alignment: Tokens.TextAlignment, offset: Tokens.ColumnOffset, @ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["stack-column", size.rawValue, alignment.rawValue, offset.rawValue]

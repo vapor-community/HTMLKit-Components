@@ -3,7 +3,7 @@
  The file contains the modifiers for view components.
  */
 
-public protocol ViewComponent {
+public protocol ViewModifier {
 
     /// Sets the opacity of the view.
     ///
@@ -11,7 +11,7 @@ public protocol ViewComponent {
     ///    - value:
     ///
     /// - Returns: A component
-    func opacity(_ value: OpacityValue) -> Self
+    func opacity(_ value: Tokens.OpacityValue) -> Self
     
     /// Sets the position of the view.
     ///
@@ -19,7 +19,7 @@ public protocol ViewComponent {
     ///    - index:
     ///
     /// - Returns: A component
-    func zIndex(_ index: PositionIndex) -> Self
+    func zIndex(_ index: Tokens.PositionIndex) -> Self
     
     /// Sets the background color of the view.
     ///
@@ -27,5 +27,5 @@ public protocol ViewComponent {
     ///    - color:
     ///
     /// - Returns: A component
-    func backgroundColor(_ color: BackgroundColor) -> Self
+    func backgroundColor(_ color: Tokens.BackgroundColor) -> Self
 }

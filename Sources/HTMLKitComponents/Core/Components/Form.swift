@@ -5,7 +5,7 @@
 
 import HTMLKit
 
-public struct FormContainer: Component {
+public struct Form: Component {
     
     /// The content of the container.
     internal var content: [FormElement]
@@ -143,19 +143,21 @@ public struct TextField: Component {
     }
 }
 
-extension TextField: InputComponent {
+extension TextField: InputModifier {
     
-    public func borderShape(_ shape: BorderShape) -> TextField {
+    public func borderShape(_ shape: Tokens.BorderShape) -> TextField {
         
         var newSelf = self
         newSelf.classes.append(shape.rawValue)
+        
         return newSelf
     }
     
-    public func backgroundColor(_ color: BackgroundColor) -> TextField {
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> TextField {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 }
@@ -183,7 +185,6 @@ public struct TextEditor: Component {
         self.name = name
         self.content = content()
         self.classes = ["input", "type:texteditor"]
-
     }
     
     /// Creates a text editor.
@@ -215,13 +216,33 @@ public struct TextEditor: Component {
         
         return [content.scripts]
     }
-}
-
-extension TextEditor {
     
     /// Sets the limit of the maximum lines.
     public func lineLimit(_ value: Int) -> TextEditor {
-        return TextEditor(name: self.name, rows: value, content: self.content, classes: self.classes, events: self.events)
+
+        var newSelf = self
+        newSelf.rows = value
+        
+        return newSelf
+    }
+}
+
+extension TextEditor: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> TextEditor {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> TextEditor {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
     }
 }
 
@@ -262,6 +283,25 @@ public struct CheckField: Component {
     }
 }
 
+extension CheckField: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> CheckField {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> CheckField {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
+    }
+}
+
 public struct RadioSelect: Component {
     
     /// The identifier of the select.
@@ -296,6 +336,25 @@ public struct RadioSelect: Component {
             .name(name)
             .value(value)
             .class(classes.joined(separator: " "))
+    }
+}
+
+extension RadioSelect: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> RadioSelect {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> RadioSelect {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
     }
 }
 
@@ -350,6 +409,25 @@ public struct SelectField: Component {
     }
 }
 
+extension SelectField: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> SelectField {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> SelectField {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
+    }
+}
+
 public struct SecureField: Component {
     
     /// The identifier of the field.
@@ -400,6 +478,25 @@ public struct SecureField: Component {
         }
         
         return []
+    }
+}
+
+extension SecureField: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> SecureField {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> SecureField {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
     }
 }
 
@@ -501,6 +598,25 @@ public struct DatePicker: Component {
     }
 }
 
+extension DatePicker: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> DatePicker {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> DatePicker {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
+    }
+}
+
 public struct SearchField: Component {
     
     /// The identifier of the search field.
@@ -554,6 +670,24 @@ public struct SearchField: Component {
     }
 }
 
+extension SearchField: InputModifier {
+    
+    public func borderShape(_ shape: Tokens.BorderShape) -> SearchField {
+        
+        var newSelf = self
+        newSelf.classes.append(shape.rawValue)
+        
+        return newSelf
+    }
+    
+    public func backgroundColor(_ color: Tokens.BackgroundColor) -> SearchField {
+        
+        var newSelf = self
+        newSelf.classes.append(color.rawValue)
+        
+        return newSelf
+    }
+}
 
 public struct ProgressView: Component {
     

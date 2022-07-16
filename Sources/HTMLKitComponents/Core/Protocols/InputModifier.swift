@@ -3,7 +3,7 @@
  The file contains the modifiers for input components.
  */
 
-public protocol InputComponent {
+public protocol InputModifier {
     
     /// Sets the border shape of the input.
     ///
@@ -11,7 +11,7 @@ public protocol InputComponent {
     ///    - shape:
     ///
     /// - Returns: A component
-    func borderShape(_ shape: BorderShape) -> Self
+    func borderShape(_ shape: Tokens.BorderShape) -> Self
     
     /// Sets the background color of the input.
     ///
@@ -19,5 +19,5 @@ public protocol InputComponent {
     ///    - color:
     ///
     /// - Returns: A component
-    func backgroundColor(_ color: BackgroundColor) -> Self
+    func backgroundColor(_ color: Tokens.BackgroundColor) -> Self
 }

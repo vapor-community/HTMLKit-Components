@@ -45,9 +45,6 @@ public struct Symbol: Component {
         .fill("currentColor")
         .class(classes.joined(separator: " "))
     }
-}
-
-extension Symbol {
     
     public func fontSize(_ size: FontSize) -> Symbol {
         
@@ -60,6 +57,7 @@ extension Symbol {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 }

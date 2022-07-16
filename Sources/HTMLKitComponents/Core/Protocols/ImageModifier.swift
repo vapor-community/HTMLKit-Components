@@ -3,7 +3,7 @@
  The file contains the modifiers for image components.
  */
 
-public protocol ImageComponent {
+public protocol ImageModifier {
     
     /// Sets how the content should be resized to fit its parent.
     ///
@@ -11,7 +11,7 @@ public protocol ImageComponent {
     ///    - fit: The fit
     ///
     /// - Returns: A component
-    func objectFit(_ fit: ObjectFit) -> Self
+    func objectFit(_ fit: Tokens.ObjectFit) -> Self
     
     /// Sets the scale of the image.
     ///
@@ -19,7 +19,7 @@ public protocol ImageComponent {
     ///    - scale: The scale
     ///
     /// - Returns: A component
-    func imageScale(_ scale: ImageScale) -> Self
+    func imageScale(_ scale: Tokens.ImageScale) -> Self
     
     /// Sets the fill style to use.
     ///
@@ -27,5 +27,5 @@ public protocol ImageComponent {
     ///    - shape: The fill style to use.
     ///
     /// - Returns: A component
-    func clipShape(_ shape: ClipShape) -> Self
+    func clipShape(_ shape: Tokens.ClipShape) -> Self
 }

@@ -41,7 +41,7 @@ public struct Toggle: Component {
             }
             .class("toggle-slider")
         }
-        .tabIndex("0")
+        .tabIndex(0)
         .class(classes.joined(separator: " "))
     }
     

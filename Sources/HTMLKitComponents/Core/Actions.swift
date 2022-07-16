@@ -13,15 +13,12 @@ public enum Actions {
         
         switch self {
         case .show(let target):
-            
             return show(target)
             
         case .hide(let target):
-            
             return hide(target)
             
         case .animate(let target):
-            
             return animate(target)
         }
     }

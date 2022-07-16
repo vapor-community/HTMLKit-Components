@@ -17,7 +17,7 @@ public struct List: Component {
     internal var events: [String]?
     
     /// Creates a list.
-    public init(direction: FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
+    public init(direction: Tokens.FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
         self.classes = ["list", direction.rawValue]
@@ -47,15 +47,13 @@ public struct List: Component {
         
         return [content.scripts]
     }
-}
-
-extension List {
     
     /// Sets the style for the list.
-    public func listStyle(_ style: ListStyle) -> List {
+    public func listStyle(_ style: Tokens.ListStyle) -> List {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
 }
