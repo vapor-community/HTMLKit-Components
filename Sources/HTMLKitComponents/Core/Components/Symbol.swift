@@ -46,14 +46,14 @@ public struct Symbol: Component {
         .class(classes.joined(separator: " "))
     }
     
-    public func fontSize(_ size: FontSize) -> Symbol {
+    public func fontSize(_ size: Tokens.FontSize) -> Symbol {
         
         var newSelf = self
         newSelf.classes.append(size.rawValue)
         return newSelf
     }
     
-    public func foregroundColor(_ color: ForegroundColor) -> Symbol {
+    public func foregroundColor(_ color: Tokens.ForegroundColor) -> Symbol {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)

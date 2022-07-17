@@ -1,5 +1,4 @@
 import XCTest
-import HTMLKit
 @testable import HTMLKitComponents
 
 final class ComponentTests: XCTestCase {
@@ -55,7 +54,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <ul class="collection"></ul>
+                       <ul class="collection ratio:50"></ul>
                        """
         )
     }

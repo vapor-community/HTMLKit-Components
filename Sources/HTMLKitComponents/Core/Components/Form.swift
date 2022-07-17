@@ -32,7 +32,7 @@ public struct Form: Component {
     }
     
     public var body: AnyContent {
-        Form {
+        HTMLKit.Form {
             content
         }
         .method(.post)

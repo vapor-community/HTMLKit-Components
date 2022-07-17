@@ -29,7 +29,7 @@ public struct Image: Component {
     
     public var body: AnyContent {
         Division {
-            Image()
+            HTMLKit.Image()
                 .source(source.rawValue)
                 .role(.img)
         }
