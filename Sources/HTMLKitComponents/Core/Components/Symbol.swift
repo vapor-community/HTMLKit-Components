@@ -1,12 +1,20 @@
+/*
+ Abstract:
+ The file contains everything related to the symbol component.
+ */
+
 import HTMLKit
 import Foundation
 
 public struct Symbol: Component {
     
+    /// The content of the symbol.
     internal let content: [VectorElement]
     
+    /// The classes of the symbol.
     internal var classes: [String]
     
+    /// Retrieves a symbol.
     public init(name: String) {
         
         let url = URL(fileURLWithPath: "./public/assets/symbols").appendingPathComponent(name).appendingPathExtension("svg")
@@ -20,6 +28,7 @@ public struct Symbol: Component {
         self.classes = ["symbol"]
     }
     
+    /// Creates a symbol.
     internal init(content: [VectorElement], classes: [String]) {
 
         self.content = content
@@ -36,21 +45,19 @@ public struct Symbol: Component {
         .fill("currentColor")
         .class(classes.joined(separator: " "))
     }
-}
-
-extension Symbol {
     
-    public func fontSize(_ size: FontSize) -> Symbol {
+    public func fontSize(_ size: Tokens.FontSize) -> Symbol {
         
         var newSelf = self
         newSelf.classes.append(size.rawValue)
         return newSelf
     }
     
-    public func foregroundColor(_ color: ForegroundColor) -> Symbol {
+    public func foregroundColor(_ color: Tokens.ForegroundColor) -> Symbol {
         
         var newSelf = self
         newSelf.classes.append(color.rawValue)
+        
         return newSelf
     }
 }

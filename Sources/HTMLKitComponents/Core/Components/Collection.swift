@@ -1,19 +1,29 @@
+/*
+ Abstract:
+ The file contains everything related to the collection.
+ */
+
 import HTMLKit
 
 public struct Collection: Component {
     
+    /// The content of the collection.
     internal var content: [ListElement]
     
+    /// The classes of the collection.
     internal var classes: [String]
     
+    /// The events of the collection.
     internal var events: [String]?
     
-    public init(ratio: ItemRatio = .half, @ContentBuilder<ListElement> content: () -> [ListElement]) {
+    /// Creates a collection.
+    public init(ratio: Tokens.ItemRatio = .half, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
         self.classes = ["collection", ratio.rawValue]
     }
     
+    /// Creates a collection.
     internal init(content: [ListElement], classes: [String], events: [String]?) {
         
         self.content = content
@@ -28,6 +38,7 @@ public struct Collection: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the collection.
     public var scripts: AnyContent {
         
         if let events = self.events {
@@ -36,32 +47,37 @@ public struct Collection: Component {
         
         return [content.scripts]
     }
-}
-
-extension Collection {
     
-    public func collectionStyle(_ style: CollectionStyle) -> Collection {
+    /// Sets the style for the collection.
+    public func collectionStyle(_ style: Tokens.CollectionStyle) -> Collection {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
 }
 
+/// A component
 public struct CollectionItem: Component {
     
-    internal  var content: [AnyContent]
+    /// The content of the item.
+    internal var content: [AnyContent]
     
-    internal  var classes: [String]
+    /// The classes for the item.
+    internal var classes: [String]
     
+    /// The events of the item.
     internal var events: [String]?
     
+    /// Creates a collection item.
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["collection-item"]
     }
     
+    /// Creates a collection item.
     internal init(content: [AnyContent], classes: [String], events: [String]?) {
         
         self.content = content
@@ -76,6 +92,7 @@ public struct CollectionItem: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the collection.
     public var scripts: AnyContent {
         
         if let events = self.events {

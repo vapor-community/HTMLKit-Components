@@ -1,5 +1,4 @@
 import XCTest
-import HTMLKit
 @testable import HTMLKitComponents
 
 final class ComponentTests: XCTestCase {
@@ -55,7 +54,7 @@ final class ComponentTests: XCTestCase {
         
         XCTAssertEqual(try renderer.render(raw: TestPage.self),
                        """
-                       <ul class="collection"></ul>
+                       <ul class="collection ratio:50"></ul>
                        """
         )
     }
@@ -79,7 +78,7 @@ final class ComponentTests: XCTestCase {
     func testFormContainer() throws {
         
         let view = TestPage {
-            FormContainer {
+            Form {
             }
         }
         
@@ -219,7 +218,7 @@ final class ComponentTests: XCTestCase {
     func testImage() throws {
         
         let view = TestPage {
-            ImageView(source: "source")
+            Image(source: "source")
         }
         
         try renderer.add(view: view)

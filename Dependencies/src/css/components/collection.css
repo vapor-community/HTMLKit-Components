@@ -12,15 +12,10 @@
 }
 
 .collection.style\:grid > .collection-item {
-    
     border-width: var(--collectionBorderWidth);
     border-style: solid;
     border-color: var(--collectionBorderColor);
     border-radius: var(--collectionBorderRadius);
-}
-
-.collection.style\:carousel {
-    
 }
 
 .collection.ratio\:50 {

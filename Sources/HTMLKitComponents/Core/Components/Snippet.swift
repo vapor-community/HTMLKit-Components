@@ -1,12 +1,20 @@
+/*
+ Abstract:
+ The file contains everything related to the snippet component.
+ */
+
 import HTMLKit
 
 public struct Snippet: Component {
     
+    /// The content of the snippet.
     internal var content: [AnyContent]
     
+    /// The classes of the snippet.
     internal var classes: [String]
     
-    public init(highlight: SyntaxHighlight, content: () -> String) {
+    /// Creates a snippet.
+    public init(highlight: Tokens.SyntaxHighlight, content: () -> String) {
         
         self.content = content()
             .replacingOccurrences(of: "<", with: "&lt;")
@@ -20,6 +28,7 @@ public struct Snippet: Component {
         self.classes = ["snippet", highlight.rawValue]
     }
     
+    /// Creates a snippet.
     internal init(content: [AnyContent], classes: [String]) {
         
         self.content = content

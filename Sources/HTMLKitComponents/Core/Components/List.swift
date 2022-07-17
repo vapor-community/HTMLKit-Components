@@ -1,19 +1,29 @@
+/*
+ Abstract:
+ The file contains everything related to the list component.
+ */
+
 import HTMLKit
 
 public struct List: Component {
     
+    /// The content of the list.
     internal var content: [ListElement]
     
+    /// The classes of the list.
     internal var classes: [String]
     
+    /// The events of the list.
     internal var events: [String]?
     
-    public init(direction: FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
+    /// Creates a list.
+    public init(direction: Tokens.FlowDirection, @ContentBuilder<ListElement> content: () -> [ListElement]) {
         
         self.content = content()
         self.classes = ["list", direction.rawValue]
     }
     
+    /// Creates a list.
     internal init(content: [ListElement], classes: [String], events: [String]?) {
         
         self.content = content
@@ -28,6 +38,7 @@ public struct List: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the list.
     public var scripts: AnyContent {
         
         if let events = self.events {
@@ -36,32 +47,36 @@ public struct List: Component {
         
         return [content.scripts]
     }
-}
-
-extension List {
     
-    public func listStyle(_ style: ListStyle) -> List {
+    /// Sets the style for the list.
+    public func listStyle(_ style: Tokens.ListStyle) -> List {
         
         var newSelf = self
         newSelf.classes.append(style.rawValue)
+        
         return newSelf
     }
 }
 
 public struct ListRow: Component {
 
+    /// The content of the row.
     internal var content: [AnyContent]
     
+    /// The classes of the row.
     internal var classes: [String]
     
+    /// The events of the row.
     internal var events: [String]?
     
+    /// Creates a list row.
     public init(@ContentBuilder<AnyContent> content: () -> [AnyContent]) {
         
         self.content = content()
         self.classes = ["list-row"]
     }
     
+    /// Creates a list row.
     internal init(content: [AnyContent], classes: [String], events: [String]?) {
         
         self.content = content
@@ -76,6 +91,7 @@ public struct ListRow: Component {
         .class(classes.joined(separator: " "))
     }
     
+    /// The behaviour of the row.
     public var scripts: AnyContent {
         
         if let events = self.events {

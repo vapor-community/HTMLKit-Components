@@ -1,3 +1,8 @@
+/*
+ Abstract:
+ The file contains the actions for the components.
+ */
+
 public enum Actions {
     
     case show(_ target: String)
@@ -8,15 +13,12 @@ public enum Actions {
         
         switch self {
         case .show(let target):
-            
             return show(target)
             
         case .hide(let target):
-            
             return hide(target)
             
         case .animate(let target):
-            
             return animate(target)
         }
     }

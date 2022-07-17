@@ -1,13 +1,21 @@
+/*
+ Abstract:
+ The file contains a divider component.
+ */
+
 import HTMLKit
 
 public struct Divider: Component {
     
+    /// The classes of the divider.
     internal  var classes: [String]
     
+    /// Creates a divider.
     public init() {
         self.classes = ["divider"]
     }
     
+    /// Creates a divider.
     internal init(classes: [String]) {
         self.classes = classes
     }
