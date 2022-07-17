@@ -15,8 +15,7 @@ Add the packages to your dependecies and targets in your package file.
 dependencies: [
     ...
     ///1. Add the packages
-    .package(name: "HTMLKit", url: "https://github.com/vapor-community/HTMLKit.git", from: "2.4.4"),
-    .package(name: "HTMLKitComponents", url: "https://github.com/vapor-community/HTMLKit-Components.git", from: "0.1.0")
+    .package(url: "https://github.com/vapor-community/HTMLKit-Components.git", from: "0.1.0")
 ],
 targets: [
     .target( 
@@ -24,8 +23,7 @@ targets: [
         dependencies: [
             ...
             /// 2. Add the products
-            .product(name: "HTMLKit", package: "HTMLKit"),
-            .product(name: "HTMLKitComponents", package: "HTMLKitComponents")
+            .product(name: "HTMLKitComponents", package: "HTMLKit-Components")
         ]
     ),
     ...
