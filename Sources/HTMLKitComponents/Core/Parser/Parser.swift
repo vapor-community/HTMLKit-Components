@@ -2,6 +2,10 @@ import Foundation
 import OrderedCollections
 import HTMLKit
 
+#if canImport(FoundationXML)
+import FoundationXML
+#endif
+
 internal typealias ParseElements = BodyElement & DescriptionElement & FigureElement & FormElement & BasicElement & HeadElement & ListElement & MapElement & MediaElement & ObjectElement & RubyElement & TableElement & HtmlElement & VectorElement
 
 internal struct Parser {
