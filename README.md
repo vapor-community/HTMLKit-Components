@@ -1,3 +1,6 @@
+> **Warning**
+> This repo is now archived as the components live in https://github.com/vapor-community/HTMLKit
+
 # HTMLKit-Components
 
 This package contains common UI-components wich are build with HTMLKit.
